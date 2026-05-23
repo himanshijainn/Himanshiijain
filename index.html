@@ -954,9 +954,36 @@ textarea + button { margin-top: 10px; }
    COMPREHENSIVE RESPONSIVE FIXES
    ═══════════════════════════════════════════════════════════ */
 
-/* Prevent horizontal scroll globally */
+/* ── Root overflow containment ────────────────────────────── */
 html, body { overflow-x: hidden; max-width: 100%; }
-.app { overflow-x: hidden; }
+.app, .chrome, .results-body, .results-results { max-width: 100%; }
+
+/* ── Fix: inline-block titles cause page-width explosion ─── */
+/* result__title was display:inline-block → text wouldn't wrap → overflow */
+.result__title {
+  display: block !important;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+/* Prevent any other text from blowing out width */
+.project__title,
+.project__desc,
+.result__desc,
+.resume-entry__title,
+.resume-entry__desc,
+.section__p,
+.hero__quote,
+.kp__social-bio {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+/* Tabs must not overflow their container */
+.tabs { max-width: 100%; }
+/* Search input text should not overflow */
+.searchbar { min-width: 0; max-width: 100%; }
+.searchbar__input { min-width: 0; }
 
 /* ── Mobile: hide KP panel entirely & force single column ── */
 @media (max-width: 760px) {
@@ -971,9 +998,11 @@ html, body { overflow-x: hidden; max-width: 100%; }
     column-gap: 10px;
     row-gap: 8px;
     grid-template-columns: auto 1fr;
+    width: 100%;
+    box-sizing: border-box;
   }
   .app--results .chrome__logo { font-size: 22px; }
-  .app--results .chrome__search { width: 100%; }
+  .app--results .chrome__search { width: 100%; min-width: 0; }
   .searchbar--sm { height: 38px; padding: 0 10px; gap: 6px; }
   /* hide the image-search button on narrow screens */
   .searchbar__icon--btn + .searchbar__icon--btn { display: none; }
