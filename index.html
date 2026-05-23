@@ -18,6 +18,15 @@
   --coral:       #E85D4A;
   --mustard:     #E8A93C;
   --terracotta:  #B33A1F;
+
+  /* ── Shared page padding: same value for BOTH chrome and results-body
+        so logo, tabs, and content all start at the same left x position.
+        clamp(16px, calc(50vw - 520px), 160px):
+          430px screen  → 16px   (mobile)
+          900px screen  → 16px   (tablet)
+          1366px screen → 160px  (desktop — matches original Google-style)
+     ─────────────────────────────────────────────────────────────────── */
+  --page-pad: clamp(16px, calc(50vw - 520px), 160px);
   --sage:        #6B8E5A;
 
   /* Surfaces & ink */
@@ -154,13 +163,16 @@ a { color: inherit; text-decoration: none; }
   z-index: 30;
   background: var(--cream);
   border-bottom: 1px solid var(--border);
-  padding: 18px 32px 0;
+  /* same --page-pad as results-body → logo left edge = content left edge */
+  padding: 14px var(--page-pad) 0;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
-  column-gap: 28px;
-  row-gap: 14px;
+  column-gap: 20px;
+  row-gap: 10px;
   align-items: center;
+  box-sizing: border-box;
+  width: 100%;
 }
 .app--results .chrome__logo {
   font-size: 30px;
@@ -329,9 +341,12 @@ a { color: inherit; text-decoration: none; }
    ───────────────────────────────────────────── */
 .results-body {
   display: grid;
-  grid-template-columns: minmax(0, 652px) 352px;
-  gap: 64px;
-  padding: 28px 160px 80px;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 48px;
+  /* same --page-pad as chrome → content left edge = logo left edge */
+  padding: 24px var(--page-pad) 80px;
+  width: 100%;
+  box-sizing: border-box;
   align-items: start;
 }
 .results-results { min-width: 0; }
@@ -349,17 +364,17 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 1100px) {
-  .results-body { padding: 28px 80px 80px; grid-template-columns: minmax(0, 1fr) 280px; gap: 48px; }
+  .results-body { gap: 36px; }
 }
 @media (max-width: 900px) {
-  .results-body { padding: 24px 24px 80px; grid-template-columns: minmax(0, 1fr) 260px; gap: 32px; }
+  .results-body { grid-template-columns: minmax(0, 1fr) 260px; gap: 24px; }
 }
 @media (max-width: 760px) {
-  .app--results .chrome { padding: 14px 18px 0; column-gap: 14px; }
+  /* --page-pad becomes 16px here automatically via clamp, so no override needed */
+  .app--results .chrome { column-gap: 12px; row-gap: 8px; }
   .results-body {
     grid-template-columns: 1fr;
-    padding: 20px 18px 80px;
-    gap: 28px;
+    gap: 0;
   }
   .results-aside { position: static; }
 }
@@ -955,34 +970,22 @@ textarea + button { margin-top: 10px; }
    ═══════════════════════════════════════════════════════════ */
 
 /* ── Root overflow containment ────────────────────────────── */
-html, body { overflow-x: hidden; max-width: 100%; }
-.app, .chrome, .results-body, .results-results { max-width: 100%; }
+html, body { overflow-x: hidden; }
+.app { overflow-x: hidden; width: 100%; }
 
-/* ── Fix: inline-block titles cause page-width explosion ─── */
-/* result__title was display:inline-block → text wouldn't wrap → overflow */
+/* ── Prevent long text from blowing out page width ──────── */
 .result__title {
   display: block !important;
-  max-width: 100%;
   overflow-wrap: break-word;
   word-break: break-word;
 }
-/* Prevent any other text from blowing out width */
-.project__title,
-.project__desc,
-.result__desc,
-.resume-entry__title,
-.resume-entry__desc,
-.section__p,
-.hero__quote,
-.kp__social-bio {
+.project__title, .project__desc, .result__desc,
+.resume-entry__title, .resume-entry__desc,
+.section__p, .hero__quote, .kp__social-bio {
   overflow-wrap: break-word;
   word-break: break-word;
-  max-width: 100%;
 }
-/* Tabs must not overflow their container */
-.tabs { max-width: 100%; }
-/* Search input text should not overflow */
-.searchbar { min-width: 0; max-width: 100%; }
+.searchbar { min-width: 0; }
 .searchbar__input { min-width: 0; }
 
 /* ── Mobile: hide KP panel entirely & force single column ── */
@@ -991,27 +994,18 @@ html, body { overflow-x: hidden; max-width: 100%; }
   .results-body   { grid-template-columns: 1fr !important; }
 }
 
-/* ── Results chrome header — medium mobile ─────────────────── */
-@media (max-width: 600px) {
-  .app--results .chrome {
-    padding: 10px 14px 0;
-    column-gap: 10px;
-    row-gap: 8px;
-    grid-template-columns: auto 1fr;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .app--results .chrome__logo { font-size: 22px; }
-  .app--results .chrome__search { width: 100%; min-width: 0; }
-  .searchbar--sm { height: 38px; padding: 0 10px; gap: 6px; }
-  /* hide the image-search button on narrow screens */
+/* ── Results chrome header — small mobile ─────────────────── */
+@media (max-width: 480px) {
+  .app--results .chrome { column-gap: 8px; row-gap: 6px; }
+  .app--results .chrome__logo { font-size: 20px; }
+  .searchbar--sm { height: 36px; padding: 0 10px; gap: 6px; }
   .searchbar__icon--btn + .searchbar__icon--btn { display: none; }
 }
 
-/* ── Results body padding on mobile ───────────────────────── */
+/* ── Results body on small mobile ─────────────────────────── */
 @media (max-width: 480px) {
-  .results-body { padding: 16px 14px 80px !important; gap: 0 !important; }
-  .results-meta { margin-bottom: 16px; }
+  .results-body { padding-bottom: 80px; }
+  .results-meta { margin-bottom: 14px; }
 }
 
 /* ── Tabs bar ─────────────────────────────────────────────── */
