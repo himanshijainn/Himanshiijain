@@ -1,0 +1,2098 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Himanshi Jain — UX Designer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <style>
+/* Himanshi Jain — Portfolio
+   Warm & playful palette. Search-engine homage in her own brand. */
+
+:root {
+  /* Brand palette (original — not Google) */
+  --coral:       #E85D4A;
+  --mustard:     #E8A93C;
+  --terracotta:  #B33A1F;
+  --sage:        #6B8E5A;
+
+  /* Surfaces & ink */
+  --cream:       #FFFFFF;       /* page bg */
+  --cream-2:     #F4EEDF;       /* warm subtle (buttons, footer, soft accents) */
+  --paper:       #FFFFFE;
+  --ink:         #2A2620;
+  --ink-2:       #4A4338;
+  --muted:       #847C6E;
+  --muted-2:    #A89F8E;
+  --border:      #E5DECE;
+  --border-2:    #D8CFB8;
+
+  /* Semantic */
+  --link:        #6E2C5C;       /* clickable titles — warm plum */
+  --link-hover:  #4A1B3E;
+  --accent:      var(--coral);
+  --success-bg:  #E8EFDC;
+  --success-fg:  #45602B;
+  --visited:     #5A2A78;
+
+  /* Pill tints */
+  --pill-tools-bg:  #FDEEEA;   /* coral */
+  --pill-tools-fg:  #9C2A18;
+  --pill-disc-bg:   #E8EFDC;   /* sage */
+  --pill-disc-fg:   #45602B;
+  --pill-soft-bg:   #FBEFCF;   /* mustard */
+  --pill-soft-fg:   #7A5410;
+
+  /* Type */
+  --f-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --f-sans:    "DM Sans", "Helvetica Neue", Helvetica, ui-sans-serif, sans-serif;
+  --f-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur:  350ms;
+  --dur-fast: 200ms;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+button { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* ─────────────────────────────────────────────
+   LOGO — "Himanshi" wordmark
+   ───────────────────────────────────────────── */
+.logo {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-flex;
+  cursor: pointer;
+  user-select: none;
+}
+.logo__letter {
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: letterIn 480ms var(--ease) forwards;
+}
+.logo__letter[data-i="0"] { animation-delay: 0ms; }
+.logo__letter[data-i="1"] { animation-delay: 60ms; }
+.logo__letter[data-i="2"] { animation-delay: 120ms; }
+.logo__letter[data-i="3"] { animation-delay: 180ms; }
+.logo__letter[data-i="4"] { animation-delay: 240ms; }
+.logo__letter[data-i="5"] { animation-delay: 300ms; }
+.logo__letter[data-i="6"] { animation-delay: 360ms; }
+.logo__letter[data-i="7"] { animation-delay: 420ms; }
+.logo--no-anim .logo__letter { opacity: 1; transform: none; animation: none; }
+
+@keyframes letterIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.logo__dot {
+  position: absolute;
+  left: 50%;
+  top: -0.18em;
+  width: 0.18em;
+  height: 0.18em;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+
+/* ─────────────────────────────────────────────
+   SHARED CHROME — logo + search bar morph
+   ───────────────────────────────────────────── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+}
+
+/* HOME view: chrome is vertically/horizontally centered */
+.app--home .chrome {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px 160px;
+  gap: 28px;
+}
+.app--home .chrome__logo {
+  font-size: clamp(64px, 12vw, 108px);
+  transition: font-size var(--dur) var(--ease);
+}
+.app--home .chrome__search {
+  width: min(584px, 100%);
+  transition: width var(--dur) var(--ease);
+}
+
+/* RESULTS view: chrome is sticky header row */
+.app--results .chrome {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 32px 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 28px;
+  row-gap: 14px;
+  align-items: center;
+}
+.app--results .chrome__logo {
+  font-size: 30px;
+  align-self: center;
+  padding-bottom: 2px;
+  transition: font-size var(--dur) var(--ease);
+}
+.app--results .chrome__search {
+  width: min(640px, 100%);
+  justify-self: start;
+  transition: width var(--dur) var(--ease);
+}
+.app--results .chrome__tabs {
+  grid-column: 1 / -1;
+  align-self: end;
+}
+
+/* ─────────────────────────────────────────────
+   SEARCH BAR
+   ───────────────────────────────────────────── */
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 1px 0 rgba(42,38,32,0.02), 0 8px 28px -16px rgba(42,38,32,0.18);
+  transition: box-shadow var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.searchbar:hover,
+.searchbar:focus-within {
+  border-color: #616161;
+  box-shadow: 0 1px 0 rgba(42,38,32,0.02), 0 14px 36px -16px rgba(42,38,32,0.28);
+}
+.searchbar--lg { height: 56px; }
+.searchbar--sm { height: 44px; padding: 0 14px; }
+
+.searchbar__input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: var(--f-sans);
+  font-size: 16px;
+  color: var(--ink);
+  min-width: 0;
+}
+.searchbar__input::placeholder { color: var(--muted-2); }
+.searchbar__icon {
+  width: 20px;
+  height: 20px;
+  color: var(--muted);
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+}
+.searchbar__icon--btn {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 999px;
+  color: var(--muted);
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.searchbar__icon--btn:hover { background: var(--cream-2); color: var(--terracotta); }
+.searchbar__divider {
+  width: 1px;
+  height: 22px;
+  background: var(--border);
+}
+
+/* ─────────────────────────────────────────────
+   HOME — buttons + footer
+   ───────────────────────────────────────────── */
+.home-actions {
+  display: flex;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeUp 420ms var(--ease) 540ms forwards;
+}
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+.btn {
+  font-family: var(--f-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--cream-2);
+  border: 1px solid transparent;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease),
+              box-shadow var(--dur-fast) var(--ease),
+              transform 120ms var(--ease);
+}
+.btn:hover {
+  border-color: #616161;
+  box-shadow: 0 2px 8px -2px rgba(42,38,32,0.12);
+}
+.btn:active { transform: scale(0.98); }
+
+.home-footer {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  background: var(--cream-2);
+  border-top: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--muted);
+  opacity: 0;
+  animation: fadeUp 420ms var(--ease) 700ms forwards;
+}
+.home-footer a {
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease);
+}
+.home-footer a:hover { color: var(--terracotta); }
+.home-footer__dot { color: var(--muted-2); }
+
+/* ─────────────────────────────────────────────
+   TABS
+   ───────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 12px 16px 14px;
+  font-size: 14px;
+  font-family: var(--f-sans);
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.tab__icon { width: 16px; height: 16px; opacity: 0.7; }
+.tab:hover { color: var(--ink); }
+.tab--active {
+  color: #555555;
+  border-bottom-color: #555555;
+}
+.tab--active .tab__icon { opacity: 1; color: #555555; }
+
+/* ─────────────────────────────────────────────
+   RESULTS BODY LAYOUT
+   ───────────────────────────────────────────── */
+.results-body {
+  display: grid;
+  grid-template-columns: minmax(0, 652px) 352px;
+  gap: 64px;
+  padding: 28px 160px 80px;
+  align-items: start;
+}
+.results-results { min-width: 0; }
+.results-aside {
+  position: sticky;
+  top: 132px;
+  align-self: start;
+}
+
+.results-meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 2px 0 22px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1100px) {
+  .results-body { padding: 28px 80px 80px; grid-template-columns: minmax(0, 1fr) 280px; gap: 48px; }
+}
+@media (max-width: 900px) {
+  .results-body { padding: 24px 24px 80px; grid-template-columns: minmax(0, 1fr) 260px; gap: 32px; }
+}
+@media (max-width: 760px) {
+  .app--results .chrome { padding: 14px 18px 0; column-gap: 14px; }
+  .results-body {
+    grid-template-columns: 1fr;
+    padding: 20px 18px 80px;
+    gap: 28px;
+  }
+  .results-aside { position: static; }
+}
+
+/* ─────────────────────────────────────────────
+   PAGE FADE (tab content)
+   ───────────────────────────────────────────── */
+.page-fade {
+  animation: pageIn 240ms var(--ease) both;
+}
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.stagger > * {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: pageIn 320ms var(--ease) both;
+}
+.stagger > *:nth-child(1) { animation-delay:  30ms; }
+.stagger > *:nth-child(2) { animation-delay:  90ms; }
+.stagger > *:nth-child(3) { animation-delay: 150ms; }
+.stagger > *:nth-child(4) { animation-delay: 210ms; }
+.stagger > *:nth-child(5) { animation-delay: 270ms; }
+.stagger > *:nth-child(6) { animation-delay: 330ms; }
+.stagger > *:nth-child(7) { animation-delay: 390ms; }
+
+/* ─────────────────────────────────────────────
+   KNOWLEDGE PANEL
+   ───────────────────────────────────────────── */
+.kp {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.kp.kp--enter { animation: pageIn 320ms var(--ease) both; }
+
+.kp__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.kp__cell {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.kp__id .kp__name {
+  font-family: var(--f-display);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.kp__id .kp__role {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.kp__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.kp__stat {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: var(--paper);
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.kp__stat:hover { background: #FCFCFC; border-color: #616161; }
+.kp__stat-label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.kp__stat-value {
+  font-family: var(--f-display);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+.kp__stat-sub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.kp__social {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.kp__social:hover { background: #FCFCFC; border-color: #616161; }
+.kp__social-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.kp__social-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+}
+.kp__social-handle {
+  font-size: 13px;
+  color: var(--link);
+  font-weight: 500;
+  cursor: pointer;
+}
+.kp__social-handle:hover { text-decoration: underline; }
+.kp__social-bio { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.kp__social-stats {
+  display: flex;
+  gap: 14px;
+  font-size: 11px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.kp__social-stats b { color: var(--ink); font-weight: 600; }
+
+.kp__website {
+  text-align: center;
+  font-size: 13px;
+  color: var(--link);
+  cursor: pointer;
+}
+.kp__website:hover { text-decoration: underline; }
+
+/* ─────────────────────────────────────────────
+   RESULT ITEM (search-style)
+   ───────────────────────────────────────────── */
+.result {
+  margin-bottom: 26px;
+}
+.result__crumb {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--f-mono);
+  letter-spacing: 0.01em;
+  margin-bottom: 2px;
+}
+.result__title {
+  font-family: var(--f-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--link);
+  cursor: pointer;
+  display: inline-block;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.result__title:hover { text-decoration: underline; }
+.result__title:visited { color: var(--visited); }
+.result__desc {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.65;
+  margin-top: 4px;
+}
+.result__desc b { color: var(--ink); font-weight: 600; }
+
+/* ─────────────────────────────────────────────
+   ABOUT TAB
+   ───────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #FBEFCF 0%, #FCE0D7 60%, #ECE6D2 100%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 30px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(232,93,74,0.18), transparent 70%);
+  pointer-events: none;
+}
+.hero__name {
+  font-family: var(--f-display);
+  font-size: 32px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+.hero__role {
+  font-size: 14px;
+  color: var(--terracotta);
+  margin-top: 4px;
+  font-weight: 500;
+}
+.hero__quote {
+  margin: 18px 0 0;
+  border-left: 3px solid #1a0dab;
+  padding: 4px 0 4px 16px;
+  font-style: italic;
+  font-family: var(--f-display);
+  font-size: 17px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.section {
+  margin-top: 28px;
+}
+.section__h {
+  font-family: var(--f-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.section__p {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.75;
+  margin: 8px 0;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+.fact {
+  background: var(--cream-2);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.fact__label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.fact__value {
+  font-size: 14px;
+  color: var(--ink);
+  margin-top: 4px;
+  font-weight: 500;
+}
+@media (max-width: 540px) {
+  .facts { grid-template-columns: 1fr 1fr; }
+}
+
+/* ─────────────────────────────────────────────
+   RESUME TAB
+   ───────────────────────────────────────────── */
+.resume-entry {
+  padding: 18px 0 18px 14px;
+  margin-left: -14px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  transition: background var(--dur-fast) var(--ease);
+}
+.resume-entry::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 18px; bottom: 18px;
+  width: 3px;
+  background: #1a0dab;
+  border-radius: 2px;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.resume-entry:hover::before { transform: scaleY(1); }
+.resume-entry:hover { background: #FCFCFC; }
+.resume-entry__title { font-weight: 600; font-size: 16px; color: var(--ink); }
+.resume-entry__co { color: var(--link); font-weight: 500; }
+.resume-entry__meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 2px 0 8px;
+  font-family: var(--f-mono);
+}
+.resume-entry__desc { font-size: 14px; color: var(--ink-2); line-height: 1.7; }
+
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: transform 160ms var(--ease), box-shadow 160ms var(--ease);
+  cursor: default;
+}
+.pill:hover { transform: scale(1.06); box-shadow: 0 4px 12px -4px rgba(42,38,32,0.18); }
+.pill--tools { background: var(--pill-tools-bg); color: var(--pill-tools-fg); }
+.pill--disc  { background: var(--pill-disc-bg);  color: var(--pill-disc-fg); }
+.pill--soft  { background: var(--pill-soft-bg);  color: var(--pill-soft-fg); }
+
+.pill-group__label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 18px 0 10px;
+}
+
+/* ─────────────────────────────────────────────
+   PROJECTS TAB
+   ───────────────────────────────────────────── */
+.project {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 14px;
+  transition: box-shadow var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease),
+              transform var(--dur-fast) var(--ease);
+  cursor: pointer;
+}
+.project:hover {
+  border-color: #616161;
+  box-shadow: 0 14px 36px -22px rgba(42,38,32,0.32);
+  transform: translateY(-2px);
+}
+.project__head { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+.project__crumb {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--f-mono);
+}
+.project__title {
+  font-family: var(--f-display);
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--link);
+  margin: 2px 0 6px;
+  letter-spacing: -0.01em;
+}
+.project:hover .project__title { text-decoration: underline; }
+.project__desc { font-size: 14px; color: var(--ink-2); line-height: 1.65; }
+.project__chev {
+  color: var(--muted);
+  font-size: 14px;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.project--open .project__chev { transform: rotate(180deg); }
+
+.project__meta {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  margin-top: 12px;
+}
+.outcome {
+  background: var(--success-bg);
+  color: var(--success-fg);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.tag {
+  background: var(--cream-2);
+  color: var(--ink-2);
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: 12px;
+  font-family: var(--f-mono);
+}
+
+.project__expand {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 360ms var(--ease);
+}
+.project--open .project__expand { grid-template-rows: 1fr; }
+.project__expand-inner {
+  min-height: 0;
+  padding-top: 0;
+}
+.project--open .project__expand-inner { padding-top: 16px; }
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.case-grid h4 {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 0 0 4px;
+}
+.case-grid p { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--ink-2); }
+.case-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--link);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+.case-cta:hover { color: var(--link-hover); text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .case-grid { grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* ─────────────────────────────────────────────
+   CONTACTS TAB
+   ───────────────────────────────────────────── */
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--border);
+}
+.contact-row__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.contact-row__label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.contact-row__value {
+  font-size: 15px;
+  color: var(--ink);
+  margin-top: 1px;
+}
+.contact-row__value a { color: var(--link); }
+.contact-row__value a:hover { text-decoration: underline; }
+
+.form-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  margin-top: 22px;
+}
+.form-card h3 {
+  font-family: var(--f-display);
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 14px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.form-row + .input,
+.form-row + .form-row,
+.input + textarea,
+textarea + button { margin-top: 10px; }
+.form-row > .input { margin-top: 0 !important; }
+
+.input {
+  height: 46px;
+}
+.input, .form-card textarea {
+  width: 100%;
+  font-family: var(--f-sans);
+  font-size: 14px;
+  padding: 12px 14px;
+  background: #F1F1F1;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--ink);
+  outline: 0;
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.form-card textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: var(--f-sans);
+  line-height: 1.5;
+}
+.input:focus, .form-card textarea:focus {
+  border-color: #616161;
+  background: #FFFFFF;
+}
+
+.send-btn {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #F1F1F1;
+  color: #3C4043;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 12px 22px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), transform 120ms var(--ease);
+}
+.send-btn:hover { background: #E8E8E8; border-color: #616161; }
+.send-btn:active { transform: scale(0.98); }
+.send-btn--sent { background: var(--success-bg); color: var(--success-fg); }
+
+@media (max-width: 540px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* ─────────────────────────────────────────────
+   FIXED CV BUTTON
+   ───────────────────────────────────────────── */
+.cv-btn {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 50;
+  background: var(--ink);
+  color: var(--cream);
+  border: 0;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px -10px rgba(42,38,32,0.45);
+  transition: background var(--dur-fast) var(--ease), transform 120ms var(--ease);
+}
+.cv-btn:hover { background: var(--terracotta); }
+.cv-btn:active { transform: scale(0.97); }
+
+@media (max-width: 760px) {
+  .cv-btn { top: 10px; right: 10px; padding: 8px 12px; font-size: 12px; }
+}
+
+/* ─────────────────────────────────────────────
+   Accessibility / reduced motion
+   ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COMPREHENSIVE RESPONSIVE FIXES
+   ═══════════════════════════════════════════════════════════ */
+
+/* Prevent horizontal scroll globally */
+html, body { overflow-x: hidden; max-width: 100%; }
+.app { overflow-x: hidden; }
+
+/* ── Mobile: hide KP panel entirely & force single column ── */
+@media (max-width: 760px) {
+  .results-aside  { display: none !important; }
+  .results-body   { grid-template-columns: 1fr !important; }
+}
+
+/* ── Results chrome header — medium mobile ─────────────────── */
+@media (max-width: 600px) {
+  .app--results .chrome {
+    padding: 10px 14px 0;
+    column-gap: 10px;
+    row-gap: 8px;
+    grid-template-columns: auto 1fr;
+  }
+  .app--results .chrome__logo { font-size: 22px; }
+  .app--results .chrome__search { width: 100%; }
+  .searchbar--sm { height: 38px; padding: 0 10px; gap: 6px; }
+  /* hide the image-search button on narrow screens */
+  .searchbar__icon--btn + .searchbar__icon--btn { display: none; }
+}
+
+/* ── Results body padding on mobile ───────────────────────── */
+@media (max-width: 480px) {
+  .results-body { padding: 16px 14px 80px !important; gap: 0 !important; }
+  .results-meta { margin-bottom: 16px; }
+}
+
+/* ── Tabs bar ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .tab { padding: 10px 10px 12px; font-size: 13px; gap: 5px; }
+  .tab__icon { width: 13px; height: 13px; }
+}
+@media (max-width: 380px) {
+  .tab { padding: 8px 6px 10px; font-size: 12px; gap: 4px; }
+}
+
+/* ── Home page: medium mobile ─────────────────────────────── */
+@media (max-width: 480px) {
+  .app--home .chrome { padding: 0 16px 130px; gap: 20px; }
+  .app--home .chrome__logo { font-size: clamp(48px, 14vw, 72px) !important; }
+  .home-actions { flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .btn { padding: 10px 16px; font-size: 13px; }
+  .home-footer { gap: 10px 18px; padding: 12px 16px; font-size: 13px; }
+}
+/* ── Home page: small phones ──────────────────────────────── */
+@media (max-width: 360px) {
+  .app--home .chrome { padding: 0 12px 120px; }
+  .app--home .chrome__logo { font-size: 44px !important; }
+  .home-footer { gap: 6px; flex-wrap: wrap; }
+  .home-footer__dot { display: none; }
+  .home-footer a, .home-footer span:first-child {
+    flex: 0 0 auto;
+    text-align: center;
+  }
+}
+
+/* ── CV button: on mobile move to not cover content ─────── */
+@media (max-width: 600px) {
+  .cv-btn { top: auto; bottom: 72px; right: 14px; padding: 8px 12px; font-size: 12px; }
+}
+@media (max-width: 360px) {
+  .cv-btn .cv-text { display: none; }
+  .cv-btn { gap: 0; padding: 9px 10px; }
+}
+
+/* ── About: Hero section ──────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero { padding: 22px 20px; }
+  .hero__name { font-size: 26px; }
+  .hero__quote { font-size: 15px; padding-left: 12px; }
+}
+@media (max-width: 400px) {
+  .hero { padding: 16px; }
+  .hero__name { font-size: 22px; }
+  .hero__role { font-size: 13px; }
+  .hero__quote { font-size: 14px; }
+}
+
+/* ── About: sections ──────────────────────────────────────── */
+@media (max-width: 480px) {
+  .section__h { font-size: 18px; }
+  .section__p { font-size: 14px; line-height: 1.65; }
+  .section { margin-top: 20px; }
+}
+
+/* ── About: facts grid ────────────────────────────────────── */
+@media (max-width: 480px) {
+  .facts { grid-template-columns: 1fr 1fr !important; gap: 8px; margin-top: 14px; }
+}
+@media (max-width: 300px) {
+  .facts { grid-template-columns: 1fr !important; }
+}
+
+/* ── Resume entries ───────────────────────────────────────── */
+@media (max-width: 480px) {
+  .resume-entry { padding: 14px 0 14px 12px; margin-left: -12px; }
+  .resume-entry__title { font-size: 14px; }
+  .resume-entry__desc  { font-size: 13px; }
+}
+
+/* ── All tab: search-result items ─────────────────────────── */
+@media (max-width: 480px) {
+  .result__title { font-size: 18px; }
+  .result__desc  { font-size: 13px; }
+  .result        { margin-bottom: 20px; }
+}
+
+/* ── Projects ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .project__title { font-size: 18px !important; }
+}
+@media (max-width: 480px) {
+  .project { padding: 14px; margin-bottom: 10px; }
+  .project__title { font-size: 16px !important; }
+  .project__desc  { font-size: 13px; }
+  .case-grid { grid-template-columns: 1fr !important; gap: 10px; }
+}
+@media (max-width: 360px) {
+  .project { padding: 12px; }
+  .project__title { font-size: 14px !important; }
+  .outcome { font-size: 11px; padding: 3px 10px; }
+}
+
+/* ── Contact form ─────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .form-card { padding: 16px; margin-top: 16px; }
+  .form-card h3 { font-size: 17px; margin-bottom: 12px; }
+  .send-btn { width: 100%; justify-content: center; }
+  .form-row { grid-template-columns: 1fr !important; }
+  .input { font-size: 13px; }
+}
+
+/* ── Knowledge panel: tablet tweaks (visible range) ────────── */
+@media (min-width: 761px) and (max-width: 960px) {
+  .kp { padding: 12px; gap: 12px; }
+  .kp__id .kp__name { font-size: 18px; }
+  .kp__stat-value { font-size: 15px; }
+  .kp__social-bio { font-size: 11px; }
+}
+
+/* ── Searchbar input: shrink placeholder on small screens ─── */
+@media (max-width: 400px) {
+  .searchbar__input { font-size: 14px; }
+  .searchbar--lg { height: 48px; }
+}
+
+  </style>
+</head>
+<body>
+
+<div class="app app--home" id="app">
+
+  <!-- ── Fixed Download CV Button ─────────────────────── -->
+  <a class="cv-btn"
+     href="https://drive.google.com/file/d/1QdgC3yjkqroJ_xnPohvq_q_8fSsRahCJ/view?usp=sharing"
+     target="_blank" rel="noreferrer" title="Download CV"
+     style="background-color:rgb(237,237,237);color:rgb(45,45,45)">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         style="stroke:rgb(45,45,45)">
+      <path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/>
+    </svg>
+    <span class="cv-text">Download CV</span>
+  </a>
+
+  <!-- ── Chrome: logo + search + tabs ─────────────────── -->
+  <div class="chrome">
+
+    <!-- Logo -->
+    <div class="chrome__logo" style="font-family:Poppins;font-weight:600">
+      <span class="logo" id="logoEl" role="button" tabindex="0"
+            aria-label="Himanshi — back to home">
+        <span class="logo__letter" data-i="0" style="color:#4285F4;font-family:Poppins,var(--f-display);font-weight:600">H</span>
+        <span class="logo__letter" data-i="1" style="color:#DB4537;font-family:Poppins,var(--f-display);font-weight:600">i</span>
+        <span class="logo__letter" data-i="2" style="color:#F4B400;font-family:Poppins,var(--f-display);font-weight:600">m</span>
+        <span class="logo__letter" data-i="3" style="color:#4285F4;font-family:Poppins,var(--f-display);font-weight:600">a</span>
+        <span class="logo__letter" data-i="4" style="color:#059D58;font-family:Poppins,var(--f-display);font-weight:600">n</span>
+        <span class="logo__letter" data-i="5" style="color:#F4B400;font-family:Poppins,var(--f-display);font-weight:600">s</span>
+        <span class="logo__letter" data-i="6" style="color:#DB4537;font-family:Poppins,var(--f-display);font-weight:600">h</span>
+        <span class="logo__letter" data-i="7" style="color:#059D58;font-family:Poppins,var(--f-display);font-weight:600">i</span>
+      </span>
+    </div>
+
+    <!-- Search bar -->
+    <div class="chrome__search">
+      <div class="searchbar searchbar--lg" id="searchbar">
+        <span class="searchbar__icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               style="stroke:rgb(74,74,74)">
+            <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+          </svg>
+        </span>
+        <input class="searchbar__input" id="searchInput" type="text"
+               placeholder="Search projects, case studies, or hire me…"
+               aria-label="Search Himanshi's portfolio" autocomplete="off" />
+        <button class="searchbar__icon--btn" aria-label="Voice search">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="3" width="6" height="12" rx="3"/>
+            <path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>
+          </svg>
+        </button>
+        <button class="searchbar__icon--btn" aria-label="Search by image">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="2"/>
+            <circle cx="9" cy="10" r="1.6"/>
+            <path d="m4 18 5-5 4 4 3-3 4 4"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Home action buttons (hidden in results view) -->
+    <div class="home-actions" id="homeActions">
+      <button class="btn" id="btnSearch"
+              style="background-color:rgb(237,237,237);border-style:none">Search</button>
+      <button class="btn" id="btnLucky"
+              style="background-color:rgb(237,237,237);border-style:none">I'm Feeling Lucky</button>
+    </div>
+
+    <!-- Tabs (hidden in home view) -->
+    <div class="chrome__tabs" id="chromeTabs" style="display:none">
+      <nav class="tabs" role="tablist">
+        <button class="tab tab--active" role="tab" aria-selected="true"
+                data-tab="all" style="color:rgb(65,65,65)">
+          <span class="tab__icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 style="stroke:rgb(74,74,74)">
+              <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+            </svg>
+          </span><span class="tab-label">All</span>
+        </button>
+        <button class="tab" role="tab" aria-selected="false"
+                data-tab="about" style="color:rgb(65,65,65)">
+          <span class="tab__icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 style="stroke:rgb(74,74,74)">
+              <circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>
+            </svg>
+          </span><span class="tab-label">About</span>
+        </button>
+        <button class="tab" role="tab" aria-selected="false"
+                data-tab="resume" style="color:rgb(65,65,65)">
+          <span class="tab__icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 style="stroke:rgb(74,74,74)">
+              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+              <path d="M14 3v5h5"/>
+            </svg>
+          </span><span class="tab-label">Resume</span>
+        </button>
+        <button class="tab" role="tab" aria-selected="false"
+                data-tab="projects" style="color:rgb(65,65,65)">
+          <span class="tab__icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 style="stroke:rgb(74,74,74)">
+              <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            </svg>
+          </span><span class="tab-label">Projects</span>
+        </button>
+        <button class="tab" role="tab" aria-selected="false"
+                data-tab="contact" style="color:rgb(65,65,65)">
+          <span class="tab__icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 style="stroke:rgb(74,74,74)">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="m3 7 9 7 9-7"/>
+            </svg>
+          </span><span class="tab-label">Contact</span>
+        </button>
+      </nav>
+    </div>
+
+  </div><!-- /chrome -->
+
+  <!-- ── Home footer ───────────────────────────────────── -->
+  <footer class="home-footer" id="homeFooter"
+          style="border-color:rgb(199,199,199);background-color:rgb(235,235,235)">
+    <span>Gurugram, India</span>
+    <span class="home-footer__dot">·</span>
+    <a href="#" data-goto="about">About</a>
+    <span class="home-footer__dot">·</span>
+    <a href="#" data-goto="resume">Resume</a>
+    <span class="home-footer__dot">·</span>
+    <a href="#" data-goto="projects">Projects</a>
+    <span class="home-footer__dot">·</span>
+    <a href="#" data-goto="contact">Contact</a>
+  </footer>
+
+  <!-- ── Results body ──────────────────────────────────── -->
+  <main class="results-body" id="resultsBody" style="display:none">
+
+    <!-- Left column: tab content panels -->
+    <div class="results-results">
+
+      <!-- ━━ TAB: ALL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+      <div id="tab-all" class="page-fade">
+        <div class="results-meta">About 4,230 results (0.42 seconds)</div>
+        <div class="stagger">
+
+          <article class="result">
+            <div class="result__crumb">himanshi › about</div>
+            <a class="result__title" href="#" data-goto="about"
+               style="font-weight:500;font-family:Poppins;color:rgb(26,13,171)">
+              About — Himanshi Jain
+            </a>
+            <p class="result__desc">UX Designer based in <b>Gurugram, India</b>. 3+ years designing scalable, data-driven web and SaaS products. Believes good design <b>shouldn't shout — it should whisper</b>.</p>
+          </article>
+
+          <article class="result">
+            <div class="result__crumb">himanshi › resume</div>
+            <a class="result__title" href="#" data-goto="resume"
+               style="font-weight:500;font-family:Poppins;color:rgb(26,13,171)">
+              Resume · Experience &amp; Skills
+            </a>
+            <p class="result__desc">Currently <b>UI/UX Designer at Dancing Numbers</b>. Previously at iRasus Technologies. Tools: Figma, Adobe XD, Adobe Creative Suite. Specialises in <b>SaaS UX and data-heavy interfaces</b>.</p>
+          </article>
+
+          <article class="result">
+            <div class="result__crumb">himanshi › projects</div>
+            <a class="result__title" href="#" data-goto="projects"
+               style="font-weight:500;font-family:Poppins;color:rgb(26,13,171)">
+              Projects · Case Studies
+            </a>
+            <p class="result__desc">Case studies including <b>Petly</b> (pet adoption platform), <b>EV dashboard systems</b>, and user-focused mobile experiences. Each project showcases my <b>design thinking</b>, research process and problem-solving approach.</p>
+          </article>
+
+          <article class="result">
+            <div class="result__crumb">himanshij › contact</div>
+            <a class="result__title" href="#" data-goto="contact"
+               style="font-weight:500;font-family:Poppins;color:rgb(26,13,171)">
+              Contact — Let's work together
+            </a>
+            <p class="result__desc">Open to <b>full-time and freelance UX roles</b>. Typically replies within <b>24 hours</b>. Email, LinkedIn, or send a message directly through the form.</p>
+          </article>
+
+          <article class="result">
+            <div class="result__crumb">linkedin.com › in › himanshi-jain</div>
+            <a class="result__title"
+               href="https://www.linkedin.com/in/himanshi-jain/"
+               target="_blank" rel="noreferrer"
+               style="font-weight:500;font-family:Poppins;color:rgb(26,13,171)">
+              Himanshi Jain · UI/UX Designer · LinkedIn
+            </a>
+            <p class="result__desc">UX Designer at <b>Dancing Numbers Pvt. Ltd.</b> · MCA from SS Jain Subodh PG College (CGPA 9.4/10) · Google UX Design Professional Certificate · Gurugram, Haryana.</p>
+          </article>
+
+          <article class="result">
+            <div class="result__crumb">instagram.com › thehimanshi.jain</div>
+            <a class="result__title"
+               href="https://www.instagram.com/thehimanshi.jain/#"
+               target="_blank" rel="noreferrer"
+               style="font-weight:500;font-family:Poppins;color:rgb(26,13,171)">
+              @thehimanshi.jain on Instagram
+            </a>
+            <p class="result__desc"><b>182 posts · 1,853 followers</b>. Livin' the good life 🌈✨// Behind-the-scenes of design, weekends, and the occasional sunset.</p>
+          </article>
+
+        </div>
+      </div><!-- /tab-all -->
+
+      <!-- ━━ TAB: ABOUT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+      <div id="tab-about" style="display:none">
+        <div class="page-fade">
+
+          <div class="hero">
+            <h2 class="hero__name" style="font-family:Poppins">Hi, I'm Himanshi.</h2>
+            <div class="hero__role" style="color:rgb(26,13,171)">UX Designer · Gurugram, India</div>
+            <p class="hero__quote">
+              "Good design shouldn't shout — it should whisper. The best interfaces
+              are the ones you stop noticing because they get out of your way."
+            </p>
+          </div>
+
+          <section class="section">
+            <h3 class="section__h" style="font-family:Poppins">Who I am</h3>
+            <p class="section__p">
+              I'm a UX designer with 3+ years of experience building scalable, data-driven
+              products. I came into design through code — I spent five months as a backend
+              developer before realising the part I loved was the seam between the system
+              and the human using it. That dual lens shows up in my work: I think in
+              components, but I design for the messy edges where real people live.
+            </p>
+            <p class="section__p">
+              Today I lead end-to-end design at Dancing Numbers — research, IA, flows,
+              hi-fi, design QA, and the design system that holds it all together.
+            </p>
+          </section>
+
+          <section class="section">
+            <h3 class="section__h" style="font-family:Poppins">What I do</h3>
+            <p class="section__p">
+              I design for SaaS and data-heavy interfaces — the kind of products where
+              users come to get a job done, not to be entertained. That means tight
+              workflows, sensible defaults, and screens that respect your attention. I work
+              closely with PMs and engineers; I prototype to make trade-offs visible early;
+              I obsess about empty states.
+            </p>
+            <p class="section__p">
+              Recent wins: reduced onboarding drop-offs <b>25%</b> through flow
+              optimisation, lifted daily active users <b>15%</b> with a dashboard redesign,
+              and cut design hand-off friction <b>20%</b> by rebuilding the team's
+              component library.
+            </p>
+          </section>
+
+          <section class="section">
+            <h3 class="section__h" style="font-family:Poppins">Off the clock</h3>
+            <p class="section__p">
+              You'll find me hunting for coffee shops that get the foam right,
+              re-organising my Figma libraries for the third time this week, or on a slow
+              train somewhere in the hills. I keep a running list of tiny UX details I
+              love — receipts, transit cards, museum signage — and study them like other
+              people study films.
+            </p>
+          </section>
+
+          <div class="facts">
+            <div class="fact" style="background-color:rgb(238,238,238)">
+              <div class="fact__label">Location</div>
+              <div class="fact__value">Gurugram, India</div>
+            </div>
+            <div class="fact" style="background-color:rgb(238,238,238)">
+              <div class="fact__label">Date of birth</div>
+              <div class="fact__value">12 July 2002</div>
+            </div>
+            <div class="fact" style="background-color:rgb(238,238,238)">
+              <div class="fact__label">Experience</div>
+              <div class="fact__value">3+ Years</div>
+            </div>
+            <div class="fact" style="background-color:rgb(238,238,238)">
+              <div class="fact__label">Available for</div>
+              <div class="fact__value">Full-time · Freelance</div>
+            </div>
+            <div class="fact" style="background-color:rgb(238,238,238)">
+              <div class="fact__label">Specialisation</div>
+              <div class="fact__value">SaaS · Data UX</div>
+            </div>
+            <div class="fact" style="background-color:rgb(238,238,238)">
+              <div class="fact__label">Tools</div>
+              <div class="fact__value">Figma · Adobe XD · CS</div>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab-about -->
+
+      <!-- ━━ TAB: RESUME ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+      <div id="tab-resume" style="display:none">
+        <div class="page-fade">
+
+          <section class="section" style="margin-top:0">
+            <h3 class="section__h" style="font-family:Poppins">Experience</h3>
+
+            <div class="resume-entry">
+              <div class="resume-entry__title">
+                UI/UX Designer · <span class="resume-entry__co">Dancing Numbers Pvt. Ltd.</span>
+              </div>
+              <div class="resume-entry__meta">Mar 2024 — Present · Gurugram, India (Remote-friendly)</div>
+              <div class="resume-entry__desc">Designing user-centred experiences for web and SaaS platforms — focused on usability and scalability. Partnering with PMs and engineers to take ideas from research through wireframes, prototypes, hi-fi mockups, and design QA. Maintaining design consistency through component libraries and the team's evolving design system.</div>
+            </div>
+
+            <div class="resume-entry">
+              <div class="resume-entry__title">
+                UI/UX Designer (5 mo. as Backend Developer) · <span class="resume-entry__co">iRasus Technologies Pvt. Ltd.</span>
+              </div>
+              <div class="resume-entry__meta">Sept 2022 — Mar 2024 · Jaipur, India</div>
+              <div class="resume-entry__desc">Designed UX for 10+ B2B and B2C applications, including dashboards and data-heavy interfaces. Conducted user research and translated insights into design decisions. Contributed to design systems for scalable, consistent UI patterns. Spent the first five months on the backend, which still shapes how I scope and hand off work today.</div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h3 class="section__h" style="font-family:Poppins">Education</h3>
+
+            <div class="resume-entry">
+              <div class="resume-entry__title">
+                MCA — Master of Computer Applications · <span class="resume-entry__co">SS Jain Subodh PG College</span>
+              </div>
+              <div class="resume-entry__meta">2022 — 2024 · CGPA 9.4 / 10</div>
+              <div class="resume-entry__desc">Specialised in design and HCI. Final-year capstone on data-dense dashboard patterns.</div>
+            </div>
+
+            <div class="resume-entry">
+              <div class="resume-entry__title">
+                BCA — Bachelor of Computer Applications · <span class="resume-entry__co">SS Jain Subodh PG College</span>
+              </div>
+              <div class="resume-entry__meta">2019 — 2022 · CGPA 8.6 / 10</div>
+              <div class="resume-entry__desc">Discovered design through a UI elective in second year and never looked back.</div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h3 class="section__h" style="font-family:Poppins">Certifications</h3>
+            <div class="resume-entry">
+              <div class="resume-entry__title">Google UX Design Professional Certificate</div>
+              <div class="resume-entry__meta">Dec 2024 · Coursera</div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h3 class="section__h" style="font-family:Poppins">Skills</h3>
+
+            <div class="pill-group__label">Design tools</div>
+            <div class="pills">
+              <span class="pill pill--tools" style="color:rgb(24,36,156);background-color:rgb(234,240,253)">Figma</span>
+              <span class="pill pill--tools" style="color:rgb(24,36,156);background-color:rgb(234,240,253)">Adobe XD</span>
+              <span class="pill pill--tools" style="color:rgb(24,36,156);background-color:rgb(234,240,253)">Adobe Creative Suite</span>
+              <span class="pill pill--tools" style="color:rgb(24,36,156);background-color:rgb(234,240,253)">Framer</span>
+              <span class="pill pill--tools" style="color:rgb(24,36,156);background-color:rgb(234,240,253)">Prototype</span>
+              <span class="pill pill--tools" style="color:rgb(24,36,156);background-color:rgb(234,240,253)">Postman</span>
+              <span class="pill pill--tools" style="color:rgb(24,36,156);background-color:rgb(234,240,253)">Medium</span>
+            </div>
+
+            <div class="pill-group__label">Disciplines</div>
+            <div class="pills">
+              <span class="pill pill--disc">User Research</span>
+              <span class="pill pill--disc">Usability Testing</span>
+              <span class="pill pill--disc">Wireframing</span>
+              <span class="pill pill--disc">Prototyping</span>
+              <span class="pill pill--disc">Interaction Design</span>
+              <span class="pill pill--disc">Design Systems</span>
+              <span class="pill pill--disc">SaaS UX</span>
+              <span class="pill pill--disc">Data-driven Design</span>
+              <span class="pill pill--disc">Accessibility (WCAG)</span>
+            </div>
+
+            <div class="pill-group__label">Soft skills</div>
+            <div class="pills">
+              <span class="pill pill--soft">Cross-functional Collaboration</span>
+              <span class="pill pill--soft">Stakeholder Communication</span>
+              <span class="pill pill--soft">Design QA</span>
+              <span class="pill pill--soft">Mentorship</span>
+            </div>
+          </section>
+
+        </div>
+      </div><!-- /tab-resume -->
+
+      <!-- ━━ TAB: PROJECTS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+      <div id="tab-projects" style="display:none">
+        <div class="page-fade">
+          <div class="results-meta">4 case studies · most recent first</div>
+          <div class="stagger">
+
+            <!-- Project card: FinTrack -->
+            <article class="project" data-slug="fintrack">
+              <div class="project__head">
+                <div>
+                  <div class="project__crumb">projects › fintrack</div>
+                  <h3 class="project__title"
+                      style="color:rgb(26,13,171);font-family:Poppins">
+                    FinTrack — Fintech analytics dashboard
+                  </h3>
+                </div>
+                <span class="project__chev" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                       stroke="currentColor" stroke-width="2"
+                       stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6"/>
+                  </svg>
+                </span>
+              </div>
+              <p class="project__desc">Redesigned a finance ops dashboard for a B2B SaaS where analysts were drowning in 14-column tables. Built a hierarchy of summary → drill-down → raw, and a saved-view system so each role lands on what they need first.</p>
+              <div class="project__meta">
+                <span class="outcome">Time-to-insight: 8 min → under 2 min</span>
+                <span class="tag">SaaS</span>
+                <span class="tag">Dashboard</span>
+                <span class="tag">Data UX</span>
+                <span class="tag">Design System</span>
+              </div>
+              <div class="project__expand">
+                <div class="project__expand-inner">
+                  <div class="case-grid">
+                    <div><h4>Role</h4><p>Lead UX · research, IA, hi-fi, QA</p></div>
+                    <div><h4>Problem</h4><p>Power users could find anything but newcomers churned in the first week. The home screen showed everything to everyone.</p></div>
+                    <div><h4>Process</h4><p>Ran 9 contextual interviews across 3 roles, mapped current-state journeys, prototyped 3 IA directions in Figma, A/B tested two against the live build.</p></div>
+                  </div>
+                  <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:10px">
+                    <b style="color:var(--ink)">Outcome.</b> Median time-to-insight dropped from 8 min to under 2 min. Onboarding drop-offs fell 25%. Saved-view feature shipped to all tiers.
+                  </div>
+                  <span class="case-cta">
+                    View full case study
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+                         stroke="var(--link)" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project card: Kartly -->
+            <article class="project" data-slug="kartly">
+              <div class="project__head">
+                <div>
+                  <div class="project__crumb">projects › kartly</div>
+                  <h3 class="project__title"
+                      style="color:rgb(26,13,171);font-family:Poppins">
+                    Kartly — E-commerce checkout
+                  </h3>
+                </div>
+                <span class="project__chev" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                       stroke="currentColor" stroke-width="2"
+                       stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6"/>
+                  </svg>
+                </span>
+              </div>
+              <p class="project__desc">A 4-step checkout collapsed into 2, with address auto-detect, smarter defaults, and a payment step that actually fits on a phone. Killed the "guest vs. account" dead-end that was costing conversions.</p>
+              <div class="project__meta">
+                <span class="outcome">Checkout conversion +18%</span>
+                <span class="tag">E-commerce</span>
+                <span class="tag">Mobile</span>
+                <span class="tag">Conversion</span>
+                <span class="tag">A/B</span>
+              </div>
+              <div class="project__expand">
+                <div class="project__expand-inner">
+                  <div class="case-grid">
+                    <div><h4>Role</h4><p>Senior UX · flows, prototypes, usability testing</p></div>
+                    <div><h4>Problem</h4><p>Mobile cart abandonment was 71%. Heatmaps pointed at the address form and the account-gate. We needed a redesign that didn't scare the engineering team.</p></div>
+                    <div><h4>Process</h4><p>Audited 14 competitors, ran 6 unmoderated tests on the existing flow, prototyped 2 directions, ran a 50/50 split with engineering for 3 weeks.</p></div>
+                  </div>
+                  <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:10px">
+                    <b style="color:var(--ink)">Outcome.</b> Conversion +18% sustained 8 weeks post-launch. Address-form completion time -42%. Guest checkout now the default — account creation moved to post-purchase.
+                  </div>
+                  <span class="case-cta">
+                    View full case study
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+                         stroke="var(--link)" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project card: DashWise -->
+            <article class="project" data-slug="dashwise">
+              <div class="project__head">
+                <div>
+                  <div class="project__crumb">projects › dashwise</div>
+                  <h3 class="project__title"
+                      style="color:rgb(26,13,171);font-family:Poppins">
+                    DashWise — SaaS analytics &amp; design system
+                  </h3>
+                </div>
+                <span class="project__chev" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                       stroke="currentColor" stroke-width="2"
+                       stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6"/>
+                  </svg>
+                </span>
+              </div>
+              <p class="project__desc">Built the design system three product teams now use. 60 components, 8 page templates, dark-mode parity, and documentation that engineers actually read because we wrote it with them.</p>
+              <div class="project__meta">
+                <span class="outcome">Adopted by 3 teams · 60+ components</span>
+                <span class="tag">Design System</span>
+                <span class="tag">Documentation</span>
+                <span class="tag">Components</span>
+              </div>
+              <div class="project__expand">
+                <div class="project__expand-inner">
+                  <div class="case-grid">
+                    <div><h4>Role</h4><p>DS lead · tokens, components, governance</p></div>
+                    <div><h4>Problem</h4><p>Three teams shipping inconsistent UI on the same product. No shared tokens. Engineering rebuilding every modal from scratch.</p></div>
+                    <div><h4>Process</h4><p>Audited 240 screens, defined 4 token tiers, paired with two engineers for the first 12 components, set up a weekly DS office hour.</p></div>
+                  </div>
+                  <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:10px">
+                    <b style="color:var(--ink)">Outcome.</b> Adopted by all 3 product teams within a quarter. New-feature design time -30%. Hand-off-to-merge time -20%.
+                  </div>
+                  <span class="case-cta">
+                    View full case study
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+                         stroke="var(--link)" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project card: HealWise -->
+            <article class="project" data-slug="healwise">
+              <div class="project__head">
+                <div>
+                  <div class="project__crumb">projects › healwise</div>
+                  <h3 class="project__title"
+                      style="color:rgb(26,13,171);font-family:Poppins">
+                    HealWise — Patient companion app
+                  </h3>
+                </div>
+                <span class="project__chev" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                       stroke="currentColor" stroke-width="2"
+                       stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6"/>
+                  </svg>
+                </span>
+              </div>
+              <p class="project__desc">A medication and appointment companion for chronic-care patients. Designed for older users on bad connections, with offline-first reminders and a one-tap "tell my doctor" flow that opens a call, not a form.</p>
+              <div class="project__meta">
+                <span class="outcome">WCAG AA compliant · 4.7★ pilot</span>
+                <span class="tag">Healthcare</span>
+                <span class="tag">Accessibility</span>
+                <span class="tag">Mobile</span>
+                <span class="tag">Offline</span>
+              </div>
+              <div class="project__expand">
+                <div class="project__expand-inner">
+                  <div class="case-grid">
+                    <div><h4>Role</h4><p>UX · research, accessibility, hi-fi</p></div>
+                    <div><h4>Problem</h4><p>Existing app abandoned within a week. Users skipped doses, missed appointments, and didn't trust the in-app chat for anything urgent.</p></div>
+                    <div><h4>Process</h4><p>12 in-home interviews with patients 55+, accessibility audit, redesigned around three jobs: remember, reach my doctor, reorder. Co-tested with the clinical team.</p></div>
+                  </div>
+                  <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:10px">
+                    <b style="color:var(--ink)">Outcome.</b> WCAG 2.1 AA compliance across all surfaces. 4.7★ in the 6-week pilot (n=42). Daily-reminder open rate +63%.
+                  </div>
+                  <span class="case-cta">
+                    View full case study
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+                         stroke="var(--link)" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div><!-- /tab-projects -->
+
+      <!-- ━━ TAB: CONTACT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+      <div id="tab-contact" style="display:none">
+        <div class="page-fade">
+
+          <a class="contact-row" href="mailto:himanshijain053@gmail.com"
+             target="_blank" rel="noreferrer" style="color:inherit">
+            <div class="contact-row__icon" style="background:rgb(228,235,254)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <path d="m3 7 9 7 9-7"/>
+              </svg>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div class="contact-row__label">Email</div>
+              <div class="contact-row__value">himanshijain053@gmail.com</div>
+            </div>
+          </a>
+
+          <a class="contact-row" href="https://www.linkedin.com/in/himanshi-jain/"
+             target="_blank" rel="noreferrer" style="color:inherit">
+            <div class="contact-row__icon" style="background:rgb(228,235,254)">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22zM8 8h4.37v1.92h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 7v7.46h-4.56v-6.62c0-1.58-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.5V22H8z"/>
+              </svg>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div class="contact-row__label">LinkedIn</div>
+              <div class="contact-row__value">linkedin.com/in/himanshi-jain</div>
+            </div>
+          </a>
+
+          <a class="contact-row" href="https://www.instagram.com/thehimanshi.jain/#"
+             target="_blank" rel="noreferrer" style="color:inherit">
+            <div class="contact-row__icon" style="background:rgb(228,235,254)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                   stroke="url(#ig1)" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <defs>
+                  <linearGradient id="ig1" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#f9ce34"/>
+                    <stop offset="50%" stop-color="#ee2a7b"/>
+                    <stop offset="100%" stop-color="#6228d7"/>
+                  </linearGradient>
+                </defs>
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="url(#ig1)" stroke="none"/>
+              </svg>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div class="contact-row__label">Instagram</div>
+              <div class="contact-row__value">@thehimanshi.jain</div>
+            </div>
+          </a>
+
+          <div class="contact-row">
+            <div class="contact-row__icon" style="background:rgb(232,239,220)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div class="contact-row__label">Location</div>
+              <div class="contact-row__value">Gurugram, India · IST (GMT+5:30)</div>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-row__icon" style="background:rgb(240,230,240)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3 2"/>
+              </svg>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div class="contact-row__label">Response time</div>
+              <div class="contact-row__value">Usually within 24 hours · weekdays</div>
+            </div>
+          </div>
+
+          <!-- Contact form -->
+          <div class="form-card">
+            <h3>Send a message</h3>
+            <div class="form-row" style="padding:0;text-align:left">
+              <input class="input" id="formName" placeholder="Your name" required />
+              <input class="input" id="formEmail" placeholder="Your email" type="email" required />
+            </div>
+            <input class="input" id="formSubject" placeholder="Subject"
+                   style="margin-top:10px;display:block;width:100%" />
+            <textarea class="form-card textarea" id="formMessage"
+                      placeholder="What's on your mind?"
+                      style="margin-top:10px;display:block;width:100%"></textarea>
+            <button type="button" id="sendBtn" class="send-btn"
+                    style="background-color:rgb(13,54,171);color:rgb(255,255,255)">
+              Send via email
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+                   stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </div><!-- /tab-contact -->
+
+    </div><!-- /results-results -->
+
+    <!-- ── Knowledge Panel (right rail) ──────────────────── -->
+    <div class="results-aside" id="resultsAside">
+      <aside class="kp kp--enter" aria-label="About Himanshi Jain">
+
+        <div class="kp__grid">
+          <div class="kp__cell" style="background:#4285F4">
+            <img src="assets/photo-saree.jpeg" alt="Himanshi" loading="lazy"
+                 style="display:block;object-fit:cover;width:100%;height:100%" />
+          </div>
+          <div class="kp__cell" style="background:#DB4537">
+            <img src="assets/photo-speaker.png" alt="Speaking" loading="lazy"
+                 style="display:block;object-fit:cover;width:100%;height:100%" />
+          </div>
+          <div class="kp__cell" style="background:#F4B400">
+            <img src="assets/photo-illustration.png" alt="At work" loading="lazy"
+                 style="display:block;object-fit:cover;width:100%;height:100%" />
+          </div>
+          <div class="kp__cell" style="background:#059D58">
+            <img src="assets/photo-jumpsuit.jpeg" alt="Off the clock" loading="lazy"
+                 style="display:block;object-fit:cover;width:100%;height:100%" />
+          </div>
+        </div>
+
+        <div class="kp__id">
+          <h2 class="kp__name" style="font-weight:500;font-family:Poppins">Himanshi Jain</h2>
+          <p class="kp__role">UX Designer · Gurugram, India</p>
+        </div>
+
+        <div class="kp__stats">
+          <div class="kp__stat">
+            <div class="kp__stat-label">Age</div>
+            <div class="kp__stat-value">23 Years</div>
+            <div class="kp__stat-sub">12 July 2002</div>
+          </div>
+          <div class="kp__stat">
+            <div class="kp__stat-label">Experience</div>
+            <div class="kp__stat-value">3+ Years</div>
+            <div class="kp__stat-sub">Since Sept 2022</div>
+          </div>
+        </div>
+
+        <div class="kp__social">
+          <div class="kp__social-row">
+            <span class="kp__social-icon" style="background:transparent">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+                   stroke="url(#ig2)" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <defs>
+                  <linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#f9ce34"/>
+                    <stop offset="50%" stop-color="#ee2a7b"/>
+                    <stop offset="100%" stop-color="#6228d7"/>
+                  </linearGradient>
+                </defs>
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="url(#ig2)" stroke="none"/>
+              </svg>
+            </span>
+            <a class="kp__social-handle"
+               href="https://www.instagram.com/thehimanshi.jain/#"
+               target="_blank" rel="noreferrer"
+               style="color:rgb(26,13,171)">@thehimanshi.jain</a>
+          </div>
+          <div class="kp__social-bio">Livin' the good life 🌈✨//</div>
+          <div class="kp__social-stats">
+            <span><b>182</b> posts</span>
+            <span><b>1,853</b> followers</span>
+            <span><b>666</b> following</span>
+          </div>
+        </div>
+
+        <div class="kp__social">
+          <div class="kp__social-row">
+            <span class="kp__social-icon"
+                  style="background:rgb(10,102,194);color:#fff">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="white">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22zM8 8h4.37v1.92h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 7v7.46h-4.56v-6.62c0-1.58-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.5V22H8z"/>
+              </svg>
+            </span>
+            <a class="kp__social-handle"
+               href="https://www.linkedin.com/in/himanshi-jain/"
+               target="_blank" rel="noreferrer"
+               style="color:rgb(26,13,171)">Himanshi Jain</a>
+          </div>
+          <div class="kp__social-bio">
+            I'm a UX designer who believes good design shouldn't shout — it should whisper.
+          </div>
+        </div>
+
+        <a class="kp__website" href="mailto:himanshijain053@gmail.com"
+           style="color:rgb(26,13,171)">himanshijain053@gmail.com</a>
+
+      </aside>
+    </div><!-- /results-aside -->
+
+  </main><!-- /results-body -->
+
+</div><!-- /app -->
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     Vanilla JS — no React, no dependencies
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  // ── DOM refs ────────────────────────────────────────────────
+  const app          = document.getElementById('app');
+  const logoEl       = document.getElementById('logoEl');
+  const searchbar    = document.getElementById('searchbar');
+  const searchInput  = document.getElementById('searchInput');
+  const homeActions  = document.getElementById('homeActions');
+  const homeFooter   = document.getElementById('homeFooter');
+  const chromeTabs   = document.getElementById('chromeTabs');
+  const resultsBody  = document.getElementById('resultsBody');
+  const resultsAside = document.getElementById('resultsAside');
+
+  const TABS     = ['all', 'about', 'resume', 'projects', 'contact'];
+  const KP_TABS  = ['all', 'about'];   // tabs that show the knowledge panel
+  const SLUGS    = ['fintrack', 'kartly', 'dashwise', 'healwise'];
+
+  let currentTab = 'all';
+
+  // ── Helpers ─────────────────────────────────────────────────
+  // Re-trigger CSS animations by forcing a reflow
+  function replayAnim(el) {
+    if (!el) return;
+    el.style.animation = 'none';
+    el.offsetHeight;          // reflow
+    el.style.animation = '';
+  }
+
+  // ── goResults ────────────────────────────────────────────────
+  function goResults(tab) {
+    app.classList.replace('app--home', 'app--results');
+
+    homeActions.style.display = 'none';
+    homeFooter.style.display  = 'none';
+    chromeTabs.style.display  = 'block';
+    resultsBody.style.display = 'grid';
+    // aside visibility is handled by setTab below
+    resultsAside.style.display = '';
+
+    searchbar.classList.replace('searchbar--lg', 'searchbar--sm');
+    logoEl.classList.add('logo--no-anim');
+
+    window.scrollTo({ top: 0 });
+    setTab(tab || 'all');
+  }
+
+  // ── goHome ───────────────────────────────────────────────────
+  function goHome() {
+    app.classList.replace('app--results', 'app--home');
+
+    homeActions.style.display = '';
+    homeFooter.style.display  = '';
+    chromeTabs.style.display  = 'none';
+    resultsBody.style.display = 'none';
+
+    searchbar.classList.replace('searchbar--sm', 'searchbar--lg');
+    logoEl.classList.remove('logo--no-anim');
+    searchInput.value = '';
+    window.scrollTo({ top: 0 });
+
+    // Replay logo entrance animation
+    logoEl.querySelectorAll('.logo__letter').forEach(replayAnim);
+  }
+
+  // ── setTab ───────────────────────────────────────────────────
+  function setTab(tab) {
+    currentTab = tab;
+
+    // Show/hide panels and replay animations
+    TABS.forEach(function (t) {
+      const panel = document.getElementById('tab-' + t);
+      if (!panel) return;
+
+      if (t === tab) {
+        panel.style.display = '';
+        // Replay page-fade
+        replayAnim(panel.querySelector('.page-fade'));
+        // Replay stagger children
+        const stagger = panel.querySelector('.stagger');
+        if (stagger) {
+          stagger.querySelectorAll(':scope > *').forEach(replayAnim);
+        }
+      } else {
+        panel.style.display = 'none';
+      }
+    });
+
+    // Update tab button states
+    chromeTabs.querySelectorAll('.tab').forEach(function (btn) {
+      const active = btn.dataset.tab === tab;
+      btn.classList.toggle('tab--active', active);
+      btn.setAttribute('aria-selected', active);
+    });
+
+    // Show/hide knowledge panel (CSS hides on mobile via media query)
+    const showKP = KP_TABS.includes(tab);
+    resultsAside.style.display = showKP ? '' : 'none';
+  }
+
+  // ── Event: logo click → home ─────────────────────────────────
+  logoEl.addEventListener('click', goHome);
+  logoEl.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') goHome();
+  });
+
+  // ── Event: search buttons ────────────────────────────────────
+  document.getElementById('btnSearch').addEventListener('click', function () {
+    goResults('all');
+  });
+
+  document.getElementById('btnLucky').addEventListener('click', function () {
+    const slug = SLUGS[Math.floor(Math.random() * SLUGS.length)];
+    goResults('projects');
+    // Open the random project card after tab renders
+    requestAnimationFrame(function () {
+      const card = document.querySelector('.project[data-slug="' + slug + '"]');
+      if (card) card.classList.add('project--open');
+    });
+  });
+
+  searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') goResults('all');
+  });
+
+  // ── Event: tab buttons ───────────────────────────────────────
+  chromeTabs.querySelectorAll('.tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setTab(btn.dataset.tab);
+    });
+  });
+
+  // ── Event: footer + All-tab internal links ────────────────────
+  document.querySelectorAll('[data-goto]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      goResults(el.dataset.goto);
+    });
+  });
+
+  // ── Event: project accordion ──────────────────────────────────
+  document.querySelectorAll('.project').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('.case-cta')) return; // let CTA clicks pass
+      card.classList.toggle('project--open');
+    });
+  });
+
+  // ── Event: contact form → mailto ─────────────────────────────
+  document.getElementById('sendBtn').addEventListener('click', function () {
+    const name    = document.getElementById('formName').value.trim();
+    const email   = document.getElementById('formEmail').value.trim();
+    const subject = document.getElementById('formSubject').value.trim();
+    const message = document.getElementById('formMessage').value.trim();
+
+    const sub  = encodeURIComponent(subject || 'Hello from your portfolio');
+    const body = encodeURIComponent(
+      'Hi Himanshi,\n\n' + (message || '') +
+      '\n\n— ' + (name || 'Someone') + (email ? ' (' + email + ')' : '')
+    );
+    window.location.href =
+      'mailto:himanshijain053@gmail.com?subject=' + sub + '&body=' + body;
+  });
+
+  // ── Auto-focus search on page load ───────────────────────────
+  searchInput.focus();
+
+})();
+</script>
+
+</body>
+</html>
