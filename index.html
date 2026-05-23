@@ -988,10 +988,26 @@ html, body { overflow-x: hidden; }
 .searchbar { min-width: 0; }
 .searchbar__input { min-width: 0; }
 
-/* ── Mobile: hide KP panel entirely & force single column ── */
+/* ── Mobile: single column — KP stacks ABOVE content ──────── */
 @media (max-width: 760px) {
-  .results-aside  { display: none !important; }
-  .results-body   { grid-template-columns: 1fr !important; }
+  .results-body   { grid-template-columns: 1fr !important; gap: 0; }
+  .results-aside  { position: static; display: block; order: 2; margin-bottom: 24px; }
+  .results-results { order: 3; }
+
+  /* Global meta sits above KP on mobile */
+  .results-meta--global {
+    order: 1;
+    display: block;
+    margin-bottom: 6px;
+  }
+  /* Hide the per-tab inline meta on mobile (global one covers it) */
+  .results-meta--inline { display: none; }
+}
+
+/* On desktop: global meta is hidden, per-tab inline meta shows normally */
+@media (min-width: 761px) {
+  .results-meta--global { display: none; }
+  .results-meta--inline { display: block; }
 }
 
 /* ── Results chrome header — small mobile ─────────────────── */
@@ -1280,12 +1296,15 @@ html, body { overflow-x: hidden; }
   <!-- ── Results body ──────────────────────────────────── -->
   <main class="results-body" id="resultsBody" style="display:none">
 
+    <!-- Global meta line — sits above KP on mobile, hidden on desktop (tabs have their own) -->
+    <div class="results-meta results-meta--global" id="globalMeta" aria-live="polite"></div>
+
     <!-- Left column: tab content panels -->
     <div class="results-results">
 
       <!-- ━━ TAB: ALL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
       <div id="tab-all" class="page-fade">
-        <div class="results-meta">About 4,230 results (0.42 seconds)</div>
+        <div class="results-meta results-meta--inline">About 4,230 results (0.42 seconds)</div>
         <div class="stagger">
 
           <article class="result">
@@ -1529,7 +1548,7 @@ html, body { overflow-x: hidden; }
       <!-- ━━ TAB: PROJECTS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
       <div id="tab-projects" style="display:none">
         <div class="page-fade">
-          <div class="results-meta">4 case studies · most recent first</div>
+          <div class="results-meta results-meta--inline">4 case studies · most recent first</div>
           <div class="stagger">
 
             <!-- Project card: FinTrack -->
@@ -1962,8 +1981,16 @@ html, body { overflow-x: hidden; }
   const resultsAside = document.getElementById('resultsAside');
 
   const TABS     = ['all', 'about', 'resume', 'projects', 'contact'];
-  const KP_TABS  = ['all', 'about'];   // tabs that show the knowledge panel
+  const KP_TABS  = ['all', 'about'];
   const SLUGS    = ['fintrack', 'kartly', 'dashwise', 'healwise'];
+
+  // Meta text shown above KP on mobile
+  const TAB_META = {
+    all:      'About 4,230 results (0.42 seconds)',
+    projects: '4 case studies · most recent first'
+  };
+
+  const globalMeta = document.getElementById('globalMeta');
 
   let currentTab = 'all';
 
@@ -1984,8 +2011,6 @@ html, body { overflow-x: hidden; }
     homeFooter.style.display  = 'none';
     chromeTabs.style.display  = 'block';
     resultsBody.style.display = 'grid';
-    // aside visibility is handled by setTab below
-    resultsAside.style.display = '';
 
     searchbar.classList.replace('searchbar--lg', 'searchbar--sm');
     logoEl.classList.add('logo--no-anim');
@@ -2042,7 +2067,10 @@ html, body { overflow-x: hidden; }
       btn.setAttribute('aria-selected', active);
     });
 
-    // Show/hide knowledge panel (CSS hides on mobile via media query)
+    // Update global meta text (shown above KP on mobile)
+    globalMeta.textContent = TAB_META[tab] || '';
+
+    // Show/hide knowledge panel (only on All + About tabs)
     const showKP = KP_TABS.includes(tab);
     resultsAside.style.display = showKP ? '' : 'none';
   }
