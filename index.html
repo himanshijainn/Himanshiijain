@@ -2100,11 +2100,6 @@ html, body { overflow-x: hidden; }
     if (e.key === 'Enter') goResults('all');
   });
 
-  // Clicking the search bar on home page goes straight to results — no typing needed
-  searchInput.addEventListener('focus', function () {
-    if (app.classList.contains('app--home')) goResults('all');
-  });
-
   // ── Event: tab buttons ───────────────────────────────────────
   chromeTabs.querySelectorAll('.tab').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -2144,8 +2139,7 @@ html, body { overflow-x: hidden; }
       'mailto:himanshijain053@gmail.com?subject=' + sub + '&body=' + body;
   });
 
-  // ── Auto-focus search on page load ───────────────────────────
-  searchInput.focus();
+  // Home page stays visible — user must click Search or press Enter to navigate
 
 })();
 </script>
