@@ -1010,12 +1010,39 @@ html, body { overflow-x: hidden; }
   .results-meta--inline { display: block; }
 }
 
-/* ── Results chrome header — small mobile ─────────────────── */
-@media (max-width: 480px) {
-  .app--results .chrome { column-gap: 8px; row-gap: 6px; }
-  .app--results .chrome__logo { font-size: 20px; }
-  .searchbar--sm { height: 36px; padding: 0 10px; gap: 6px; }
-  .searchbar__icon--btn + .searchbar__icon--btn { display: none; }
+/* ── Mobile: results chrome → logo centred top, search below ─ */
+@media (max-width: 600px) {
+  .app--results .chrome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 16px 0;
+    row-gap: 10px;
+  }
+  .app--results .chrome__logo {
+    font-size: 28px;
+    text-align: center;
+    width: 100%;
+  }
+  /* Logo letters should centre */
+  .app--results .chrome__logo .logo {
+    display: flex;
+    justify-content: center;
+  }
+  .app--results .chrome__search {
+    width: 100%;
+    max-width: 100%;
+  }
+  .app--results .chrome__tabs {
+    width: 100%;
+  }
+  /* Tabs scroll horizontally if needed */
+  .app--results .tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .app--results .tabs::-webkit-scrollbar { display: none; }
 }
 
 /* ── Results body on small mobile ─────────────────────────── */
@@ -1282,8 +1309,6 @@ html, body { overflow-x: hidden; }
   <!-- ── Home footer ───────────────────────────────────── -->
   <footer class="home-footer" id="homeFooter"
           style="border-color:rgb(199,199,199);background-color:rgb(235,235,235)">
-    <span>Gurugram, India</span>
-    <span class="home-footer__dot">·</span>
     <a href="#" data-goto="about">About</a>
     <span class="home-footer__dot">·</span>
     <a href="#" data-goto="resume">Resume</a>
