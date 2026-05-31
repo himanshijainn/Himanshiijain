@@ -17,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Bangers&family=Pacifico&family=Fredoka+One&family=Caveat:wght@700&display=swap" />
 
   <style>
 /* Himanshi Jain — Portfolio
@@ -489,6 +489,12 @@ a { color: inherit; text-decoration: none; }
 .app--home .chrome__logo {
   font-size: clamp(64px, 12vw, 108px);
   transition: font-size var(--dur) var(--ease);
+  /* Fixed height = image height so layout never shifts when logo swaps */
+  height: clamp(140px, 26vw, 240px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
 }
 .app--home .chrome__search {
   width: min(584px, 100%);
@@ -1598,6 +1604,276 @@ html, body { overflow-x: hidden; }
 [data-theme="dark"] .home-footer a { color: #8a8278; }
 [data-theme="dark"] .home-footer a:hover { color: #7eb8f7; }
 
+/* ═══════════════════════════════════════════════════════════
+   HIMANSHI DOODLE LOGO — 5 rotating theme variations
+   ═══════════════════════════════════════════════════════════ */
+
+.logo--themed .logo__letter {
+  transition: color 700ms ease, text-shadow 700ms ease,
+              -webkit-text-stroke 500ms ease, transform 500ms ease,
+              font-family 300ms ease, letter-spacing 300ms ease !important;
+}
+
+/* ── THEME 1: Classic — Google colours (default) ─────────── */
+/* Already set via inline styles, no extra CSS needed */
+
+/* ── THEME 2: B&W Doodle — hollow outline letters like image 1 ── */
+.logo--doodle .logo__letter {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 800 !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-text-stroke: 2.5px #111111 !important;
+  background: none !important;
+  text-shadow: none !important;
+  letter-spacing: 0.01em !important;
+  opacity: 1 !important;
+}
+.logo--doodle .logo__letter[data-i="0"] { transform: rotate(-2deg) translateY(2px); }
+.logo--doodle .logo__letter[data-i="1"] { transform: rotate(2deg) translateY(-3px); }
+.logo--doodle .logo__letter[data-i="2"] { transform: rotate(-1.5deg); }
+.logo--doodle .logo__letter[data-i="3"] { transform: rotate(2.5deg) translateY(2px); }
+.logo--doodle .logo__letter[data-i="4"] { transform: rotate(-2deg) translateY(-2px); }
+.logo--doodle .logo__letter[data-i="5"] { transform: rotate(1.5deg); }
+.logo--doodle .logo__letter[data-i="6"] { transform: rotate(-2.5deg) translateY(1px); }
+.logo--doodle .logo__letter[data-i="7"] { transform: rotate(2deg) translateY(-2px); }
+
+/* Doodle field spacing */
+.chrome__logo.doodle-active {
+  padding-top: 60px !important;
+  padding-bottom: 20px !important;
+  overflow: visible !important;
+  margin-bottom: -16px;
+}
+.logo-doodle-icon {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  animation: doodleFloat 0.7s ease forwards;
+}
+@keyframes doodleFloat {
+  from { opacity: 0; transform: translateY(8px) scale(0.85); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── THEME 3: Neon Comic — rounded font, white stroke, colored neon glow ── */
+.logo--neon .logo__letter {
+  font-family: 'Fredoka One', cursive !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.04em !important;
+  -webkit-text-fill-color: unset !important;
+  background: none !important;
+  opacity: 1 !important;
+}
+.logo--neon .logo__letter[data-i="0"] {
+  color: #4285F4 !important;
+  -webkit-text-stroke: 2px white !important;
+  text-shadow: 0 0 12px #4285F4, 0 0 30px rgba(66,133,244,0.7), 0 0 60px rgba(66,133,244,0.4) !important;
+}
+.logo--neon .logo__letter[data-i="1"] {
+  color: #DB4537 !important;
+  -webkit-text-stroke: 2px white !important;
+  text-shadow: 0 0 12px #DB4537, 0 0 30px rgba(219,69,55,0.7), 0 0 60px rgba(219,69,55,0.4) !important;
+}
+.logo--neon .logo__letter[data-i="2"] {
+  color: #F4B400 !important;
+  -webkit-text-stroke: 2px white !important;
+  text-shadow: 0 0 12px #F4B400, 0 0 30px rgba(244,180,0,0.7), 0 0 60px rgba(244,180,0,0.4) !important;
+}
+.logo--neon .logo__letter[data-i="3"] {
+  color: #4285F4 !important;
+  -webkit-text-stroke: 2px white !important;
+  text-shadow: 0 0 12px #4285F4, 0 0 30px rgba(66,133,244,0.7), 0 0 60px rgba(66,133,244,0.4) !important;
+}
+.logo--neon .logo__letter[data-i="4"] {
+  color: #059D58 !important;
+  -webkit-text-stroke: 2px white !important;
+  text-shadow: 0 0 12px #059D58, 0 0 30px rgba(5,157,88,0.7), 0 0 60px rgba(5,157,88,0.4) !important;
+}
+.logo--neon .logo__letter[data-i="5"] {
+  color: #F4B400 !important;
+  -webkit-text-stroke: 2px white !important;
+  text-shadow: 0 0 12px #F4B400, 0 0 30px rgba(244,180,0,0.7), 0 0 60px rgba(244,180,0,0.4) !important;
+}
+.logo--neon .logo__letter[data-i="6"] {
+  color: #DB4537 !important;
+  -webkit-text-stroke: 2px white !important;
+  text-shadow: 0 0 12px #DB4537, 0 0 30px rgba(219,69,55,0.7), 0 0 60px rgba(219,69,55,0.4) !important;
+}
+.logo--neon .logo__letter[data-i="7"] {
+  color: #059D58 !important;
+  -webkit-text-stroke: 2px white !important;
+  text-shadow: 0 0 12px #059D58, 0 0 30px rgba(5,157,88,0.7), 0 0 60px rgba(5,157,88,0.4) !important;
+}
+
+/* ── THEME 4: Cursive Cute — Pacifico, rainbow pastel gradient, cute icons ── */
+.logo--cursive .logo__letter {
+  font-family: 'Pacifico', cursive !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+  opacity: 1 !important;
+  -webkit-text-stroke: 0 !important;
+  background: none !important;
+}
+/* Rainbow pastel gradient across all letters */
+.logo--cursive .logo__letter[data-i="0"] { color: #a8c8f0 !important; text-shadow: 2px 3px 0 rgba(168,200,240,0.4) !important; }
+.logo--cursive .logo__letter[data-i="1"] { color: #f0a8b0 !important; text-shadow: 2px 3px 0 rgba(240,168,176,0.4) !important; }
+.logo--cursive .logo__letter[data-i="2"] { color: #f0c8a0 !important; text-shadow: 2px 3px 0 rgba(240,200,160,0.4) !important; }
+.logo--cursive .logo__letter[data-i="3"] { color: #c8e8c0 !important; text-shadow: 2px 3px 0 rgba(200,232,192,0.4) !important; }
+.logo--cursive .logo__letter[data-i="4"] { color: #a8e0d8 !important; text-shadow: 2px 3px 0 rgba(168,224,216,0.4) !important; }
+.logo--cursive .logo__letter[data-i="5"] { color: #d0c8f0 !important; text-shadow: 2px 3px 0 rgba(208,200,240,0.4) !important; }
+.logo--cursive .logo__letter[data-i="6"] { color: #f0b8d0 !important; text-shadow: 2px 3px 0 rgba(240,184,208,0.4) !important; }
+.logo--cursive .logo__letter[data-i="7"] { color: #f0a8c8 !important; text-shadow: 2px 3px 0 rgba(240,168,200,0.4) !important; }
+
+.logo-cute-icon {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  animation: cuteFloat 1.2s ease forwards;
+}
+@keyframes cuteFloat {
+  from { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ── THEME 5: Cute 3D — Fredoka, Google colors, deep plastic 3D shadow ── */
+.logo--cute3d .logo__letter {
+  font-family: 'Fredoka One', cursive !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  -webkit-text-fill-color: unset !important;
+  -webkit-text-stroke: 0 !important;
+  background: none !important;
+  opacity: 1 !important;
+}
+.logo--cute3d .logo__letter[data-i="0"] {
+  color: #4285F4 !important;
+  text-shadow:
+    0 2px 0 #2a65d4,
+    0 4px 0 #1a50b8,
+    0 6px 0 #0e3d9a,
+    0 8px 12px rgba(66,133,244,0.35) !important;
+}
+.logo--cute3d .logo__letter[data-i="1"] {
+  color: #DB4537 !important;
+  text-shadow:
+    0 2px 0 #bb2a1e,
+    0 4px 0 #9e1c12,
+    0 6px 0 #840e08,
+    0 8px 12px rgba(219,69,55,0.35) !important;
+}
+.logo--cute3d .logo__letter[data-i="2"] {
+  color: #F4B400 !important;
+  text-shadow:
+    0 2px 0 #d49800,
+    0 4px 0 #b07e00,
+    0 6px 0 #8e6600,
+    0 8px 12px rgba(244,180,0,0.35) !important;
+}
+.logo--cute3d .logo__letter[data-i="3"] {
+  color: #4285F4 !important;
+  text-shadow:
+    0 2px 0 #2a65d4,
+    0 4px 0 #1a50b8,
+    0 6px 0 #0e3d9a,
+    0 8px 12px rgba(66,133,244,0.35) !important;
+}
+.logo--cute3d .logo__letter[data-i="4"] {
+  color: #059D58 !important;
+  text-shadow:
+    0 2px 0 #037a42,
+    0 4px 0 #025e32,
+    0 6px 0 #014824,
+    0 8px 12px rgba(5,157,88,0.35) !important;
+}
+.logo--cute3d .logo__letter[data-i="5"] {
+  color: #F4B400 !important;
+  text-shadow:
+    0 2px 0 #d49800,
+    0 4px 0 #b07e00,
+    0 6px 0 #8e6600,
+    0 8px 12px rgba(244,180,0,0.35) !important;
+}
+.logo--cute3d .logo__letter[data-i="6"] {
+  color: #DB4537 !important;
+  text-shadow:
+    0 2px 0 #bb2a1e,
+    0 4px 0 #9e1c12,
+    0 6px 0 #840e08,
+    0 8px 12px rgba(219,69,55,0.35) !important;
+}
+.logo--cute3d .logo__letter[data-i="7"] {
+  color: #059D58 !important;
+  text-shadow:
+    0 2px 0 #037a42,
+    0 4px 0 #025e32,
+    0 6px 0 #014824,
+    0 8px 12px rgba(5,157,88,0.35) !important;
+}
+/* Gentle wave bounce for cute3d */
+.logo--cute3d .logo__letter[data-i="0"] { animation: cuteWave 2s ease-in-out 0.0s infinite !important; }
+.logo--cute3d .logo__letter[data-i="1"] { animation: cuteWave 2s ease-in-out 0.12s infinite !important; }
+.logo--cute3d .logo__letter[data-i="2"] { animation: cuteWave 2s ease-in-out 0.24s infinite !important; }
+.logo--cute3d .logo__letter[data-i="3"] { animation: cuteWave 2s ease-in-out 0.36s infinite !important; }
+.logo--cute3d .logo__letter[data-i="4"] { animation: cuteWave 2s ease-in-out 0.48s infinite !important; }
+.logo--cute3d .logo__letter[data-i="5"] { animation: cuteWave 2s ease-in-out 0.60s infinite !important; }
+.logo--cute3d .logo__letter[data-i="6"] { animation: cuteWave 2s ease-in-out 0.72s infinite !important; }
+.logo--cute3d .logo__letter[data-i="7"] { animation: cuteWave 2s ease-in-out 0.84s infinite !important; }
+@keyframes cuteWave {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Theme label hidden */
+.logo-theme-label { display: none !important; }
+.app--home .chrome__logo { position: relative; }
+
+
+/* Logo image theme animation */
+@keyframes logoImgIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+/* Image size matches the text logo height exactly */
+#logoImg {
+  /* Text logo font-size = clamp(64px,12vw,108px)
+     Images have ~50% whitespace, so multiply by ~2.2 to match visual letter size */
+  height: clamp(140px, 26vw, 240px);
+  width: auto;
+  max-width: 96vw;
+  object-fit: contain;
+  cursor: pointer;
+  display: none;
+  transition: opacity 400ms ease, transform 400ms cubic-bezier(0.4,0,0.2,1);
+}
+/* Crossfade out old logo, in new image */
+.logo--leaving { opacity: 0; transform: scale(0.92); transition: opacity 300ms ease, transform 300ms ease; }
+.logo--entering { animation: logoImgIn 400ms cubic-bezier(0.4,0,0.2,1) both; }
+
+/* ── Mobile tap tooltip ─────────────────────────────────── */
+.logo-tap-hint {
+  position: fixed;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(30,30,30,0.88);
+  color: #fff;
+  font-size: 13px;
+  font-family: var(--f-sans);
+  padding: 8px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease, transform 300ms ease;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+.logo-tap-hint.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
   </style>
 </head>
 <body>
@@ -1608,6 +1884,7 @@ html, body { overflow-x: hidden; }
   <img class="lightbox-img" id="lightboxImg" src="" alt="" />
 </div>
 
+<div class="logo-tap-hint" id="tapHint">Double-tap logo to change style 🎨</div>
 <div class="app app--home" id="app">
 
   <!-- ── Fixed Download CV Button ─────────────────────── -->
@@ -1631,9 +1908,11 @@ html, body { overflow-x: hidden; }
   <div class="chrome">
 
     <!-- Logo -->
-    <div class="chrome__logo" style="font-family:Poppins;font-weight:600">
+    <div class="chrome__logo" style="font-family:Poppins;font-weight:600" title="Double-click to change style 🎨">
       <span class="logo" id="logoEl" role="button" tabindex="0"
-            aria-label="Himanshi — back to home">
+            title="Double-click to change style 🎨"
+            aria-label="Himanshi — back to home"
+            style="cursor:pointer">
         <span class="logo__letter" data-i="0" style="color:#4285F4;font-family:Poppins,var(--f-display);font-weight:600">H</span>
         <span class="logo__letter" data-i="1" style="color:#DB4537;font-family:Poppins,var(--f-display);font-weight:600">i</span>
         <span class="logo__letter" data-i="2" style="color:#F4B400;font-family:Poppins,var(--f-display);font-weight:600">m</span>
@@ -1643,6 +1922,12 @@ html, body { overflow-x: hidden; }
         <span class="logo__letter" data-i="6" style="color:#DB4537;font-family:Poppins,var(--f-display);font-weight:600">h</span>
         <span class="logo__letter" data-i="7" style="color:#059D58;font-family:Poppins,var(--f-display);font-weight:600">i</span>
       </span>
+
+      <span class="logo-theme-label" id="themeLabel" style="display:none"></span>
+      <!-- Theme image logo — swaps in for themes 2-5 -->
+      <img id="logoImg" src="" alt="Himanshi"
+           title="Double-tap to change style 🎨"
+           role="button" tabindex="0" aria-label="Himanshi — back to home" />
     </div>
 
     <!-- Search bar -->
@@ -2962,6 +3247,8 @@ html, body { overflow-x: hidden; }
     // Replay logo entrance animation
     logoEl.querySelectorAll('.logo__letter').forEach(replayAnim);
   }
+  // Expose so other IIFEs can use it
+  window.__goHome = goHome;
 
   // ── setTab ───────────────────────────────────────────────────
   function setTab(tab) {
@@ -3107,7 +3394,213 @@ html, body { overflow-x: hidden; }
 
 })();
 
-// DARK MODE TOGGLE
+// HIMANSHI DOODLE LOGO — rotating theme variations
+(function () {
+  var logo  = document.getElementById('logoEl');
+  var label = document.getElementById('themeLabel');
+  if (!logo) return;
+
+  var THEMES = [
+    { cls: '',              img: null,                       icons: [] },
+    { cls: 'logo--doodle',  img: 'assets/logo-doodle.png', imgDark: 'assets/logo-doodle-dark.png',  icons: [
+        // ROW 1 — top row, far above
+        { top: '-110px', left: '-10px', delay: 0,   svg: '<svg width="30" height="34" viewBox="0 0 30 34" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2L3 26L9 20L13 30L16 29L12 19L21 19Z"/></svg>' },
+        { top: '-100px', left: '12%',   delay: 60,  svg: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round"><path d="M8 1v14M1 8h14"/></svg>' },
+        { top: '-115px', left: '28%',   delay: 40,  svg: '<svg width="52" height="34" viewBox="0 0 52 34" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="48" height="30" rx="7"/><text x="26" y="22" text-anchor="middle" font-size="13" font-weight="700" font-family="Poppins,sans-serif" fill="#111" stroke="none">UX</text></svg>' },
+        { top: '-90px',  left: '46%',   delay: 100, svg: '<svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" stroke="#111" stroke-width="1.5" fill="none"/></svg>' },
+        { top: '-112px', left: '57%',   delay: 70,  svg: '<svg width="32" height="36" viewBox="0 0 32 36" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="10" r="7"/><path d="M2 34a14 14 0 0 1 28 0"/></svg>' },
+        { top: '-96px',  left: '80%',   delay: 130, svg: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round"><path d="M7 1v12M1 7h12"/></svg>' },
+        { top: '-56px',  left: '2%',    delay: 90,  svg: '<svg width="46" height="40" viewBox="0 0 46 40" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="42" height="36" rx="1" stroke-width="1.2" stroke-dasharray="4 3"/><rect x="0" y="0" width="5" height="5" rx="1" stroke-width="1.2" fill="white"/><rect x="41" y="0" width="5" height="5" rx="1" stroke-width="1.2" fill="white"/><rect x="0" y="35" width="5" height="5" rx="1" stroke-width="1.2" fill="white"/><rect x="41" y="35" width="5" height="5" rx="1" stroke-width="1.2" fill="white"/><text x="23" y="27" text-anchor="middle" font-size="20" font-family="Georgia,serif" fill="#111" stroke="none">T</text></svg>' },
+        { top: '-38px',  left: '22%',   delay: 110, svg: '<svg width="44" height="24" viewBox="0 0 44 24" fill="none"><path d="M2 20C10 4 34 4 42 20" stroke="#111" stroke-width="1.3" stroke-dasharray="4 3" stroke-linecap="round"/></svg>' },
+        { top: '-58px',  left: '44%',   delay: 50,  svg: '<svg width="36" height="38" viewBox="0 0 36 38" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 34L6 24L14 6L30 6L34 20Z"/><circle cx="18" cy="20" r="4"/><line x1="30" y1="6" x2="36" y2="1"/><rect x="33" y="0" width="3" height="3" rx="0.5" stroke-width="1.2"/></svg>' },
+        { top: '-52px',  left: '68%',   delay: 80,  svg: '<svg width="42" height="36" viewBox="0 0 42 36" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18L40 2L26 34L18 22Z"/><path d="M18 22L40 2"/><path d="M4 30C8 26 12 22 18 22" stroke-dasharray="3 2" stroke-width="1.2"/></svg>' },
+        { top: '-60px',  left: '88%',   delay: 140, svg: '<svg width="26" height="42" viewBox="0 0 26 42" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="22" height="38" rx="4"/><line x1="9" y1="6" x2="17" y2="6"/><rect x="5" y="10" width="16" height="10" rx="1" stroke-width="1.2"/><line x1="5" y1="24" x2="21" y2="24"/><line x1="5" y1="28" x2="17" y2="28"/><circle cx="13" cy="36" r="2"/></svg>' },
+    ]},
+    { cls: 'logo--neon',    img: 'assets/logo-neon.png', imgDark: 'assets/logo-neon-dark.png', icons: [] },
+    { cls: 'logo--cursive', img: 'assets/logo-cursive.png', imgDark: 'assets/logo-cursive-dark.png', icons: [
+        { symbol: '🩷', top: '-52px', left: '-2%',  delay: 0   },
+        { symbol: '✦',  top: '-36px', left: '12%',  delay: 80  },
+        { symbol: '⭐', top: '-54px', left: '28%',  delay: 50  },
+        { symbol: '✨', top: '-40px', left: '44%',  delay: 120 },
+        { symbol: '💫', top: '-56px', left: '58%',  delay: 60  },
+        { symbol: '🌸', top: '-38px', left: '74%',  delay: 100 },
+        { symbol: '🩷', top: '-50px', left: '90%',  delay: 30  },
+    ]},
+    { cls: 'logo--cute3d',  img: 'assets/logo-cute3d.png', imgDark: 'assets/logo-cute3d-dark.png', icons: [] },
+  ];
+
+  var ALL_CLASSES = THEMES.map(function(t){ return t.cls; }).filter(Boolean);
+  var current = 0;
+  var iconEls = [];
+
+  function clearIcons() {
+    iconEls.forEach(function(el){ if (el.parentNode) el.parentNode.removeChild(el); });
+    iconEls = [];
+  }
+
+  function spawnIcons(icons, cls) {
+    var wrap = logo.parentNode;
+    wrap.style.position = 'relative';
+    icons.forEach(function(ic, i) {
+      var el = document.createElement('span');
+      el.className = cls;
+      el.style.cssText = 'position:absolute;top:' + ic.top + ';left:' + ic.left +
+        ';pointer-events:none;opacity:0;z-index:10;' +
+        'animation:' + (cls === 'logo-doodle-icon' ? 'doodleFloat' : 'cuteFloat') +
+        ' 0.7s ease ' + (ic.delay || i * 80) + 'ms forwards';
+      // SVG icon or emoji
+      if (ic.svg) {
+        el.innerHTML = ic.svg;
+      } else if (ic.symbol) {
+        el.style.fontSize = '14px';
+        el.textContent = ic.symbol;
+      }
+      wrap.appendChild(el);
+      iconEls.push(el);
+    });
+  }
+
+  var logoImg = document.getElementById('logoImg');
+
+  // Click image logo → go home
+  if (logoImg) {
+    logoImg.addEventListener('click', function() { window.__goHome && window.__goHome(); });
+    logoImg.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { window.__goHome && window.__goHome(); }
+    });
+  }
+
+  function applyTheme(idx) {
+    clearIcons();
+    var theme = THEMES[idx];
+
+    // Fade out whatever is currently showing
+    var fadeOut = (logoImg && logoImg.style.display !== 'none') ? logoImg : logo;
+    fadeOut.style.transition = 'opacity 280ms ease, transform 280ms ease';
+    fadeOut.style.opacity = '0';
+    fadeOut.style.transform = 'scale(0.92)';
+
+    setTimeout(function() {
+      // Reset fade-out element
+      fadeOut.style.display = 'none';
+      fadeOut.style.opacity = '';
+      fadeOut.style.transform = '';
+      fadeOut.style.transition = '';
+
+      // Apply new theme classes
+      ALL_CLASSES.forEach(function(c){ logo.classList.remove(c); });
+      logo.classList.add('logo--themed');
+      if (theme.cls) logo.classList.add(theme.cls);
+
+      // Show the right element
+      if (theme.img && logoImg) {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      logoImg.src = (isDark && theme.imgDark) ? theme.imgDark : theme.img;
+        logoImg.style.opacity = '0';
+        logoImg.style.transform = 'scale(0.92)';
+        logoImg.style.display = 'block';
+        logo.style.display = 'none';
+        // Fade in
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            logoImg.style.transition = 'opacity 380ms ease, transform 380ms cubic-bezier(0.4,0,0.2,1)';
+            logoImg.style.opacity = '1';
+            logoImg.style.transform = 'scale(1)';
+          });
+        });
+      } else {
+        if (logoImg) logoImg.style.display = 'none';
+        logo.style.opacity = '0';
+        logo.style.transform = 'scale(0.92)';
+        logo.style.display = '';
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            logo.style.transition = 'opacity 380ms ease, transform 380ms cubic-bezier(0.4,0,0.2,1)';
+            logo.style.opacity = '1';
+            logo.style.transform = 'scale(1)';
+            setTimeout(function(){ logo.style.transition = ''; }, 400);
+          });
+        });
+      }
+
+      // Doodle spacing
+      var wrap = logo.parentNode;
+      if (theme.cls === 'logo--doodle' && !theme.img) {
+        wrap.classList.add('doodle-active');
+      } else {
+        wrap.classList.remove('doodle-active');
+      }
+
+      // Spawn icons only for non-image themes
+      if (!theme.img && theme.icons && theme.icons.length) {
+        var iconClass = (theme.cls === 'logo--doodle') ? 'logo-doodle-icon' : 'logo-cute-icon';
+        spawnIcons(theme.icons, iconClass);
+      }
+
+      current = idx;
+    }, 300);
+  }
+
+  applyTheme(0);
+
+  // Rotate every 5 minutes
+  setInterval(function() {
+    applyTheme((current + 1) % THEMES.length);
+  }, 5 * 60 * 1000);
+
+  // Next theme trigger function
+  function nextTheme(e) {
+    if (document.getElementById('app').classList.contains('app--home')) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      applyTheme((current + 1) % THEMES.length);
+    }
+  }
+
+  // Desktop: double-click on logo or wrapper
+  var logoWrap = logo.parentNode;
+  logo.addEventListener('dblclick', nextTheme);
+  if (logoImg) logoImg.addEventListener('dblclick', nextTheme);
+  if (logoWrap) logoWrap.addEventListener('dblclick', nextTheme);
+
+  // Mobile: double-tap (two taps within 300ms)
+  var lastTap = 0;
+  function onTap(e) {
+    if (!document.getElementById('app').classList.contains('app--home')) return;
+    var now = Date.now();
+    if (now - lastTap < 300) {
+      e.preventDefault();
+      nextTheme(e);
+    }
+    lastTap = now;
+  }
+  if (logoWrap) logoWrap.addEventListener('touchend', onTap, { passive: false });
+  if (logoImg)  logoImg.addEventListener('touchend', onTap,  { passive: false });
+
+  // Show mobile tooltip on first visit
+  var tapHint = document.getElementById('tapHint');
+  var hintShown = localStorage.getItem('hint-shown');
+  if (tapHint && !hintShown) {
+    setTimeout(function() {
+      tapHint.classList.add('show');
+      setTimeout(function() {
+        tapHint.classList.remove('show');
+        localStorage.setItem('hint-shown', '1');
+      }, 3000);
+    }, 1500);
+  }
+  // Also show hint on first tap
+  if (logoWrap) {
+    logoWrap.addEventListener('touchstart', function() {
+      if (tapHint && !localStorage.getItem('hint-shown')) {
+        tapHint.classList.add('show');
+        setTimeout(function() {
+          tapHint.classList.remove('show');
+          localStorage.setItem('hint-shown', '1');
+        }, 2500);
+      }
+    }, { passive: true, once: true });
+  }
+})();
 (function () {
   const btn  = document.getElementById('darkToggle');
   const root = document.documentElement;
@@ -3127,6 +3620,30 @@ html, body { overflow-x: hidden; }
     btn.setAttribute('aria-label',
       theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
     );
+    // Swap logo image for dark/light variant if image logo is showing
+    var lImg = document.getElementById('logoImg');
+    if (lImg && lImg.style.display !== 'none' && lImg.src) {
+      // Find which theme is active by checking src
+      var isDark = theme === 'dark';
+      var LOGO_MAP = {
+        'logo-doodle': isDark ? 'assets/logo-doodle-dark.png' : 'assets/logo-doodle.png',
+        'logo-neon':   isDark ? 'assets/logo-neon-dark.png'   : 'assets/logo-neon.png',
+        'logo-cursive':isDark ? 'assets/logo-cursive-dark.png': 'assets/logo-cursive.png',
+        'logo-cute3d': isDark ? 'assets/logo-cute3d-dark.png' : 'assets/logo-cute3d.png',
+      };
+      for (var key in LOGO_MAP) {
+        if (lImg.src.indexOf(key) !== -1) {
+          lImg.style.opacity = '0';
+          var newSrc = LOGO_MAP[key];
+          setTimeout(function(src){ return function(){
+            lImg.src = src;
+            lImg.style.transition = 'opacity 400ms ease';
+            lImg.style.opacity = '1';
+          }; }(newSrc), 200);
+          break;
+        }
+      }
+    }
   }
 })();
 
