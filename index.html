@@ -131,8 +131,24 @@
   box-shadow: 0 0 0 2px rgba(126,184,247,0.15), 0 8px 28px -16px rgba(0,0,0,0.6);
 }
 [data-theme="dark"] .searchbar__input { color: #f0eee8; }
-[data-theme="dark"] .searchbar__input::placeholder { color: #5a5450; }
-[data-theme="dark"] .searchbar__icon svg { stroke: #8a8278 !important; }
+[data-theme="dark"] .searchbar__input::placeholder { color: #6a6870; }
+[data-theme="dark"] .searchbar__icon svg { stroke: #c8c0b0 !important; }
+[data-theme="dark"] .searchbar__icon--btn { color: #c8c0b0; }
+[data-theme="dark"] .searchbar__icon--btn svg,
+[data-theme="dark"] .searchbar__icon--btn svg path,
+[data-theme="dark"] .searchbar__icon--btn svg circle,
+[data-theme="dark"] .searchbar__icon--btn svg rect { 
+  stroke: #c8c0b0 !important;
+  fill: #c8c0b0 !important;
+}
+[data-theme="dark"] .searchbar__icon--btn:hover { color: #7eb8f7; background: #1e2040; }
+[data-theme="dark"] .searchbar__icon--btn:hover svg,
+[data-theme="dark"] .searchbar__icon--btn:hover svg path,
+[data-theme="dark"] .searchbar__icon--btn:hover svg circle,
+[data-theme="dark"] .searchbar__icon--btn:hover svg rect {
+  stroke: #7eb8f7 !important;
+  fill: #7eb8f7 !important;
+}
 
 /* ── Home footer ──────────────────────────────── */
 [data-theme="dark"] .home-footer {
