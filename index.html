@@ -3606,17 +3606,20 @@ html, body { overflow-x: hidden; }
   const root = document.documentElement;
 
   // Always default to light mode; only use saved preference if user explicitly chose dark
-  const saved = localStorage.getItem('theme-himanshi') || 'light';
+  // Always open in light mode by default
+  // Only use saved preference if user has explicitly toggled during THIS session
+  const saved = sessionStorage.getItem('theme-session') || 'light';
   applyTheme(saved);
 
   btn.addEventListener('click', function () {
     const current = root.getAttribute('data-theme') || 'light';
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+    const next = current === 'dark' ? 'light' : 'dark';
+    sessionStorage.setItem('theme-session', next);
+    applyTheme(next);
   });
 
   function applyTheme(theme) {
     root.setAttribute('data-theme', theme);
-    localStorage.setItem('theme-himanshi', theme);
     btn.setAttribute('aria-label',
       theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
     );
