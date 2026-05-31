@@ -3096,8 +3096,8 @@ html, body { overflow-x: hidden; }
   const btn  = document.getElementById('darkToggle');
   const root = document.documentElement;
 
-  // Load saved preference
-  const saved = localStorage.getItem('theme') || 'light';
+  // Always default to light mode; only use saved preference if user explicitly chose dark
+  const saved = localStorage.getItem('theme-himanshi') || 'light';
   applyTheme(saved);
 
   btn.addEventListener('click', function () {
@@ -3107,7 +3107,7 @@ html, body { overflow-x: hidden; }
 
   function applyTheme(theme) {
     root.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('theme-himanshi', theme);
     btn.setAttribute('aria-label',
       theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
     );
