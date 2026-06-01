@@ -489,9 +489,8 @@ a { color: inherit; text-decoration: none; }
 .app--home .chrome__logo {
   font-size: clamp(64px, 12vw, 108px);
   transition: font-size var(--dur) var(--ease);
-  /* Fixed box matches #logoImg dimensions so layout never shifts */
-  width: clamp(320px, 60vw, 600px);
-  height: clamp(140px, 26vw, 240px);
+  width: min(560px, 88vw);
+  height: min(200px, 22vw);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1837,12 +1836,15 @@ html, body { overflow-x: hidden; }
 }
 /* Image size matches the text logo height exactly */
 #logoImg {
-  /* Fixed box — all logo images render at identical dimensions regardless of
-     their native resolution or whitespace. object-fit:contain centres the
-     image inside the box without stretching. */
-  width:  clamp(320px, 60vw, 600px);
-  height: clamp(140px, 26vw, 240px);
-  max-width: 96vw;
+  /* Strict fixed pixel box — every image (light or dark) renders
+     at exactly the same dimensions. object-fit:contain handles
+     different aspect ratios cleanly. */
+  width: min(560px, 88vw);
+  height: min(200px, 22vw);
+  min-width: min(560px, 88vw);
+  min-height: min(200px, 22vw);
+  max-width: min(560px, 88vw);
+  max-height: min(200px, 22vw);
   object-fit: contain;
   object-position: center center;
   cursor: pointer;
@@ -3229,6 +3231,13 @@ html, body { overflow-x: hidden; }
     searchbar.classList.replace('searchbar--lg', 'searchbar--sm');
     logoEl.classList.add('logo--no-anim');
 
+    // Results page always shows classic text logo
+    logoEl.style.display = '';
+    logoEl.style.opacity = '1';
+    logoEl.style.transform = '';
+    var lImg = document.getElementById('logoImg');
+    if (lImg) lImg.style.display = 'none';
+
     window.scrollTo({ top: 0 });
     setTab(tab || 'all');
   }
@@ -3249,6 +3258,13 @@ html, body { overflow-x: hidden; }
 
     // Replay logo entrance animation
     logoEl.querySelectorAll('.logo__letter').forEach(replayAnim);
+
+    // Restore themed image if a theme is active
+    var lImg = document.getElementById('logoImg');
+    if (lImg && lImg.getAttribute('data-active') === '1') {
+      logoEl.style.display = 'none';
+      lImg.style.display = 'block';
+    }
   }
   // Expose so other IIFEs can use it
   window.__goHome = goHome;
@@ -3502,6 +3518,7 @@ html, body { overflow-x: hidden; }
         logoImg.style.opacity = '0';
         logoImg.style.transform = 'scale(0.92)';
         logoImg.style.display = 'block';
+        logoImg.setAttribute('data-active', '1');
         logo.style.display = 'none';
         // Fade in
         requestAnimationFrame(function() {
@@ -3512,7 +3529,7 @@ html, body { overflow-x: hidden; }
           });
         });
       } else {
-        if (logoImg) logoImg.style.display = 'none';
+        if (logoImg) { logoImg.style.display = 'none'; logoImg.setAttribute('data-active','0'); }
         logo.style.opacity = '0';
         logo.style.transform = 'scale(0.92)';
         logo.style.display = '';
