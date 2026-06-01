@@ -1828,6 +1828,10 @@ html, body { overflow-x: hidden; }
 .logo-theme-label { display: none !important; }
 .app--home .chrome__logo { position: relative; }
 
+/* Results view — ALWAYS show classic text logo, never themed image */
+.app--results .chrome__logo #logoImg { display: none !important; }
+.app--results .chrome__logo #logoEl  { display: inline-flex !important; opacity: 1 !important; transform: none !important; }
+
 
 /* Logo image theme animation */
 @keyframes logoImgIn {
@@ -3230,6 +3234,18 @@ html, body { overflow-x: hidden; }
 
     searchbar.classList.replace('searchbar--lg', 'searchbar--sm');
     logoEl.classList.add('logo--no-anim');
+    // Strip all theme classes so classic Google-colour letters always show in results
+    ['logo--doodle','logo--neon','logo--cursive','logo--cute3d','logo--themed'].forEach(function(c){
+      logoEl.classList.remove(c);
+    });
+    // Restore inline letter colours (overridden by some themes)
+    logoEl.querySelectorAll('.logo__letter').forEach(function(el) {
+      el.style.webkitTextStroke = '';
+      el.style.webkitTextFillColor = '';
+      el.style.textShadow = '';
+      el.style.fontFamily = 'Poppins,var(--f-display)';
+      el.style.fontWeight = '600';
+    });
 
     // Results page always shows classic text logo
     logoEl.style.display = '';
