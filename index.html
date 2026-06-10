@@ -17,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Bangers&family=Pacifico&family=Fredoka+One&family=Caveat:wght@700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
 
   <style>
 /* Himanshi Jain — Portfolio
@@ -75,335 +75,6 @@
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --dur:  350ms;
   --dur-fast: 200ms;
-}
-
-
-/* ─────────────────────────────────────────────
-   DARK MODE — all variables override via [data-theme="dark"]
-   ───────────────────────────────────────────── */
-[data-theme="dark"] {
-  --cream:       #0d0d0d;
-  --cream-2:     #1a1a2e;
-  --paper:       #16213e;
-  --ink:         #f0eee8;
-  --ink-2:       #c8c0b0;
-  --muted:       #8a8278;
-  --muted-2:     #5a5450;
-  --border:      #2a2a4a;
-  --border-2:    #3a3a5a;
-  --link:        #7eb8f7;
-  --link-hover:  #a8d4ff;
-  --visited:     #b39ddb;
-  --success-bg:  #0d2618;
-  --success-fg:  #5dba7d;
-  --pill-tools-bg:  #1a1f3a;
-  --pill-tools-fg:  #7eb8f7;
-  --pill-disc-bg:   #0d2618;
-  --pill-disc-fg:   #5dba7d;
-  --pill-soft-bg:   #2a1f0a;
-  --pill-soft-fg:   #e0b060;
-}
-
-[data-theme="dark"] body { background: #0d0d0d; }
-
-/* ── Buttons (Search / I'm Feeling Lucky) ─────── */
-[data-theme="dark"] .btn {
-  background: #1a1a2e;
-  color: #c8c0b0;
-  border: 1px solid #3a3a5a;
-}
-[data-theme="dark"] .btn:hover {
-  background: #252540;
-  border-color: #7eb8f7;
-  color: #f0eee8;
-  box-shadow: 0 0 16px -4px rgba(126,184,247,0.3);
-}
-
-/* ── Search bar ───────────────────────────────── */
-[data-theme="dark"] .searchbar {
-  background: #16213e;
-  border-color: #2a2a4a;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.4), 0 8px 28px -16px rgba(0,0,0,0.6);
-}
-[data-theme="dark"] .searchbar:hover,
-[data-theme="dark"] .searchbar:focus-within {
-  border-color: #7eb8f7;
-  box-shadow: 0 0 0 2px rgba(126,184,247,0.15), 0 8px 28px -16px rgba(0,0,0,0.6);
-}
-[data-theme="dark"] .searchbar__input { color: #f0eee8; }
-[data-theme="dark"] .searchbar__input::placeholder { color: #6a6870; }
-[data-theme="dark"] .searchbar__icon svg { stroke: #c8c0b0 !important; }
-[data-theme="dark"] .searchbar__icon--btn { color: #c8c0b0; }
-[data-theme="dark"] .searchbar__icon--btn svg,
-[data-theme="dark"] .searchbar__icon--btn svg path,
-[data-theme="dark"] .searchbar__icon--btn svg circle,
-[data-theme="dark"] .searchbar__icon--btn svg rect { 
-  stroke: #c8c0b0 !important;
-  fill: #c8c0b0 !important;
-}
-[data-theme="dark"] .searchbar__icon--btn:hover { color: #7eb8f7; background: #1e2040; }
-[data-theme="dark"] .searchbar__icon--btn:hover svg,
-[data-theme="dark"] .searchbar__icon--btn:hover svg path,
-[data-theme="dark"] .searchbar__icon--btn:hover svg circle,
-[data-theme="dark"] .searchbar__icon--btn:hover svg rect {
-  stroke: #7eb8f7 !important;
-  fill: #7eb8f7 !important;
-}
-
-/* ── Home footer ──────────────────────────────── */
-[data-theme="dark"] .home-footer {
-  background: #0d0d1a !important;
-  border-color: #2a2a4a !important;
-}
-[data-theme="dark"] .home-footer a:hover { color: #7eb8f7; }
-
-/* ── Download CV button ───────────────────────── */
-[data-theme="dark"] .cv-btn {
-  background: #1a1a2e !important;
-  color: #c8c0b0 !important;
-  border: 1px solid #3a3a5a;
-}
-[data-theme="dark"] .cv-btn:hover { background: #7eb8f7 !important; color: #0d0d0d !important; }
-
-/* ── Chrome header ────────────────────────────── */
-[data-theme="dark"] .app--results .chrome {
-  background: #0d0d0d;
-  border-bottom-color: #2a2a4a;
-}
-
-/* ── Tabs ─────────────────────────────────────── */
-[data-theme="dark"] .tab { color: #8a8278 !important; }
-[data-theme="dark"] .tab:hover { color: #f0eee8 !important; }
-[data-theme="dark"] .tab--active { color: #7eb8f7 !important; }
-[data-theme="dark"] .tab-ink { background: #7eb8f7; }
-
-/* ── Project cards ────────────────────────────── */
-[data-theme="dark"] .project {
-  background: #16213e;
-  border-color: #2a2a4a;
-}
-[data-theme="dark"] .project:hover {
-  border-color: #7eb8f7;
-  box-shadow: 0 0 24px -8px rgba(126,184,247,0.2);
-}
-[data-theme="dark"] .outcome {
-  background: #0d2618;
-  color: #5dba7d;
-}
-[data-theme="dark"] .tag {
-  background: #1a1a2e;
-  color: #8a8278;
-}
-[data-theme="dark"] .project__expand-inner { border-top-color: #2a2a4a; }
-[data-theme="dark"] .case-grid { border-top-color: #2a2a4a; }
-[data-theme="dark"] .case-grid h4 { color: #5a5450; }
-
-/* ── Knowledge Panel ──────────────────────────── */
-[data-theme="dark"] .kp {
-  background: #16213e;
-  border-color: #2a2a4a;
-}
-[data-theme="dark"] .kp__stat {
-  background: #1a1a2e;
-  border-color: #2a2a4a;
-}
-[data-theme="dark"] .kp__stat:hover { border-color: #7eb8f7; }
-[data-theme="dark"] .kp__social {
-  background: #1a1a2e;
-  border-color: #2a2a4a;
-}
-[data-theme="dark"] .kp__social:hover { border-color: #7eb8f7; }
-
-/* ── Resume entries ───────────────────────────── */
-[data-theme="dark"] .resume-entry { border-bottom-color: #2a2a4a; }
-[data-theme="dark"] .resume-entry:hover { background: #16213e; }
-[data-theme="dark"] .resume-entry::before { background: #7eb8f7; }
-
-/* ── About hero ───────────────────────────────── */
-[data-theme="dark"] .hero {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0d1a2e 100%);
-  border-color: #2a2a4a;
-}
-[data-theme="dark"] .hero__quote { border-left-color: #7eb8f7; }
-
-/* ── Facts grid ───────────────────────────────── */
-[data-theme="dark"] .fact { background: #16213e !important; }
-
-/* ── Contact form ─────────────────────────────── */
-[data-theme="dark"] .form-card {
-  background: #16213e;
-  border-color: #2a2a4a;
-}
-[data-theme="dark"] .input,
-[data-theme="dark"] .form-card textarea {
-  background: #1a1a2e;
-  border-color: #2a2a4a;
-  color: #f0eee8;
-}
-[data-theme="dark"] .input:focus,
-[data-theme="dark"] .form-card textarea:focus {
-  border-color: #7eb8f7;
-  background: #1e2040;
-}
-[data-theme="dark"] .send-btn {
-  background: #7eb8f7;
-  color: #0d0d0d;
-  border-color: transparent;
-}
-[data-theme="dark"] .send-btn:hover {
-  background: #a8d4ff;
-}
-
-/* ── Contact rows ─────────────────────────────── */
-[data-theme="dark"] .contact-row { border-bottom-color: #2a2a4a; }
-[data-theme="dark"] .contact-row__icon {
-  background: #1e2a4a !important;
-  box-shadow: 0 0 0 1px #3a4a6a;
-}
-[data-theme="dark"] .contact-row__icon svg { color: #f0eee8; }
-[data-theme="dark"] .contact-row__icon svg * {
-  stroke: #f0eee8 !important;
-}
-/* fill-based icons (LinkedIn) */
-[data-theme="dark"] .contact-row__icon svg[fill="currentColor"],
-[data-theme="dark"] .contact-row__icon svg[fill="currentColor"] path {
-  fill: #f0eee8 !important;
-  stroke: none !important;
-}
-[data-theme="dark"] .contact-row__value { color: #f0eee8; }
-[data-theme="dark"] .contact-row__label { color: #8a8890; }
-
-/* ── Section headings ─────────────────────────── */
-[data-theme="dark"] .section__h { border-bottom-color: #2a2a4a; }
-
-/* ── Searchbar icon buttons ───────────────────── */
-[data-theme="dark"] .searchbar__icon--btn { color: #8a8278; }
-[data-theme="dark"] .searchbar__icon--btn:hover {
-  background: #1a1a2e;
-  color: #7eb8f7;
-}
-
-/* ── Results meta text ────────────────────────── */
-[data-theme="dark"] .results-meta { color: #5a5450; }
-
-/* ── Pills ────────────────────────────────────── */
-[data-theme="dark"] .pill--tools { background: #1a1f3a; color: #7eb8f7; }
-[data-theme="dark"] .pill--disc  { background: #0d2618; color: #5dba7d; }
-[data-theme="dark"] .pill--soft  { background: #2a1f0a; color: #e0b060; }
-
-/* ── Dark toggle button position fix ─────────── */
-[data-theme="dark"] #darkToggle {
-  box-shadow: 0 2px 12px -2px rgba(126,184,247,0.2),
-              inset 0 1px 3px rgba(0,0,0,0.4);
-}
-
-/* Dark mode smooth transition on all elements */
-*, *::before, *::after {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-/* But keep animation-specific transitions unaffected */
-.logo__letter, .project, .searchbar, .btn, .tab, .pill,
-.kp__stat, .kp__social, .resume-entry, .lightbox-overlay,
-.lightbox-img, .lightbox-close { transition: unset; }
-.logo__letter { opacity: 0; transform: translateY(8px);
-  animation: letterIn 480ms var(--ease) forwards; }
-.logo--no-anim .logo__letter { opacity:1; transform:none; animation:none; }
-
-/* ── Dark/Light illustrated toggle ──────────── */
-#darkToggle {
-  position: fixed;
-  top: 18px;
-  right: 178px;
-  z-index: 50;
-  width: 64px;
-  height: 32px;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  outline: none;
-  overflow: hidden;
-  box-shadow: 0 2px 12px -2px rgba(0,0,0,0.25),
-              inset 0 1px 3px rgba(0,0,0,0.2);
-  transition: box-shadow 300ms ease !important;
-  /* DAY scene — sky gradient with rolling hills */
-  background:
-    /* hills */
-    radial-gradient(ellipse 60% 40% at 20% 110%, #4a9e5c 0%, transparent 60%),
-    radial-gradient(ellipse 50% 35% at 75% 115%, #3d8a4e 0%, transparent 55%),
-    /* sky */
-    linear-gradient(180deg, #87CEEB 0%, #b8e4f7 60%, #d4eef7 100%);
-}
-/* NIGHT scene when dark */
-[data-theme="dark"] #darkToggle {
-  background:
-    /* moon glow */
-    radial-gradient(circle 14px at 78% 38%, rgba(255,255,220,0.35) 0%, transparent 70%),
-    /* stars */
-    radial-gradient(circle 1.5px at 20% 25%, #fff 0%, transparent 100%),
-    radial-gradient(circle 1px at 40% 15%, #fff 0%, transparent 100%),
-    radial-gradient(circle 1.5px at 55% 30%, #fff 0%, transparent 100%),
-    radial-gradient(circle 1px at 15% 45%, #fff 0%, transparent 100%),
-    radial-gradient(circle 1px at 30% 55%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    /* night sky */
-    linear-gradient(180deg, #0b1026 0%, #1a2456 50%, #2d3a7a 100%);
-}
-
-/* knob — the sliding circle */
-#darkToggle::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  transition: transform 350ms cubic-bezier(0.4,0,0.2,1),
-              background 350ms ease,
-              box-shadow 350ms ease !important;
-  /* SUN knob */
-  background: radial-gradient(circle at 40% 38%, #fff7c0 0%, #FFD700 40%, #FFA500 100%);
-  box-shadow:
-    0 0 0 2px rgba(255,200,0,0.3),
-    0 0 12px 4px rgba(255,180,0,0.4),
-    0 2px 6px rgba(0,0,0,0.2);
-}
-/* MOON knob when dark */
-[data-theme="dark"] #darkToggle::before {
-  transform: translateX(32px);
-  background: radial-gradient(circle at 35% 35%, #fffff0 0%, #f0f0d0 50%, #ddd8a0 100%);
-  box-shadow:
-    0 0 0 2px rgba(255,255,200,0.2),
-    0 0 14px 6px rgba(200,200,100,0.25),
-    inset -3px -2px 0 rgba(180,170,100,0.3),
-    0 2px 6px rgba(0,0,0,0.4);
-}
-
-/* hover glow */
-#darkToggle:hover {
-  box-shadow: 0 2px 18px -2px rgba(0,0,0,0.3),
-              inset 0 1px 3px rgba(0,0,0,0.2) !important;
-}
-
-@media (max-width: 600px) {
-  #darkToggle {
-    top: auto;
-    bottom: 130px;
-    right: 14px;
-    width: 54px;
-    height: 28px;
-  }
-  #darkToggle::before {
-    width: 20px;
-    height: 20px;
-    top: 4px;
-    left: 4px;
-  }
-  [data-theme="dark"] #darkToggle::before {
-    transform: translateX(26px);
-  }
 }
 
 * { box-sizing: border-box; }
@@ -489,12 +160,6 @@ a { color: inherit; text-decoration: none; }
 .app--home .chrome__logo {
   font-size: clamp(64px, 12vw, 108px);
   transition: font-size var(--dur) var(--ease);
-  width: min(560px, 88vw);
-  height: min(200px, 22vw);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
 }
 .app--home .chrome__search {
   width: min(584px, 100%);
@@ -1282,8 +947,7 @@ textarea + button { margin-top: 10px; }
   background: var(--ink);
   color: var(--cream);
   border: 0;
-  padding: 0 16px;
-  height: 32px;
+  padding: 10px 16px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 500;
@@ -1584,305 +1248,11 @@ html, body { overflow-x: hidden; }
   opacity: 0.92;
 }
 
-
-/* ── Inline project links in dark mode ───────── */
-[data-theme="dark"] .project a[style*="1a0dab"],
-[data-theme="dark"] .project a[onclick] {
-  color: #7eb8f7 !important;
+/* Pinned deep portfolio card in dark mode */
+[data-theme="dark"] .project[data-slug="deepportfolio"] {
+  background: linear-gradient(135deg, #0d1a3a 0%, #16213e 100%) !important;
+  border-color: #7eb8f7 !important;
 }
-/* Fix ALL result titles, resume co names in dark */
-[data-theme="dark"] .result__title,
-[data-theme="dark"] .result__title[style],
-[data-theme="dark"] .kp__social-handle,
-[data-theme="dark"] .kp__website { color: #7eb8f7 !important; }
-[data-theme="dark"] .resume-entry__co { color: #7eb8f7 !important; }
-[data-theme="dark"] .project__title { color: #7eb8f7 !important; }
-[data-theme="dark"] .hero__role { color: #7eb8f7 !important; }
-[data-theme="dark"] .case-cta,
-[data-theme="dark"] a[style*="1a0dab"] { color: #7eb8f7 !important; }
-/* Footer links */
-[data-theme="dark"] .home-footer a { color: #8a8278; }
-[data-theme="dark"] .home-footer a:hover { color: #7eb8f7; }
-
-/* ═══════════════════════════════════════════════════════════
-   HIMANSHI DOODLE LOGO — 5 rotating theme variations
-   ═══════════════════════════════════════════════════════════ */
-
-.logo--themed .logo__letter {
-  transition: color 700ms ease, text-shadow 700ms ease,
-              -webkit-text-stroke 500ms ease, transform 500ms ease,
-              font-family 300ms ease, letter-spacing 300ms ease !important;
-}
-
-/* ── THEME 1: Classic — Google colours (default) ─────────── */
-/* Already set via inline styles, no extra CSS needed */
-
-/* ── THEME 2: B&W Doodle — hollow outline letters like image 1 ── */
-.logo--doodle .logo__letter {
-  font-family: 'Poppins', sans-serif !important;
-  font-weight: 800 !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-  -webkit-text-stroke: 2.5px #111111 !important;
-  background: none !important;
-  text-shadow: none !important;
-  letter-spacing: 0.01em !important;
-  opacity: 1 !important;
-}
-.logo--doodle .logo__letter[data-i="0"] { transform: rotate(-2deg) translateY(2px); }
-.logo--doodle .logo__letter[data-i="1"] { transform: rotate(2deg) translateY(-3px); }
-.logo--doodle .logo__letter[data-i="2"] { transform: rotate(-1.5deg); }
-.logo--doodle .logo__letter[data-i="3"] { transform: rotate(2.5deg) translateY(2px); }
-.logo--doodle .logo__letter[data-i="4"] { transform: rotate(-2deg) translateY(-2px); }
-.logo--doodle .logo__letter[data-i="5"] { transform: rotate(1.5deg); }
-.logo--doodle .logo__letter[data-i="6"] { transform: rotate(-2.5deg) translateY(1px); }
-.logo--doodle .logo__letter[data-i="7"] { transform: rotate(2deg) translateY(-2px); }
-
-/* Doodle field spacing */
-.chrome__logo.doodle-active {
-  padding-top: 60px !important;
-  padding-bottom: 20px !important;
-  overflow: visible !important;
-  margin-bottom: -16px;
-}
-.logo-doodle-icon {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0;
-  animation: doodleFloat 0.7s ease forwards;
-}
-@keyframes doodleFloat {
-  from { opacity: 0; transform: translateY(8px) scale(0.85); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* ── THEME 3: Neon Comic — rounded font, white stroke, colored neon glow ── */
-.logo--neon .logo__letter {
-  font-family: 'Fredoka One', cursive !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.04em !important;
-  -webkit-text-fill-color: unset !important;
-  background: none !important;
-  opacity: 1 !important;
-}
-.logo--neon .logo__letter[data-i="0"] {
-  color: #4285F4 !important;
-  -webkit-text-stroke: 2px white !important;
-  text-shadow: 0 0 12px #4285F4, 0 0 30px rgba(66,133,244,0.7), 0 0 60px rgba(66,133,244,0.4) !important;
-}
-.logo--neon .logo__letter[data-i="1"] {
-  color: #DB4537 !important;
-  -webkit-text-stroke: 2px white !important;
-  text-shadow: 0 0 12px #DB4537, 0 0 30px rgba(219,69,55,0.7), 0 0 60px rgba(219,69,55,0.4) !important;
-}
-.logo--neon .logo__letter[data-i="2"] {
-  color: #F4B400 !important;
-  -webkit-text-stroke: 2px white !important;
-  text-shadow: 0 0 12px #F4B400, 0 0 30px rgba(244,180,0,0.7), 0 0 60px rgba(244,180,0,0.4) !important;
-}
-.logo--neon .logo__letter[data-i="3"] {
-  color: #4285F4 !important;
-  -webkit-text-stroke: 2px white !important;
-  text-shadow: 0 0 12px #4285F4, 0 0 30px rgba(66,133,244,0.7), 0 0 60px rgba(66,133,244,0.4) !important;
-}
-.logo--neon .logo__letter[data-i="4"] {
-  color: #059D58 !important;
-  -webkit-text-stroke: 2px white !important;
-  text-shadow: 0 0 12px #059D58, 0 0 30px rgba(5,157,88,0.7), 0 0 60px rgba(5,157,88,0.4) !important;
-}
-.logo--neon .logo__letter[data-i="5"] {
-  color: #F4B400 !important;
-  -webkit-text-stroke: 2px white !important;
-  text-shadow: 0 0 12px #F4B400, 0 0 30px rgba(244,180,0,0.7), 0 0 60px rgba(244,180,0,0.4) !important;
-}
-.logo--neon .logo__letter[data-i="6"] {
-  color: #DB4537 !important;
-  -webkit-text-stroke: 2px white !important;
-  text-shadow: 0 0 12px #DB4537, 0 0 30px rgba(219,69,55,0.7), 0 0 60px rgba(219,69,55,0.4) !important;
-}
-.logo--neon .logo__letter[data-i="7"] {
-  color: #059D58 !important;
-  -webkit-text-stroke: 2px white !important;
-  text-shadow: 0 0 12px #059D58, 0 0 30px rgba(5,157,88,0.7), 0 0 60px rgba(5,157,88,0.4) !important;
-}
-
-/* ── THEME 4: Cursive Cute — Pacifico, rainbow pastel gradient, cute icons ── */
-.logo--cursive .logo__letter {
-  font-family: 'Pacifico', cursive !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.05em !important;
-  opacity: 1 !important;
-  -webkit-text-stroke: 0 !important;
-  background: none !important;
-}
-/* Rainbow pastel gradient across all letters */
-.logo--cursive .logo__letter[data-i="0"] { color: #a8c8f0 !important; text-shadow: 2px 3px 0 rgba(168,200,240,0.4) !important; }
-.logo--cursive .logo__letter[data-i="1"] { color: #f0a8b0 !important; text-shadow: 2px 3px 0 rgba(240,168,176,0.4) !important; }
-.logo--cursive .logo__letter[data-i="2"] { color: #f0c8a0 !important; text-shadow: 2px 3px 0 rgba(240,200,160,0.4) !important; }
-.logo--cursive .logo__letter[data-i="3"] { color: #c8e8c0 !important; text-shadow: 2px 3px 0 rgba(200,232,192,0.4) !important; }
-.logo--cursive .logo__letter[data-i="4"] { color: #a8e0d8 !important; text-shadow: 2px 3px 0 rgba(168,224,216,0.4) !important; }
-.logo--cursive .logo__letter[data-i="5"] { color: #d0c8f0 !important; text-shadow: 2px 3px 0 rgba(208,200,240,0.4) !important; }
-.logo--cursive .logo__letter[data-i="6"] { color: #f0b8d0 !important; text-shadow: 2px 3px 0 rgba(240,184,208,0.4) !important; }
-.logo--cursive .logo__letter[data-i="7"] { color: #f0a8c8 !important; text-shadow: 2px 3px 0 rgba(240,168,200,0.4) !important; }
-
-.logo-cute-icon {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0;
-  animation: cuteFloat 1.2s ease forwards;
-}
-@keyframes cuteFloat {
-  from { opacity: 0; transform: scale(0.5) rotate(-10deg); }
-  to   { opacity: 1; transform: scale(1) rotate(0deg); }
-}
-
-/* ── THEME 5: Cute 3D — Fredoka, Google colors, deep plastic 3D shadow ── */
-.logo--cute3d .logo__letter {
-  font-family: 'Fredoka One', cursive !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.02em !important;
-  -webkit-text-fill-color: unset !important;
-  -webkit-text-stroke: 0 !important;
-  background: none !important;
-  opacity: 1 !important;
-}
-.logo--cute3d .logo__letter[data-i="0"] {
-  color: #4285F4 !important;
-  text-shadow:
-    0 2px 0 #2a65d4,
-    0 4px 0 #1a50b8,
-    0 6px 0 #0e3d9a,
-    0 8px 12px rgba(66,133,244,0.35) !important;
-}
-.logo--cute3d .logo__letter[data-i="1"] {
-  color: #DB4537 !important;
-  text-shadow:
-    0 2px 0 #bb2a1e,
-    0 4px 0 #9e1c12,
-    0 6px 0 #840e08,
-    0 8px 12px rgba(219,69,55,0.35) !important;
-}
-.logo--cute3d .logo__letter[data-i="2"] {
-  color: #F4B400 !important;
-  text-shadow:
-    0 2px 0 #d49800,
-    0 4px 0 #b07e00,
-    0 6px 0 #8e6600,
-    0 8px 12px rgba(244,180,0,0.35) !important;
-}
-.logo--cute3d .logo__letter[data-i="3"] {
-  color: #4285F4 !important;
-  text-shadow:
-    0 2px 0 #2a65d4,
-    0 4px 0 #1a50b8,
-    0 6px 0 #0e3d9a,
-    0 8px 12px rgba(66,133,244,0.35) !important;
-}
-.logo--cute3d .logo__letter[data-i="4"] {
-  color: #059D58 !important;
-  text-shadow:
-    0 2px 0 #037a42,
-    0 4px 0 #025e32,
-    0 6px 0 #014824,
-    0 8px 12px rgba(5,157,88,0.35) !important;
-}
-.logo--cute3d .logo__letter[data-i="5"] {
-  color: #F4B400 !important;
-  text-shadow:
-    0 2px 0 #d49800,
-    0 4px 0 #b07e00,
-    0 6px 0 #8e6600,
-    0 8px 12px rgba(244,180,0,0.35) !important;
-}
-.logo--cute3d .logo__letter[data-i="6"] {
-  color: #DB4537 !important;
-  text-shadow:
-    0 2px 0 #bb2a1e,
-    0 4px 0 #9e1c12,
-    0 6px 0 #840e08,
-    0 8px 12px rgba(219,69,55,0.35) !important;
-}
-.logo--cute3d .logo__letter[data-i="7"] {
-  color: #059D58 !important;
-  text-shadow:
-    0 2px 0 #037a42,
-    0 4px 0 #025e32,
-    0 6px 0 #014824,
-    0 8px 12px rgba(5,157,88,0.35) !important;
-}
-/* Gentle wave bounce for cute3d */
-.logo--cute3d .logo__letter[data-i="0"] { animation: cuteWave 2s ease-in-out 0.0s infinite !important; }
-.logo--cute3d .logo__letter[data-i="1"] { animation: cuteWave 2s ease-in-out 0.12s infinite !important; }
-.logo--cute3d .logo__letter[data-i="2"] { animation: cuteWave 2s ease-in-out 0.24s infinite !important; }
-.logo--cute3d .logo__letter[data-i="3"] { animation: cuteWave 2s ease-in-out 0.36s infinite !important; }
-.logo--cute3d .logo__letter[data-i="4"] { animation: cuteWave 2s ease-in-out 0.48s infinite !important; }
-.logo--cute3d .logo__letter[data-i="5"] { animation: cuteWave 2s ease-in-out 0.60s infinite !important; }
-.logo--cute3d .logo__letter[data-i="6"] { animation: cuteWave 2s ease-in-out 0.72s infinite !important; }
-.logo--cute3d .logo__letter[data-i="7"] { animation: cuteWave 2s ease-in-out 0.84s infinite !important; }
-@keyframes cuteWave {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
-}
-
-/* Theme label hidden */
-.logo-theme-label { display: none !important; }
-.app--home .chrome__logo { position: relative; }
-
-/* Results view — ALWAYS show classic text logo, never themed image */
-.app--results .chrome__logo #logoImg { display: none !important; }
-.app--results .chrome__logo #logoEl  { display: inline-flex !important; opacity: 1 !important; transform: none !important; }
-
-
-/* Logo image theme animation */
-@keyframes logoImgIn {
-  from { opacity: 0; transform: scale(0.94); }
-  to   { opacity: 1; transform: scale(1); }
-}
-/* Image size matches the text logo height exactly */
-#logoImg {
-  /* Strict fixed pixel box — every image (light or dark) renders
-     at exactly the same dimensions. object-fit:contain handles
-     different aspect ratios cleanly. */
-  width: min(560px, 88vw);
-  height: min(200px, 22vw);
-  min-width: min(560px, 88vw);
-  min-height: min(200px, 22vw);
-  max-width: min(560px, 88vw);
-  max-height: min(200px, 22vw);
-  object-fit: contain;
-  object-position: center center;
-  cursor: pointer;
-  display: none;
-  transition: opacity 400ms ease, transform 400ms cubic-bezier(0.4,0,0.2,1);
-}
-/* Crossfade out old logo, in new image */
-.logo--leaving { opacity: 0; transform: scale(0.92); transition: opacity 300ms ease, transform 300ms ease; }
-.logo--entering { animation: logoImgIn 400ms cubic-bezier(0.4,0,0.2,1) both; }
-
-/* ── Mobile tap tooltip ─────────────────────────────────── */
-.logo-tap-hint {
-  position: fixed;
-  bottom: 40%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  background: rgba(30,30,30,0.88);
-  color: #fff;
-  font-size: 13px;
-  font-family: var(--f-sans);
-  padding: 8px 16px;
-  border-radius: 999px;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 300ms ease, transform 300ms ease;
-  z-index: 9999;
-  backdrop-filter: blur(4px);
-}
-.logo-tap-hint.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
   </style>
 </head>
 <body>
@@ -1893,7 +1263,6 @@ html, body { overflow-x: hidden; }
   <img class="lightbox-img" id="lightboxImg" src="" alt="" />
 </div>
 
-<div class="logo-tap-hint" id="tapHint">Double-tap logo to change style 🎨</div>
 <div class="app app--home" id="app">
 
   <!-- ── Fixed Download CV Button ─────────────────────── -->
@@ -1909,19 +1278,13 @@ html, body { overflow-x: hidden; }
     <span class="cv-text">Download CV</span>
   </a>
 
-
-  <!-- ── Dark/Light illustrated toggle ─────────── -->
-  <button id="darkToggle" aria-label="Switch to dark mode" title="Toggle dark/light mode"></button>
-
   <!-- ── Chrome: logo + search + tabs ─────────────────── -->
   <div class="chrome">
 
     <!-- Logo -->
-    <div class="chrome__logo" style="font-family:Poppins;font-weight:600" title="Double-click to change style 🎨">
+    <div class="chrome__logo" style="font-family:Poppins;font-weight:600">
       <span class="logo" id="logoEl" role="button" tabindex="0"
-            title="Double-click to change style 🎨"
-            aria-label="Himanshi — back to home"
-            style="cursor:pointer">
+            aria-label="Himanshi — back to home">
         <span class="logo__letter" data-i="0" style="color:#4285F4;font-family:Poppins,var(--f-display);font-weight:600">H</span>
         <span class="logo__letter" data-i="1" style="color:#DB4537;font-family:Poppins,var(--f-display);font-weight:600">i</span>
         <span class="logo__letter" data-i="2" style="color:#F4B400;font-family:Poppins,var(--f-display);font-weight:600">m</span>
@@ -1931,12 +1294,6 @@ html, body { overflow-x: hidden; }
         <span class="logo__letter" data-i="6" style="color:#DB4537;font-family:Poppins,var(--f-display);font-weight:600">h</span>
         <span class="logo__letter" data-i="7" style="color:#059D58;font-family:Poppins,var(--f-display);font-weight:600">i</span>
       </span>
-
-      <span class="logo-theme-label" id="themeLabel" style="display:none"></span>
-      <!-- Theme image logo — swaps in for themes 2-5 -->
-      <img id="logoImg" src="" alt="Himanshi" style="display:none"
-           title="Double-tap to change style 🎨"
-           role="button" tabindex="0" aria-label="Himanshi — back to home" />
     </div>
 
     <!-- Search bar -->
@@ -1967,8 +1324,10 @@ html, body { overflow-x: hidden; }
 
     <!-- Home action buttons (hidden in results view) -->
     <div class="home-actions" id="homeActions">
-      <button class="btn" id="btnSearch">Search</button>
-      <button class="btn" id="btnLucky">I'm Feeling Lucky</button>
+      <button class="btn" id="btnSearch"
+              style="background-color:rgb(237,237,237);border-style:none">Search</button>
+      <button class="btn" id="btnLucky"
+              style="background-color:rgb(237,237,237);border-style:none">I'm Feeling Lucky</button>
     </div>
 
     <!-- Tabs (hidden in home view) -->
@@ -2081,7 +1440,7 @@ html, body { overflow-x: hidden; }
                style="font-weight:500;font-family:Poppins;color:rgb(26,13,171)">
               Projects · Case Studies
             </a>
-            <p class="result__desc">17 case studies across real-world redesigns and concept projects — <b>Agile Ventures</b>, <b>Dancing Numbers</b>, <b>Sleepsia</b>, <b>Sleepsia Lounge</b>, <b>Rajasthan Tourism</b>, <b>Pawly</b>, <b>Wallet Z</b>, <b>DreamTeam</b> and more. Each showcases design thinking, research process, and problem-solving.</p>
+            <p class="result__desc">18 case studies across real-world redesigns and concept projects — <b>Agile Ventures</b>, <b>Dancing Numbers</b>, <b>Sleepsia</b>, <b>Sleepsia Lounge</b>, <b>Rajasthan Tourism</b>, <b>Pawly</b>, <b>Wallet Z</b>, <b>DreamTeam</b> and more. Each showcases design thinking, research process, and problem-solving.</p>
           </article>
 
           <article class="result">
@@ -2323,8 +1682,65 @@ html, body { overflow-x: hidden; }
       <!-- ━━ TAB: PROJECTS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
       <div id="tab-projects" style="display:none">
         <div class="page-fade">
-          <div class="results-meta results-meta--inline">17 case studies · most recent first</div>
+          <div class="results-meta results-meta--inline">18 case studies · most recent first</div>
           <div class="stagger">
+
+            <!-- Project card: Deep Portfolio — Case Studies Site ← PINNED FIRST -->
+            <article class="project" data-slug="deepportfolio" style="border: 2px solid #1a0dab; background: linear-gradient(135deg, #f0f4ff 0%, #fafafa 100%);">
+              <div class="project__head">
+                <div>
+                  <div class="project__crumb">projects › deep-portfolio</div>
+                  <h3 class="project__title" style="color:rgb(26,13,171);font-family:Poppins">
+                    Deep Portfolio — 5 Documented Case Studies
+                  </h3>
+                </div>
+                <span class="project__chev" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+              <a href="https://hjcasestudy.netlify.app/" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" style="display:inline-block;font-size:12px;font-weight:600;color:#1a0dab;margin:2px 0 10px;text-decoration:underline;text-underline-offset:3px;letter-spacing:0.01em">↗ hjcasestudy.netlify.app</a>
+              <p class="project__desc">A dedicated case study site featuring 5 deep-dive projects — each documented with the actual brand colours, typography, and spacing system of the product designed for. Covers design systems, usability research, zero-to-one product design, accessibility audits, and motion design.</p>
+              <div class="project__meta">
+                <span class="outcome">5 case studies · Brand-accurate documentation</span>
+                <span class="tag">Design System</span>
+                <span class="tag">UX Research</span>
+                <span class="tag">Accessibility</span>
+                <span class="tag">Motion Design</span>
+              </div>
+              <div class="project__expand">
+                <div class="project__expand-inner">
+                  <div class="case-grid">
+                    <div>
+                      <h4>What's inside</h4>
+                      <p>
+                        <b>01</b> Dancing Numbers — Design System &amp; Component Library<br>
+                        <b>02</b> Sleepsia — UX Audit + 5-User Usability Study<br>
+                        <b>03</b> HandoffNote — Zero-to-One Self-Initiated Concept<br>
+                        <b>04</b> GOPT Healthcare — WCAG 2.2 Accessibility Redesign<br>
+                        <b>05</b> Dancing Numbers — Motion &amp; Onboarding Interactions
+                      </p>
+                    </div>
+                    <div>
+                      <h4>Approach</h4>
+                      <p>Every case study documents the real brand tokens — colour palette, typography scale, spacing system — then shows the design problem, research findings, before/after decisions, and measured outcomes. No filler, no lorem ipsum.</p>
+                    </div>
+                    <div>
+                      <h4>Key outcomes</h4>
+                      <p>
+                        20% reduction in handoff friction (DN System) ·
+                        5/5 task completion post-redesign (Sleepsia) ·
+                        7 WCAG failures fixed (GOPT) ·
+                        25% drop-off reduction (DN Motion) ·
+                        68% fewer rage-clicks on OAuth flow
+                      </p>
+                    </div>
+                  </div>
+                  <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
+                    <b style="color:var(--ink)">Why this exists.</b> Most portfolios show finished screens. This site shows the thinking — the brand audit before the first frame, the research that changed the design direction, the tokens that made the system scalable. Built to demonstrate depth, not just output.
+                  </div>
+                </div>
+              </div>
+            </article>
 
             <!-- Project card: Agile Ventures -->
             <article class="project" data-slug="agileventures">
@@ -2361,15 +1777,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>The existing site didn't reflect the scale or credibility of the organisation. Navigation was unclear, the visual language was outdated, and the multiple business verticals had no coherent story tying them together.</p></div>
                     <div><h4>Process</h4><p>Audited the existing site and 5 competitor corporate sites. Ran stakeholder interviews to map business goals per vertical. Restructured the IA to lead with clarity — one clear homepage story, then individual vertical pages. Designed a clean, professional visual system in Figma and built an interactive prototype for sign-off.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://agileventures.net/" target="_blank" rel="noreferrer"
-                     style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View live website — agileventures.net
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
-                         stroke="var(--link)" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
-                    </svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A modern, cohesive website that communicates Agile Ventures' breadth and professionalism at a glance. Simplified navigation reduced the steps to any key page from 4+ clicks to 2. The refreshed visual identity gave the brand a consistent, trustworthy feel across all verticals.
                   </div>
@@ -2413,15 +1820,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>The existing site had deep, overlapping navigation across Services, Products, and Resources — making it hard for a first-time visitor to understand what Dancing Numbers actually does and why they should try it. The free trial CTA was buried, and the page structure didn't prioritise the core product value proposition.</p></div>
                     <div><h4>Process</h4><p>Audited the existing site across all key user journeys (accountant, small business owner, e-commerce). Ran a heuristic evaluation and mapped drop-off points. Rebuilt the IA around three audience segments with a clear homepage story: what it does → who it's for → why it works → start free trial. Designed new page layouts in Figma with a stronger visual hierarchy, cleaner typography, and prominent CTAs.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://www.dancingnumbers.com/" target="_blank" rel="noreferrer"
-                     style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View live website — dancingnumbers.com
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
-                         stroke="var(--link)" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
-                    </svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A cleaner, faster-to-scan website that communicates the core value — bulk import, export, and delete for QuickBooks — within the first screen. Navigation simplified from 5 deeply nested menus to 3 clear sections. Free trial and demo CTAs elevated throughout, reducing friction for the primary conversion goal. The redesign supports a product trusted by <b>50,000+ users</b> and over <b>10 million transactions processed</b>.
                   </div>
@@ -2465,15 +1863,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>The existing site had a cluttered homepage with competing banners, a navigation with 7+ top-level categories and deeply nested sub-menus, and product pages that buried key trust signals (reviews, certifications, pain-relief benefits) below the fold. On mobile — where most Indian D2C traffic lands — the experience broke down significantly.</p></div>
                     <div><h4>Process</h4><p>Audited the existing site across homepage, category, and product pages. Mapped the customer's mental model: they arrive with a specific pain point (neck pain, back pain, pregnancy) not a product name. Rebuilt navigation around health concerns rather than product types. Redesigned the homepage to lead with the core promise and social proof. Rebuilt product pages to surface reviews, certifications, and the right-pillow-for-you content above the fold. Designed with a mobile-first approach throughout — Sleepsia's audience primarily shops on phones.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://www.sleepsia.in/" target="_blank" rel="noreferrer"
-                     style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View live website — sleepsia.in
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
-                         stroke="var(--link)" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
-                    </svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A cleaner, faster-to-scan storefront built around the buyer's need — not the product catalogue. Navigation reduced from 7 top-level items to 3 clear entry points (Shop by Category, Shop by Concern, Deals). Product pages now surface trust signals — reviews, doctor recommendations, materials — within the first screen on mobile. The redesign supports a brand available on 14+ platforms and trusted by thousands of sleepers across India.
                   </div>
@@ -2517,15 +1906,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>Sleepsia Lounge was a new sub-brand launching under the Sleepsia umbrella. Unlike the parent brand (which sells on pain relief and function), Lounge needed an entirely different emotional register — soft, aspirational, lifestyle-led. The site had to feel like a boutique, not a marketplace listing. Most customers would arrive via Instagram on their phones, so the mobile experience was the primary canvas.</p></div>
                     <div><h4>Process</h4><p>Started with a mood and brand positioning exercise — defining the visual world of the brand before touching a single screen. Studied how premium Indian D2C fashion brands (Clovia, Zivame, Libas) build trust on mobile. Designed a homepage built around lifestyle imagery, the brand story ("More Than Nightwear — It's a Mood"), and a clear shop-by-style flow. Product pages led with fabric feel and styling context, with size and material details surfaced clearly. Cart and checkout optimised for one-thumb mobile use.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://sleepsialounge.com/" target="_blank" rel="noreferrer"
-                     style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View live website — sleepsialounge.com
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
-                         stroke="var(--link)" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
-                    </svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A fully launched Shopify storefront with a distinct visual identity separate from the Sleepsia parent brand. The site communicates the brand's personality — "Breathe. Lounge. Repeat." — within the first scroll. Available across Blinkit, Flipkart, Amazon, Myntra, and Meesho, with the owned site designed to convert loyal customers who want to shop direct. Customer reviews highlight the brand feeling "so well made" and "a vibe" — language that maps directly to the design intent.
                   </div>
@@ -2561,10 +1941,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>The site needed to convey deep technical credibility to quality managers and procurement heads at manufacturing companies, while remaining approachable enough to convert a first-time visitor into a phone call or contact form submission.</p></div>
                     <div><h4>Process</h4><p>Mapped the buyer journey for a B2B consulting audience. Structured the homepage around trust signals — client logos (Ford, Magna, Samsung), credentials, and a direct "call us" CTA. Designed service pages with clear scope, FAQs, and transparent pricing approach. Kept the visual design professional and restrained to match the sector's expectations.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://quality-engineering.ca/" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View live website — quality-engineering.ca
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--link)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A credibility-first website that clearly communicates the firm's expertise across PPAP, APQP, PFMEA, and ISO consulting — with a homepage designed to get prospects to pick up the phone within the first scroll.
                   </div>
@@ -2600,10 +1976,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>Describing pain to a doctor is inherently imprecise with text or dropdowns. The app needed an interface that allowed patients of varying digital literacy to pinpoint exactly where it hurts, how badly, and submit that clearly — without any clinical jargon.</p></div>
                     <div><h4>Process</h4><p>Designed the patient-side flow around the 3D anatomy model as the primary input — tap to select, slider for severity, then confirm and submit. Kept form fields to a minimum. Designed the doctor-side review dashboard to surface patient submissions clearly, with quick-reply and video-link fields. Validated the flow with a clickable Figma prototype.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://gopt.d-crm.in/" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View live app — gopt.d-crm.in
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--link)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A clean, empathetic pain-reporting experience that removes the friction of describing symptoms in words — making healthcare more accessible and giving doctors richer, more precise patient data to work with.
                   </div>
@@ -2639,10 +2011,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>The existing site listed services without a clear hierarchy, making it hard for a small business owner to quickly understand whether AccountsPro could solve their specific problem — whether that was a QuickBooks error, payroll setup, or a full data migration.</p></div>
                     <div><h4>Process</h4><p>Restructured the IA around service categories (QuickBooks, Sage, Error Resolution, Migration) with clear problem-first language on each page. Designed a homepage that leads with the value promise, surfaces the 24/7 support offer, and directs users to call or chat immediately. Kept the visual design clean and professional to match the accounting sector's tone.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://www.accountspro.co" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View live website — accountspro.co
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--link)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A clear, conversion-focused website with a strong service hierarchy — QuickBooks and Sage solutions surfaced prominently, error resolution pages designed to rank and convert, and a 24/7 support promise visible throughout.
                   </div>
@@ -2678,10 +2046,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>Medicine e-commerce requires a higher level of trust and clarity than typical retail apps — users need to feel confident they're ordering the right product, from a legitimate source, with a simple repeat-purchase flow.</p></div>
                     <div><h4>Process</h4><p>Started with low-fidelity wireframes to map the core flows — browse, search, product detail, referral, and checkout. Iterated to high-fidelity with a clean, medical-adjacent visual language. The referral flow was designed to be frictionless — share in one tap, reward shown immediately on return.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://www.behance.net/gallery/218903175/A1-Wireframe" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View on Behance
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--link)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A complete wireframe-to-hi-fi case study demonstrating mobile UX process from structure through to polished interface design — published on Behance.
                   </div>
@@ -2717,10 +2081,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>Government tourism sites often suffer from a mismatch between the richness of the destination and the flatness of the digital experience. Rajasthan — palaces, deserts, festivals, heritage hotels — deserved a UI that matched its visual drama while remaining easy to navigate for a first-time visitor planning a trip.</p></div>
                     <div><h4>Process</h4><p>Drew from Rajasthan's visual identity — terracotta, gold, indigo — to build a design language that felt immersive and editorial. Mapped the tourist journey from discovery through itinerary building and booking. Designed for both the cultural explorer and the quick weekend tripper, with content filtering by region, theme, and budget.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://www.behance.net/gallery/199678435/Rajasthan-Tourism-UIUX" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View on Behance
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--link)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A rich, visually cohesive tourism concept that demonstrates how cultural destinations can create digital experiences as memorable as the destination itself — published on Behance.
                   </div>
@@ -2756,10 +2116,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>Most wallet apps feel like scaled-down banking interfaces — dense, anxiety-inducing, and full of features the user didn't ask for. Wallet Z needed to feel lightweight, trustworthy, and genuinely effortless for everyday transactions.</p></div>
                     <div><h4>Process</h4><p>Designed around the three daily jobs: send, receive, and check balance. Surfaced recent contacts front and centre. Used a dark, high-contrast visual language that felt premium without feeling intimidating. Kept navigation shallow — everything reachable in two taps or fewer.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://www.behance.net/gallery/202619141/Wallet-Z" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View on Behance
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--link)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A polished fintech UI concept that puts daily transactions first — demonstrating how mobile money experiences can feel as simple and human as sending a message.
                   </div>
@@ -2795,10 +2151,6 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>Pet care apps tend to be either too clinical (vet record trackers) or too social (pet Instagram). Pawly needed to sit in between — functional enough to be genuinely helpful for a busy pet owner, warm enough to feel like a companion rather than a tool.</p></div>
                     <div><h4>Process</h4><p>Designed around four core pet-parent jobs: care (feeding/medication reminders), health (vet visits, vaccination records), community (local pet owners, lost & found), and shop (food, accessories). Used a warm colour palette and illustrative UI elements to keep the tone playful without sacrificing clarity.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://www.behance.net/gallery/209771525/Pawly-Pet-App" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View on Behance
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--link)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A delightful, full-featured pet care app concept — showing how utility and warmth can coexist in a mobile product designed for people who treat their pets like family.
                   </div>
@@ -2834,141 +2186,12 @@ html, body { overflow-x: hidden; }
                     <div><h4>Problem</h4><p>Real estate apps overwhelm users with listings before they've had a chance to define what they actually want. DreamTeam needed a flow that helped buyers narrow down with confidence — and then connect with the right agent at exactly the right moment.</p></div>
                     <div><h4>Process</h4><p>Started with a preference quiz to surface relevant listings — fewer, better-matched results rather than hundreds of scroll-worthy cards. Designed property detail pages around what buyers actually want to know first: price, commute, neighbourhood feel, and honest photos. Agent profiles built for trust — reviews, specialisation, response time visible upfront.</p></div>
                   </div>
-                                    <a class="case-cta" href="https://www.behance.net/gallery/211644127/DreamTeam-Real-Estate-UI" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--link);font-size:14px;font-weight:500;text-decoration:none">
-                    View on Behance
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--link)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-                  </a>
 <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px">
                     <b style="color:var(--ink)">Outcome.</b> A modern, human-centred real estate UI that puts the buyer's confidence first — showing how property discovery can feel intentional rather than overwhelming.
                   </div>
 
                 </div>
               </div>
-            </article>
-
-            <!-- Project card: Social Media Dashboard -->
-            <article class="project" data-slug="socialmedia">
-              <div class="project__head">
-                <div>
-                  <div class="project__crumb">projects › social-media-dashboard</div>
-                  <h3 class="project__title" style="color:rgb(26,13,171);font-family:Poppins">Social Media Dashboard — UI Design</h3>
-                </div>
-                <span class="project__chev" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
-              </div>
-              <a href="https://www.figma.com/proto/WrITDjjYp2cuMGmsB6CgeV/Social-media?page-id=0%3A1&type=design&node-id=103-573&viewport=122%2C82%2C0.13&t=nAUf2tTBbBeQiwa4-1&scaling=contain&starting-point-node-id=103%3A573" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" style="display:inline-block;font-size:12px;font-weight:600;color:#1a0dab;margin:2px 0 10px;text-decoration:underline;text-underline-offset:3px">↗ View Figma Prototype</a>
-              <p class="project__desc">A social media management dashboard UI — designed for creators and teams who manage multiple platforms. Clean analytics views, post scheduling, and audience insights all in one place, built and prototyped in Figma.</p>
-              <div class="project__meta">
-                <span class="outcome">Multi-platform dashboard · Creator-focused UX</span>
-                <span class="tag">Dashboard</span><span class="tag">Social Media</span><span class="tag">UI Design</span><span class="tag">Figma</span>
-              </div>
-              <div class="project__expand"><div class="project__expand-inner">
-                <div class="case-grid">
-                  <div><h4>Role</h4><p>UI/UX Designer — concept, visual design, interaction design, Figma prototype.</p></div>
-                  <div><h4>Problem</h4><p>Social media managers juggle multiple platforms with no single view showing what's working. The goal was a unified dashboard that reduces context-switching and surfaces the most actionable data first.</p></div>
-                  <div><h4>Process</h4><p>Designed around three core jobs: schedule content, track performance, respond to audience. Card-based layout for quick scanning, sidebar for platform switching, colour-coded metrics for instant status reads.</p></div>
-                </div>
-                <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px"><b style="color:var(--ink)">Outcome.</b> A clean, creator-friendly dashboard that consolidates analytics, scheduling, and audience data — reducing app-switching and making performance data readable at a glance.</div>
-              </div></div>
-            </article>
-
-            <!-- Project card: UI/UX Roadmap -->
-            <article class="project" data-slug="uiroadmap">
-              <div class="project__head">
-                <div>
-                  <div class="project__crumb">projects › uiux-roadmap</div>
-                  <h3 class="project__title" style="color:rgb(26,13,171);font-family:Poppins">UI/UX Roadmap — Educational Design Resource</h3>
-                </div>
-                <span class="project__chev" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
-              </div>
-              <a href="https://www.behance.net/gallery/212183201/UIUX-Roadmap" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" style="display:inline-block;font-size:12px;font-weight:600;color:#1a0dab;margin:2px 0 10px;text-decoration:underline;text-underline-offset:3px">↗ Behance</a>
-              <p class="project__desc">A visually designed UI/UX learning roadmap — a structured guide to the full UX design journey, from foundational skills through research, wireframing, prototyping, and shipping real products. Published on Behance.</p>
-              <div class="project__meta">
-                <span class="outcome">Structured learning path · Visual design</span>
-                <span class="tag">Educational</span><span class="tag">Infographic</span><span class="tag">UX</span><span class="tag">Behance</span>
-              </div>
-              <div class="project__expand"><div class="project__expand-inner">
-                <div class="case-grid">
-                  <div><h4>Role</h4><p>Designer — information architecture, visual hierarchy, layout design, Figma.</p></div>
-                  <div><h4>Problem</h4><p>New designers are overwhelmed by conflicting advice. No single visually clear resource mapped the full journey in a logical, approachable way.</p></div>
-                  <div><h4>Process</h4><p>Mapped the full UX path — grouping skills into phases (Foundation → Research → Design → Handoff → Growth). Visual layout readable top-to-bottom as a journey with milestones and tool recommendations.</p></div>
-                </div>
-                <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px"><b style="color:var(--ink)">Outcome.</b> A comprehensive roadmap giving aspiring UX designers a clear, structured path from zero to job-ready — published on Behance as a community resource.</div>
-              </div></div>
-            </article>
-
-            <!-- Project card: Restaurant UI -->
-            <article class="project" data-slug="restaurant">
-              <div class="project__head">
-                <div>
-                  <div class="project__crumb">projects › restaurant-ui</div>
-                  <h3 class="project__title" style="color:rgb(26,13,171);font-family:Poppins">Restaurant — Food &amp; Dining UI Concept</h3>
-                </div>
-                <span class="project__chev" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
-              </div>
-              <a href="https://www.behance.net/gallery/187163937/Restaurant" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" style="display:inline-block;font-size:12px;font-weight:600;color:#1a0dab;margin:2px 0 10px;text-decoration:underline;text-underline-offset:3px">↗ Behance</a>
-              <p class="project__desc">A UI concept for a restaurant discovery and dining app — rich food photography, intuitive menu browsing, table reservations, and a seamless order flow. Designed to make choosing where to eat feel as enjoyable as the meal itself.</p>
-              <div class="project__meta">
-                <span class="outcome">Appetite-first visual design · Smooth reservation flow</span>
-                <span class="tag">Food &amp; Dining</span><span class="tag">Mobile App</span><span class="tag">UI Concept</span><span class="tag">Figma</span>
-              </div>
-              <div class="project__expand"><div class="project__expand-inner">
-                <div class="case-grid">
-                  <div><h4>Role</h4><p>UI/UX Designer — visual design, user flows, hi-fi screens, Figma prototype.</p></div>
-                  <div><h4>Problem</h4><p>Restaurant apps feel functional but flat — they show information without creating appetite or anticipation. The challenge was designing an experience that makes food look irresistible and booking effortless.</p></div>
-                  <div><h4>Process</h4><p>Led with photography and typography — large hero images, warm colour palette, generous whitespace. Menu pages around cuisine mood. Reservation flow in three taps. Order flow optimised for clarity.</p></div>
-                </div>
-                <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px"><b style="color:var(--ink)">Outcome.</b> A visually immersive restaurant app concept where the design makes you hungry before you've chosen a dish.</div>
-              </div></div>
-            </article>
-
-            <!-- Project card: Engagement Invitation -->
-            <article class="project" data-slug="engagement">
-              <div class="project__head">
-                <div>
-                  <div class="project__crumb">projects › engagement-invitation</div>
-                  <h3 class="project__title" style="color:rgb(26,13,171);font-family:Poppins">Engagement Invitation — Digital Design</h3>
-                </div>
-                <span class="project__chev" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
-              </div>
-              <a href="https://www.behance.net/gallery/193298235/Engagement-Invitation" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" style="display:inline-block;font-size:12px;font-weight:600;color:#1a0dab;margin:2px 0 10px;text-decoration:underline;text-underline-offset:3px">↗ Behance</a>
-              <p class="project__desc">A beautifully crafted digital engagement invitation — blending traditional Indian aesthetics with modern layout sensibilities. Designed to be shared digitally while retaining the warmth and elegance of a printed card.</p>
-              <div class="project__meta">
-                <span class="outcome">Elegant cultural design · Print-to-digital translation</span>
-                <span class="tag">Print Design</span><span class="tag">Digital Invite</span><span class="tag">Indian Aesthetics</span><span class="tag">Figma</span>
-              </div>
-              <div class="project__expand"><div class="project__expand-inner">
-                <div class="case-grid">
-                  <div><h4>Role</h4><p>Graphic &amp; UI Designer — concept, visual design, typography, layout, digital format optimisation.</p></div>
-                  <div><h4>Problem</h4><p>Digital invitations look either too generic or too busy. The challenge was something truly personalised, culturally rooted, and beautiful enough to share on WhatsApp without losing elegance at small sizes.</p></div>
-                  <div><h4>Process</h4><p>Drew from traditional Indian motifs — paisleys, floral borders, gold accents — reinterpreted in a clean modern grid. Jewel-tone palette (deep rose, gold, ivory). Typography layered between English and Hindi scripts.</p></div>
-                </div>
-                <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px"><b style="color:var(--ink)">Outcome.</b> A handcrafted-feeling digital invitation — balancing cultural richness with modern restraint, beautiful at any size from WhatsApp preview to printed A4.</div>
-              </div></div>
-            </article>
-
-            <!-- Project card: Cancer Blog -->
-            <article class="project" data-slug="cancerblog">
-              <div class="project__head">
-                <div>
-                  <div class="project__crumb">projects › cancer-blog</div>
-                  <h3 class="project__title" style="color:rgb(26,13,171);font-family:Poppins">Cancer Blog — Awareness &amp; Support Website</h3>
-                </div>
-                <span class="project__chev" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
-              </div>
-              <a href="https://cancerblog-hj.vercel.app/" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" style="display:inline-block;font-size:12px;font-weight:600;color:#1a0dab;margin:2px 0 10px;text-decoration:underline;text-underline-offset:3px">↗ cancerblog-hj.vercel.app</a>
-              <p class="project__desc">Designed and built a cancer awareness and support website — covering types, treatments, survivor stories, and a gallery of cancer warriors. A compassionate, accessible web experience built to inform and connect people affected by cancer. Live on Vercel.</p>
-              <div class="project__meta">
-                <span class="outcome">Compassionate UX · Awareness + community</span>
-                <span class="tag">Healthcare</span><span class="tag">Web Design</span><span class="tag">HTML/CSS</span><span class="tag">Live Site</span>
-              </div>
-              <div class="project__expand"><div class="project__expand-inner">
-                <div class="case-grid">
-                  <div><h4>Role</h4><p>Designer &amp; Developer — UI design, content architecture, HTML/CSS build, Vercel deployment.</p></div>
-                  <div><h4>Problem</h4><p>Cancer information online is either clinically cold or emotionally overwhelming. This site needed to be medically informative while feeling warm, human, and supportive.</p></div>
-                  <div><h4>Process</h4><p>Structured around the patient journey: what is cancer → types → treatment → survivor stories → community. High readability — large text, calm palette, generous spacing. "Gallery of Warriors" celebrates survivors. Built and deployed with HTML, CSS, and Vercel.</p></div>
-                </div>
-                <div style="font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:14px"><b style="color:var(--ink)">Outcome.</b> A live, deployed awareness website covering 8 cancer types, treatments, and real survivor stories — one of Himanshi's earliest full-stack design-to-deployment projects.</div>
-              </div></div>
             </article>
 
           </div>
@@ -3202,12 +2425,12 @@ html, body { overflow-x: hidden; }
 
   const TABS     = ['all', 'about', 'resume', 'projects', 'contact'];
   const KP_TABS  = ['all', 'about'];
-  const SLUGS    = ['agileventures', 'dancingnumbers', 'sleepsia', 'sleepsialounge', 'qualityengineering', 'gopt', 'accountspro', 'a1wireframe', 'rajasthantourism', 'walletz', 'pawly', 'dreamteam', 'socialmedia', 'uiroadmap', 'restaurant', 'engagement', 'cancerblog'];
+  const SLUGS    = ['deepportfolio', 'agileventures', 'dancingnumbers', 'sleepsia', 'sleepsialounge', 'qualityengineering', 'gopt', 'accountspro', 'a1wireframe', 'rajasthantourism', 'walletz', 'pawly', 'dreamteam'];
 
   // Meta text shown above KP on mobile
   const TAB_META = {
     all:      'About 4,230 results (0.42 seconds)',
-    projects: '17 case studies · most recent first'
+    projects: '18 case studies · most recent first'
   };
 
   const globalMeta = document.getElementById('globalMeta');
@@ -3234,25 +2457,6 @@ html, body { overflow-x: hidden; }
 
     searchbar.classList.replace('searchbar--lg', 'searchbar--sm');
     logoEl.classList.add('logo--no-anim');
-    // Strip all theme classes so classic Google-colour letters always show in results
-    ['logo--doodle','logo--neon','logo--cursive','logo--cute3d','logo--themed'].forEach(function(c){
-      logoEl.classList.remove(c);
-    });
-    // Restore inline letter colours (overridden by some themes)
-    logoEl.querySelectorAll('.logo__letter').forEach(function(el) {
-      el.style.webkitTextStroke = '';
-      el.style.webkitTextFillColor = '';
-      el.style.textShadow = '';
-      el.style.fontFamily = 'Poppins,var(--f-display)';
-      el.style.fontWeight = '600';
-    });
-
-    // Results page always shows classic text logo
-    logoEl.style.display = '';
-    logoEl.style.opacity = '1';
-    logoEl.style.transform = '';
-    var lImg = document.getElementById('logoImg');
-    if (lImg) lImg.style.display = 'none';
 
     window.scrollTo({ top: 0 });
     setTab(tab || 'all');
@@ -3274,16 +2478,7 @@ html, body { overflow-x: hidden; }
 
     // Replay logo entrance animation
     logoEl.querySelectorAll('.logo__letter').forEach(replayAnim);
-
-    // Restore themed image if a theme is active
-    var lImg = document.getElementById('logoImg');
-    if (lImg && lImg.getAttribute('data-active') === '1') {
-      logoEl.style.display = 'none';
-      lImg.style.display = 'block';
-    }
   }
-  // Expose so other IIFEs can use it
-  window.__goHome = goHome;
 
   // ── setTab ───────────────────────────────────────────────────
   function setTab(tab) {
@@ -3428,264 +2623,6 @@ html, body { overflow-x: hidden; }
   // Home page stays visible — user must click Search or press Enter to navigate
 
 })();
-
-// HIMANSHI DOODLE LOGO — rotating theme variations
-(function () {
-  var logo  = document.getElementById('logoEl');
-  var label = document.getElementById('themeLabel');
-  if (!logo) return;
-
-  var THEMES = [
-    { cls: '',              img: null,                       icons: [] },
-    { cls: 'logo--doodle',  img: 'assets/logo-doodle.png', imgDark: 'assets/logo-doodle-dark.png',  icons: [
-        // ROW 1 — top row, far above
-        { top: '-110px', left: '-10px', delay: 0,   svg: '<svg width="30" height="34" viewBox="0 0 30 34" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2L3 26L9 20L13 30L16 29L12 19L21 19Z"/></svg>' },
-        { top: '-100px', left: '12%',   delay: 60,  svg: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round"><path d="M8 1v14M1 8h14"/></svg>' },
-        { top: '-115px', left: '28%',   delay: 40,  svg: '<svg width="52" height="34" viewBox="0 0 52 34" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="48" height="30" rx="7"/><text x="26" y="22" text-anchor="middle" font-size="13" font-weight="700" font-family="Poppins,sans-serif" fill="#111" stroke="none">UX</text></svg>' },
-        { top: '-90px',  left: '46%',   delay: 100, svg: '<svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" stroke="#111" stroke-width="1.5" fill="none"/></svg>' },
-        { top: '-112px', left: '57%',   delay: 70,  svg: '<svg width="32" height="36" viewBox="0 0 32 36" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="10" r="7"/><path d="M2 34a14 14 0 0 1 28 0"/></svg>' },
-        { top: '-96px',  left: '80%',   delay: 130, svg: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round"><path d="M7 1v12M1 7h12"/></svg>' },
-        { top: '-56px',  left: '2%',    delay: 90,  svg: '<svg width="46" height="40" viewBox="0 0 46 40" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="42" height="36" rx="1" stroke-width="1.2" stroke-dasharray="4 3"/><rect x="0" y="0" width="5" height="5" rx="1" stroke-width="1.2" fill="white"/><rect x="41" y="0" width="5" height="5" rx="1" stroke-width="1.2" fill="white"/><rect x="0" y="35" width="5" height="5" rx="1" stroke-width="1.2" fill="white"/><rect x="41" y="35" width="5" height="5" rx="1" stroke-width="1.2" fill="white"/><text x="23" y="27" text-anchor="middle" font-size="20" font-family="Georgia,serif" fill="#111" stroke="none">T</text></svg>' },
-        { top: '-38px',  left: '22%',   delay: 110, svg: '<svg width="44" height="24" viewBox="0 0 44 24" fill="none"><path d="M2 20C10 4 34 4 42 20" stroke="#111" stroke-width="1.3" stroke-dasharray="4 3" stroke-linecap="round"/></svg>' },
-        { top: '-58px',  left: '44%',   delay: 50,  svg: '<svg width="36" height="38" viewBox="0 0 36 38" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 34L6 24L14 6L30 6L34 20Z"/><circle cx="18" cy="20" r="4"/><line x1="30" y1="6" x2="36" y2="1"/><rect x="33" y="0" width="3" height="3" rx="0.5" stroke-width="1.2"/></svg>' },
-        { top: '-52px',  left: '68%',   delay: 80,  svg: '<svg width="42" height="36" viewBox="0 0 42 36" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18L40 2L26 34L18 22Z"/><path d="M18 22L40 2"/><path d="M4 30C8 26 12 22 18 22" stroke-dasharray="3 2" stroke-width="1.2"/></svg>' },
-        { top: '-60px',  left: '88%',   delay: 140, svg: '<svg width="26" height="42" viewBox="0 0 26 42" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="22" height="38" rx="4"/><line x1="9" y1="6" x2="17" y2="6"/><rect x="5" y="10" width="16" height="10" rx="1" stroke-width="1.2"/><line x1="5" y1="24" x2="21" y2="24"/><line x1="5" y1="28" x2="17" y2="28"/><circle cx="13" cy="36" r="2"/></svg>' },
-    ]},
-    { cls: 'logo--neon',    img: 'assets/logo-neon.png', imgDark: 'assets/logo-neon-dark.png', icons: [] },
-    { cls: 'logo--cursive', img: 'assets/logo-cursive.png', imgDark: 'assets/logo-cursive-dark.png', icons: [
-        { symbol: '🩷', top: '-52px', left: '-2%',  delay: 0   },
-        { symbol: '✦',  top: '-36px', left: '12%',  delay: 80  },
-        { symbol: '⭐', top: '-54px', left: '28%',  delay: 50  },
-        { symbol: '✨', top: '-40px', left: '44%',  delay: 120 },
-        { symbol: '💫', top: '-56px', left: '58%',  delay: 60  },
-        { symbol: '🌸', top: '-38px', left: '74%',  delay: 100 },
-        { symbol: '🩷', top: '-50px', left: '90%',  delay: 30  },
-    ]},
-    { cls: 'logo--cute3d',  img: 'assets/logo-cute3d.png', imgDark: 'assets/logo-cute3d-dark.png', icons: [] },
-  ];
-
-  var ALL_CLASSES = THEMES.map(function(t){ return t.cls; }).filter(Boolean);
-  var current = 0;
-  var iconEls = [];
-
-  function clearIcons() {
-    iconEls.forEach(function(el){ if (el.parentNode) el.parentNode.removeChild(el); });
-    iconEls = [];
-  }
-
-  function spawnIcons(icons, cls) {
-    var wrap = logo.parentNode;
-    wrap.style.position = 'relative';
-    icons.forEach(function(ic, i) {
-      var el = document.createElement('span');
-      el.className = cls;
-      el.style.cssText = 'position:absolute;top:' + ic.top + ';left:' + ic.left +
-        ';pointer-events:none;opacity:0;z-index:10;' +
-        'animation:' + (cls === 'logo-doodle-icon' ? 'doodleFloat' : 'cuteFloat') +
-        ' 0.7s ease ' + (ic.delay || i * 80) + 'ms forwards';
-      // SVG icon or emoji
-      if (ic.svg) {
-        el.innerHTML = ic.svg;
-      } else if (ic.symbol) {
-        el.style.fontSize = '14px';
-        el.textContent = ic.symbol;
-      }
-      wrap.appendChild(el);
-      iconEls.push(el);
-    });
-  }
-
-  var logoImg = document.getElementById('logoImg');
-
-  // Click image logo → go home
-  if (logoImg) {
-    logoImg.addEventListener('click', function() { window.__goHome && window.__goHome(); });
-    logoImg.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') { window.__goHome && window.__goHome(); }
-    });
-  }
-
-  function applyTheme(idx) {
-    clearIcons();
-    var theme = THEMES[idx];
-
-    // Fade out whatever is currently showing
-    var fadeOut = (logoImg && logoImg.style.display !== 'none') ? logoImg : logo;
-    fadeOut.style.transition = 'opacity 280ms ease, transform 280ms ease';
-    fadeOut.style.opacity = '0';
-    fadeOut.style.transform = 'scale(0.92)';
-
-    setTimeout(function() {
-      // Reset fade-out element
-      fadeOut.style.display = 'none';
-      fadeOut.style.opacity = '';
-      fadeOut.style.transform = '';
-      fadeOut.style.transition = '';
-
-      // Apply new theme classes
-      ALL_CLASSES.forEach(function(c){ logo.classList.remove(c); });
-      logo.classList.add('logo--themed');
-      if (theme.cls) logo.classList.add(theme.cls);
-
-      // Show the right element
-      if (theme.img && logoImg) {
-        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      logoImg.src = (isDark && theme.imgDark) ? theme.imgDark : theme.img;
-        logoImg.style.opacity = '0';
-        logoImg.style.transform = 'scale(0.92)';
-        logoImg.style.display = 'block';
-        logoImg.setAttribute('data-active', '1');
-        logo.style.display = 'none';
-        // Fade in
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() {
-            logoImg.style.transition = 'opacity 380ms ease, transform 380ms cubic-bezier(0.4,0,0.2,1)';
-            logoImg.style.opacity = '1';
-            logoImg.style.transform = 'scale(1)';
-          });
-        });
-      } else {
-        if (logoImg) { logoImg.style.display = 'none'; logoImg.setAttribute('data-active','0'); }
-        logo.style.opacity = '0';
-        logo.style.transform = 'scale(0.92)';
-        logo.style.display = '';
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() {
-            logo.style.transition = 'opacity 380ms ease, transform 380ms cubic-bezier(0.4,0,0.2,1)';
-            logo.style.opacity = '1';
-            logo.style.transform = 'scale(1)';
-            setTimeout(function(){ logo.style.transition = ''; }, 400);
-          });
-        });
-      }
-
-      // Doodle spacing
-      var wrap = logo.parentNode;
-      if (theme.cls === 'logo--doodle' && !theme.img) {
-        wrap.classList.add('doodle-active');
-      } else {
-        wrap.classList.remove('doodle-active');
-      }
-
-      // Spawn icons only for non-image themes
-      if (!theme.img && theme.icons && theme.icons.length) {
-        var iconClass = (theme.cls === 'logo--doodle') ? 'logo-doodle-icon' : 'logo-cute-icon';
-        spawnIcons(theme.icons, iconClass);
-      }
-
-      current = idx;
-    }, 300);
-  }
-
-  applyTheme(0);
-
-  // Rotate every 5 minutes
-  setInterval(function() {
-    applyTheme((current + 1) % THEMES.length);
-  }, 5 * 60 * 1000);
-
-  // Next theme trigger function
-  function nextTheme(e) {
-    if (document.getElementById('app').classList.contains('app--home')) {
-      if (e && e.stopPropagation) e.stopPropagation();
-      applyTheme((current + 1) % THEMES.length);
-    }
-  }
-
-  // Desktop: double-click on logo or wrapper
-  var logoWrap = logo.parentNode;
-  logo.addEventListener('dblclick', nextTheme);
-  if (logoImg) logoImg.addEventListener('dblclick', nextTheme);
-  if (logoWrap) logoWrap.addEventListener('dblclick', nextTheme);
-
-  // Mobile: double-tap (two taps within 300ms)
-  var lastTap = 0;
-  function onTap(e) {
-    if (!document.getElementById('app').classList.contains('app--home')) return;
-    var now = Date.now();
-    if (now - lastTap < 300) {
-      e.preventDefault();
-      nextTheme(e);
-    }
-    lastTap = now;
-  }
-  if (logoWrap) logoWrap.addEventListener('touchend', onTap, { passive: false });
-  if (logoImg)  logoImg.addEventListener('touchend', onTap,  { passive: false });
-
-  // Show mobile tooltip on first visit
-  var tapHint = document.getElementById('tapHint');
-  var hintShown = localStorage.getItem('hint-shown');
-  if (tapHint && !hintShown) {
-    setTimeout(function() {
-      tapHint.classList.add('show');
-      setTimeout(function() {
-        tapHint.classList.remove('show');
-        localStorage.setItem('hint-shown', '1');
-      }, 3000);
-    }, 1500);
-  }
-  // Also show hint on first tap
-  if (logoWrap) {
-    logoWrap.addEventListener('touchstart', function() {
-      if (tapHint && !localStorage.getItem('hint-shown')) {
-        tapHint.classList.add('show');
-        setTimeout(function() {
-          tapHint.classList.remove('show');
-          localStorage.setItem('hint-shown', '1');
-        }, 2500);
-      }
-    }, { passive: true, once: true });
-  }
-})();
-(function () {
-  const btn  = document.getElementById('darkToggle');
-  const root = document.documentElement;
-
-  // Always default to light mode; only use saved preference if user explicitly chose dark
-  // Always open in light mode by default
-  // Only use saved preference if user has explicitly toggled during THIS session
-  const saved = sessionStorage.getItem('theme-session') || 'light';
-  applyTheme(saved);
-
-  btn.addEventListener('click', function () {
-    const current = root.getAttribute('data-theme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    sessionStorage.setItem('theme-session', next);
-    applyTheme(next);
-  });
-
-  function applyTheme(theme) {
-    root.setAttribute('data-theme', theme);
-    btn.setAttribute('aria-label',
-      theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
-    );
-    // Swap logo image for dark/light variant if image logo is showing
-    var lImg = document.getElementById('logoImg');
-    if (lImg && lImg.style.display !== 'none' && lImg.src) {
-      // Find which theme is active by checking src
-      var isDark = theme === 'dark';
-      var LOGO_MAP = {
-        'logo-doodle': isDark ? 'assets/logo-doodle-dark.png' : 'assets/logo-doodle.png',
-        'logo-neon':   isDark ? 'assets/logo-neon-dark.png'   : 'assets/logo-neon.png',
-        'logo-cursive':isDark ? 'assets/logo-cursive-dark.png': 'assets/logo-cursive.png',
-        'logo-cute3d': isDark ? 'assets/logo-cute3d-dark.png' : 'assets/logo-cute3d.png',
-      };
-      for (var key in LOGO_MAP) {
-        if (lImg.src.indexOf(key) !== -1) {
-          lImg.style.opacity = '0';
-          var newSrc = LOGO_MAP[key];
-          setTimeout(function(src){ return function(){
-            lImg.src = src;
-            lImg.style.transition = 'opacity 400ms ease';
-            lImg.style.opacity = '1';
-          }; }(newSrc), 200);
-          break;
-        }
-      }
-    }
-  }
-})();
-
 </script>
 
 </body>
