@@ -1301,15 +1301,15 @@ html, body { overflow-x: hidden; }
 }
 
 /* Pinned deep portfolio card in dark mode */
-[data-theme="dark"] .project[data-slug="deepportfolio"] {
-  background: linear-gradient(135deg, #0d1a3a 0%, #16213e 100%) !important;
-  border-color: #7eb8f7 !important;
-}
+
 /* Pinned deep portfolio card in dark mode */
-[data-theme="dark"] .project[data-slug="deepportfolio"] {
-  background: linear-gradient(135deg, #0d1a3a 0%, #16213e 100%) !important;
-  border-color: #7eb8f7 !important;
+
+
+@media (max-width: 600px) {
 }
+
+
+
   </style>
 </head>
 <body>
@@ -1320,7 +1320,6 @@ html, body { overflow-x: hidden; }
   <img class="lightbox-img" id="lightboxImg" src="" alt="" />
 </div>
 
-<div class="logo-tap-hint" id="tapHint">Double-tap logo to change style 🎨</div>
 <div class="app app--home" id="app">
 
   <!-- ── Fixed Download CV Button ─────────────────────── -->
@@ -1337,16 +1336,12 @@ html, body { overflow-x: hidden; }
     <span class="cv-text">Download CV</span>
   </a>
 
-  <!-- ── Dark/Light illustrated toggle -->
-  <button id="darkToggle" aria-label="Switch to dark mode" title="Toggle dark/light mode"></button>
-
   <!-- ── Chrome: logo + search + tabs ─────────────────── -->
   <div class="chrome">
 
     <!-- Logo -->
-    <div class="chrome__logo" style="font-family:Poppins;font-weight:600" title="Double-click to change style 🎨">
+    <div class="chrome__logo" style="font-family:Poppins;font-weight:600">
       <span class="logo" id="logoEl" role="button" tabindex="0"
-            title="Double-click to change style 🎨"
             aria-label="Himanshi — back to home"
             style="cursor:pointer">
         <span class="logo__letter" data-i="0" style="color:#4285F4;font-family:Poppins,var(--f-display);font-weight:600">H</span>
@@ -1358,11 +1353,7 @@ html, body { overflow-x: hidden; }
         <span class="logo__letter" data-i="6" style="color:#DB4537;font-family:Poppins,var(--f-display);font-weight:600">h</span>
         <span class="logo__letter" data-i="7" style="color:#059D58;font-family:Poppins,var(--f-display);font-weight:600">i</span>
       </span>
-      <span class="logo-theme-label" id="themeLabel" style="display:none"></span>
-      <img id="logoImg" src="" alt="Himanshi" style="display:none"
-           title="Double-tap to change style 🎨"
-           role="button" tabindex="0" aria-label="Himanshi — back to home" />
-    </div>
+      </div>
 
     <!-- Search bar -->
     <div class="chrome__search">
@@ -2741,167 +2732,7 @@ html, body { overflow-x: hidden; }
 
 })();
 
-// HIMANSHI DOODLE LOGO — rotating theme variations
-(function () {
-  var logo  = document.getElementById('logoEl');
-  var label = document.getElementById('themeLabel');
-  if (!logo) return;
 
-  var THEMES = [
-    { cls: '',              img: null, icons: [] },
-    { cls: 'logo--doodle',  img: 'assets/logo-doodle.png', imgDark: 'assets/logo-doodle-dark.png', icons: [] },
-    { cls: 'logo--neon',    img: 'assets/logo-neon.png',   imgDark: 'assets/logo-neon-dark.png',   icons: [] },
-    { cls: 'logo--cursive', img: 'assets/logo-cursive.png',imgDark: 'assets/logo-cursive-dark.png',icons: [] },
-    { cls: 'logo--cute3d',  img: 'assets/logo-cute3d.png', imgDark: 'assets/logo-cute3d-dark.png', icons: [] },
-  ];
-
-  var ALL_CLASSES = THEMES.map(function(t){ return t.cls; }).filter(Boolean);
-  var current = 0;
-  var logoImg = document.getElementById('logoImg');
-
-  if (logoImg) {
-    logoImg.addEventListener('click', function() { window.__goHome && window.__goHome(); });
-    logoImg.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') { window.__goHome && window.__goHome(); }
-    });
-  }
-
-  function applyTheme(idx) {
-    var theme = THEMES[idx];
-    var fadeOut = (logoImg && logoImg.style.display !== 'none') ? logoImg : logo;
-    fadeOut.style.transition = 'opacity 280ms ease, transform 280ms ease';
-    fadeOut.style.opacity = '0';
-    fadeOut.style.transform = 'scale(0.92)';
-
-    setTimeout(function() {
-      fadeOut.style.display = 'none';
-      fadeOut.style.opacity = '';
-      fadeOut.style.transform = '';
-      fadeOut.style.transition = '';
-
-      ALL_CLASSES.forEach(function(c){ logo.classList.remove(c); });
-      logo.classList.add('logo--themed');
-      if (theme.cls) logo.classList.add(theme.cls);
-
-      if (theme.img && logoImg) {
-        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        logoImg.src = (isDark && theme.imgDark) ? theme.imgDark : theme.img;
-        logoImg.style.opacity = '0';
-        logoImg.style.transform = 'scale(0.92)';
-        logoImg.style.display = 'block';
-        logoImg.setAttribute('data-active', '1');
-        logo.style.display = 'none';
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() {
-            logoImg.style.transition = 'opacity 380ms ease, transform 380ms cubic-bezier(0.4,0,0.2,1)';
-            logoImg.style.opacity = '1';
-            logoImg.style.transform = 'scale(1)';
-          });
-        });
-      } else {
-        if (logoImg) { logoImg.style.display = 'none'; logoImg.setAttribute('data-active','0'); }
-        logo.style.opacity = '0';
-        logo.style.transform = 'scale(0.92)';
-        logo.style.display = '';
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() {
-            logo.style.transition = 'opacity 380ms ease, transform 380ms cubic-bezier(0.4,0,0.2,1)';
-            logo.style.opacity = '1';
-            logo.style.transform = 'scale(1)';
-            setTimeout(function(){ logo.style.transition = ''; }, 400);
-          });
-        });
-      }
-      current = idx;
-    }, 300);
-  }
-
-  applyTheme(0);
-
-  setInterval(function() {
-    applyTheme((current + 1) % THEMES.length);
-  }, 5 * 60 * 1000);
-
-  function nextTheme(e) {
-    if (document.getElementById('app').classList.contains('app--home')) {
-      if (e && e.stopPropagation) e.stopPropagation();
-      applyTheme((current + 1) % THEMES.length);
-    }
-  }
-
-  var logoWrap = logo.parentNode;
-  logo.addEventListener('dblclick', nextTheme);
-  if (logoImg) logoImg.addEventListener('dblclick', nextTheme);
-  if (logoWrap) logoWrap.addEventListener('dblclick', nextTheme);
-
-  var lastTap = 0;
-  function onTap(e) {
-    if (!document.getElementById('app').classList.contains('app--home')) return;
-    var now = Date.now();
-    if (now - lastTap < 300) { e.preventDefault(); nextTheme(e); }
-    lastTap = now;
-  }
-  if (logoWrap) logoWrap.addEventListener('touchend', onTap, { passive: false });
-  if (logoImg)  logoImg.addEventListener('touchend', onTap,  { passive: false });
-
-  // Mobile tooltip on first visit
-  var tapHint = document.getElementById('tapHint');
-  if (tapHint && !localStorage.getItem('hint-shown')) {
-    setTimeout(function() {
-      tapHint.classList.add('show');
-      setTimeout(function() {
-        tapHint.classList.remove('show');
-        localStorage.setItem('hint-shown', '1');
-      }, 3000);
-    }, 1500);
-  }
-})();
-
-// Dark / Light mode toggle
-(function () {
-  const btn  = document.getElementById('darkToggle');
-  const root = document.documentElement;
-  if (!btn) return;
-
-  const saved = sessionStorage.getItem('theme-session') || 'light';
-  applyTheme(saved);
-
-  btn.addEventListener('click', function () {
-    const current = root.getAttribute('data-theme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    sessionStorage.setItem('theme-session', next);
-    applyTheme(next);
-  });
-
-  function applyTheme(theme) {
-    root.setAttribute('data-theme', theme);
-    btn.setAttribute('aria-label',
-      theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
-    );
-    var lImg = document.getElementById('logoImg');
-    if (lImg && lImg.style.display !== 'none' && lImg.src) {
-      var isDark = theme === 'dark';
-      var LOGO_MAP = {
-        'logo-doodle':  isDark ? 'assets/logo-doodle-dark.png'  : 'assets/logo-doodle.png',
-        'logo-neon':    isDark ? 'assets/logo-neon-dark.png'    : 'assets/logo-neon.png',
-        'logo-cursive': isDark ? 'assets/logo-cursive-dark.png' : 'assets/logo-cursive.png',
-        'logo-cute3d':  isDark ? 'assets/logo-cute3d-dark.png'  : 'assets/logo-cute3d.png',
-      };
-      for (var key in LOGO_MAP) {
-        if (lImg.src.indexOf(key) !== -1) {
-          lImg.style.opacity = '0';
-          var newSrc = LOGO_MAP[key];
-          setTimeout(function(src){ return function(){
-            lImg.src = src;
-            lImg.style.transition = 'opacity 400ms ease';
-            lImg.style.opacity = '1';
-          }; }(newSrc), 200);
-          break;
-        }
-      }
-    }
-  }
-})();
 </script>
 
 </body>
