@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Himanshi Jain Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Courier+Prime&family=Inter:wght@400;500;600&family=Nothing+You+Could+Do&family=Plus+Jakarta+Sans:wght@700;800&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE warm, personal designer portfolio: playful, but the work leads
+   IDEA a designer's desk of floating UI pieces; her old Google-style site lends four friendly colours
+   PICTURE a coloured panel of floating UI cards (metric, components, search) from her real work
+   COLOUR warm paper ground with a dot grid, near-black ink; blue, yellow, coral, mint, pink, lilac card fields
+   TYPE Plus Jakarta Sans 800 headlines, Inter text, Caveat for the handwritten greeting
+   LAYOUT laptop: intro left, UI panel right, then a 3-column project grid; phone: one column, panel after the intro */
+:root{color-scheme:light;--bg:#fcf8f3;--ink:#0f1a38;--mute:#4b5468;--card:#ffffff;--line:#ece4d4;--blue:#b0e0e6;--yel:#ffe18f;--red:#ffcbbf;--grn:#c3ecd1;--pink:#f9c9dc;--lav:#dfd7ff;--acc:#b0e0e6;--dot:#e3dac8}
+:root,:root[data-theme=light],:root[data-theme=dark]{color-scheme:light}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+html{background:#fcf8f3}
+body{margin:0;background:#fcf8f3;color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+img,svg{max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
+.dots{background-image:radial-gradient(var(--dot) 1.4px,transparent 1.8px);background-size:28px 28px}
+h1,h2,h3{font-family:Sora,Inter,sans-serif;letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance}
+h1{font-size:clamp(34px,5vw,56px);font-weight:800}
+h2{font-size:clamp(28px,3.6vw,42px);font-weight:800}
+h3{font-size:clamp(22px,2.2vw,28px);font-weight:700}
+p{margin:0}
+.mute{color:var(--mute)}
+.hand{font-family:Caveat,cursive;font-size:clamp(26px,3vw,36px);line-height:1.2}
+.hl{background:linear-gradient(transparent 55%,var(--yel) 55%);padding:0 4px}
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px)}
+nav .wrap{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;min-height:96px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{width:50px;height:50px;object-fit:contain;display:block}
+.links{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.links a{text-decoration:none;padding:10px 20px;border-radius:999px;font-weight:500;font-size:17px;color:var(--mute);transition:background .2s,color .2s}
+.links a:hover{color:var(--ink)}
+.links a.on{background:var(--ink);color:var(--bg)}
+nav .talk{min-height:52px;padding:0 24px 0 26px;font-size:17px;gap:22px;box-shadow:0 8px 22px -10px rgba(15,26,56,.55)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:999px;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:600;border:0;font-size:15px;white-space:nowrap;cursor:pointer;font-family:inherit}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+/* hero */
+.hero{padding:clamp(56px,9vw,120px) 0 clamp(48px,6vw,80px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);column-gap:clamp(28px,4vw,64px);align-items:center}
+.hero .script{grid-column:1/-1}
+.script{margin:0 0 26px;line-height:1}
+.crayon{position:relative;white-space:nowrap;padding:0 .12em}
+.crayon::before{content:"";position:absolute;inset:.1em -.12em -.02em;z-index:-1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50' preserveAspectRatio='none'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.96 0 0 0 0 0.68 0 0 0 0 0.8 0 0 0 -1.4 1.25'/%3E%3CfeComposite in2='SourceGraphic' operator='in'/%3E%3C/filter%3E%3Cpath d='M4 12 Q60 2 120 8 T196 10 L194 42 Q120 48 60 44 T6 40Z' fill='%23000' filter='url(%23f)'/%3E%3C/svg%3E") center/100% 100% no-repeat;opacity:.9}
+.script .at{white-space:nowrap}
+.script img{display:block;width:min(100%,800px);height:auto}
+.hero .hl1{font-family:Sora,sans-serif;font-weight:700;font-size:clamp(30px,3.3vw,46px);letter-spacing:-.045em;line-height:1.15}
+.hero .lead{font-size:clamp(17px,1.5vw,20px);line-height:1.65;max-width:62ch;margin:24px 0 36px;color:var(--mute)}
+.hero .go{min-height:56px;padding:0 26px;font-size:18px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.buddy{display:flex;flex-direction:column;align-items:center;text-align:center}
+.buddy .desk{width:min(400px,100%);height:auto;display:block;transform-origin:50% 90%;transition:transform .18s}
+.say{min-height:2.6em;font-family:"Nothing You Could Do",cursive;font-size:20px;line-height:1.3;color:var(--ink);margin:4px 0 18px;max-width:20ch}
+.wbtn{min-height:52px;min-width:min(260px,100%);border-radius:999px;border:1.5px solid color-mix(in srgb,var(--ink) 35%,transparent);background:transparent;color:var(--ink);font:500 17px Inter,sans-serif;cursor:pointer;transition:background .2s}
+.wbtn:hover{background:var(--card)}
+.wbtn:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.cap{margin-top:16px;color:var(--mute);font-size:16px;max-width:26ch}
+.blink .desk{transform:rotate(-3deg) scale(1.03)}
+.panel{position:relative;background:var(--blue);border-radius:32px;min-height:440px;overflow:hidden}
+.fl{position:absolute;background:var(--card);border-radius:18px;padding:16px 18px;box-shadow:0 10px 30px -14px rgba(20,22,40,.35);font-size:14px}
+.f1{left:7%;top:9%;width:58%}
+.f2{right:6%;top:40%;width:52%}
+.f3{left:9%;bottom:9%;width:62%}
+.spark{display:flex;align-items:flex-end;gap:6px;height:70px;margin:10px 0 6px}
+.spark i{flex:1;background:var(--acc);border-radius:5px 5px 2px 2px;opacity:.35}
+.spark i:nth-last-child(-n+2){opacity:1}
+.big{font:800 30px/1 "Plus Jakarta Sans",sans-serif}
+.srch{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--mute)}
+.srch b{width:14px;height:14px;border:2px solid var(--mute);border-radius:50%;flex:none}
+.g{font:800 22px/1 "Plus Jakarta Sans",sans-serif;margin-bottom:10px}
+.g span:nth-child(1){color:#b0e0e6}.g span:nth-child(2){color:#ea4335}.g span:nth-child(3){color:#f4b400}.g span:nth-child(4){color:#34a853}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(32px,4vw,48px)}
+.stat{border-top:2px solid var(--ink);padding-top:12px}
+.stat b{display:block;font:800 clamp(28px,3vw,38px)/1 "Plus Jakarta Sans",sans-serif}
+.stat span{font-size:14px;color:var(--mute)}
+/* shared mini UI */
+.ui{background:var(--card);border-radius:14px;padding:14px;box-shadow:0 10px 28px -16px rgba(20,22,40,.45);font-size:13px;line-height:1.35;width:78%}
+.ui.ph{width:52%;border-radius:20px}
+.ui .h{font:700 15px/1.2 "Plus Jakarta Sans",sans-serif;margin:8px 0 10px}
+.ui .b{display:inline-block;background:var(--ink);color:var(--bg);border-radius:999px;padding:6px 12px;font-weight:600;font-size:12px}
+.ui .b.o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.bar{display:flex;gap:5px}.bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tabs span,.chips span{border:1px solid var(--line);border-radius:999px;padding:3px 9px;font-size:12px}
+.tabs span:first-child{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.sw{display:flex;gap:6px;margin-bottom:10px}.sw i{width:22px;height:22px;border-radius:50%}
+.sl{height:8px;border-radius:9px;background:var(--line);margin:6px 0 4px;overflow:hidden}.sl i{display:block;height:100%;background:#ea4335}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.tog{width:34px;height:20px;border-radius:9px;background:#34a853;position:relative}.tog::after{content:"";position:absolute;right:3px;top:3px;width:14px;height:14px;border-radius:50%;background:#fff}
+.inp{border:1px solid var(--line);border-radius:8px;padding:4px 10px;color:var(--mute);flex:1}
+/* project cards */
+section{padding:clamp(48px,6vw,88px) 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.head p{max-width:46ch}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2vw,28px)}
+.card{text-decoration:none;display:block}
+.thumb{position:relative;aspect-ratio:3/2;border-radius:24px;display:grid;place-items:center;overflow:hidden;transition:transform .3s}
+.card:hover .thumb{transform:translateY(-4px)}
+.arrow{position:absolute;right:14px;bottom:14px;width:40px;height:40px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-weight:600}
+.card h3{margin-top:20px;font-size:clamp(22px,2vw,26px)}
+.card p{color:var(--mute);margin-top:6px;font-size:16px}
+.thumb>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* other work */
+.more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;border-top:1px solid var(--line)}
+.more a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:18px 4px;border-bottom:1px solid var(--line);text-decoration:none}
+.more a:hover b{text-decoration:underline}
+.more b{font-weight:600}
+.more span{font-size:14px;color:var(--mute);grid-column:1}
+.more em{font-style:normal;font-size:13px;color:var(--mute);grid-row:1;grid-column:2;white-space:nowrap}
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,72px);align-items:start}
+.me{background:var(--yel);border-radius:32px;padding:32px;text-align:center}
+.me svg{width:min(240px,70%);height:auto}
+.me blockquote{margin:18px 0 0;font-family:Caveat,cursive;font-size:clamp(24px,2.4vw,30px);line-height:1.25}
+.about .txt p{font-size:17px;margin-bottom:14px;max-width:62ch}
+.xp{margin:28px 0;border-top:1px solid var(--line)}
+.xp div{display:grid;grid-template-columns:10.5em minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.xp span{color:var(--mute);font-size:14px;white-space:nowrap}
+.xp small{display:block;color:var(--mute);font-size:14px}
+.skills{display:flex;flex-wrap:wrap;gap:8px}
+.skills span{padding:7px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px}
+/* contact */
+.contact{background:var(--bg);border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(40px,8vw,104px);line-height:1;max-width:12ch}
+.pills{display:flex;flex-wrap:wrap;gap:12px;margin:32px 0 16px}
+.pills a{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;text-decoration:none;font-weight:600;color:#161821}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:22px;padding-bottom:28px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+/* case study */
+.case{padding:clamp(28px,4vw,48px) 0 clamp(48px,6vw,88px)}
+.back{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-weight:500;border-bottom:1.5px solid var(--line)}
+.case .kick{margin:28px 0 12px;color:var(--mute)}
+.case .intro{font-size:18px;max-width:62ch;margin:18px 0 0}
+.cstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:12px;margin:32px 0}
+.cbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start}
+.cbody .thumb{position:sticky;top:100px;aspect-ratio:3/2}
+.blk{padding:22px 0;border-top:1px solid var(--line)}
+.blk h3{font-size:22px;margin-bottom:10px}
+.blk ul{margin:0;padding-left:20px}.blk li{margin:6px 0}
+.next{margin-top:40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+/* beyond page */
+.bey{padding:clamp(36px,5vw,64px) 0 clamp(56px,7vw,96px)}
+.eyebrow{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
+.bey h1{font-size:clamp(36px,4.6vw,58px);letter-spacing:-.045em;max-width:12ch}
+.bey .lead{font-size:17px;color:var(--mute);max-width:44ch;margin:20px 0 26px}
+.pinkbtn{display:inline-flex;align-items:center;gap:22px;min-height:50px;padding:0 22px;border-radius:999px;background:#f4a7c8;color:#0f1a38;text-decoration:none;font-weight:500}
+.pinkbtn:hover{background:#ef93ba}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;margin-top:clamp(40px,5vw,64px)}
+.tile{position:relative;border-radius:18px;overflow:hidden;min-height:340px;display:flex;align-items:flex-end;text-decoration:none;box-shadow:0 10px 30px -18px rgba(15,26,56,.35)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile .cap2{position:relative;margin:16px;background:rgba(255,255,255,.92);border-radius:14px;padding:12px 16px;color:#0f1a38;max-width:calc(100% - 32px)}
+.tile .cap2 b{display:block;font:700 18px/1.2 Sora,sans-serif;letter-spacing:-.02em}
+.tile .cap2 span{font-size:14px;color:#4b5468}
+.tile .ph{position:absolute;inset:0;display:grid;place-items:center;font:600 14px Inter,sans-serif;color:rgba(15,26,56,.45)}
+.t-big{grid-column:span 7;min-height:440px}.t-side{grid-column:span 5;min-height:440px}.t-full{grid-column:1/-1;min-height:520px}.t-a{grid-column:span 5}.t-b{grid-column:span 7}
+@media (max-width:760px){.bento{grid-template-columns:minmax(0,1fr);gap:18px}.t-big,.t-side,.t-full,.t-a,.t-b{grid-column:auto;min-height:300px}}
+.art{columns:3 260px;column-gap:28px;margin-top:clamp(40px,5vw,64px)}
+.piece{break-inside:avoid;margin:0 0 28px;background:#fff;padding:10px;border-radius:16px;box-shadow:0 10px 28px -16px rgba(15,26,56,.3)}
+.piece img{display:block;width:100%;height:auto;border-radius:10px}
+.contact{background:#fffbf5;border-top:1px solid var(--line);padding:clamp(64px,9vw,120px) 0 clamp(40px,5vw,64px)}
+.contact h2{font-size:clamp(44px,8.2vw,112px);line-height:1.02;letter-spacing:-.045em;max-width:13ch}
+.pills{display:flex;flex-wrap:wrap;gap:14px;margin:clamp(28px,3vw,40px) 0 0}
+.pills a{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 22px 0 18px;border-radius:999px;text-decoration:none;font-weight:500;font-size:17px;color:#0f1a38;box-shadow:0 8px 20px -12px rgba(15,26,56,.45);transition:transform .2s}
+.pills a:hover{transform:translateY(-2px)}
+.pills svg{width:20px;height:20px;fill:none;stroke:#0f1a38;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pills svg.fill{fill:#0f1a38;stroke:none}
+.pills .dotf{fill:#0f1a38;stroke:none}
+.foot{background:#fffbf5}
+/* powder blue buttons */
+.btn{background:#b0e0e6;color:#0f1a38}
+.btn:hover{background:#9dd6dd}
+.btn.ghost{background:transparent;color:#0f1a38;box-shadow:inset 0 0 0 1.5px #8fcbd3}
+.links a.on{background:#b0e0e6;color:#0f1a38}
+.links a:hover{color:#0f1a38}
+nav .talk{box-shadow:0 8px 22px -12px rgba(80,150,160,.7)}
+.ui .b{background:#b0e0e6;color:#0f1a38}
+/* blood red accents */
+.red{color:#8a0f0f}
+.eyebrow{color:#8a0f0f}
+.arrow{background:#8a0f0f;color:#fff}
+.card:hover .arrow{background:#6e0b0b}
+.ul{text-decoration-color:#8a0f0f}
+.motto{color:#8a0f0f!important}
+.case .kick{color:#8a0f0f}
+.blk h3::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#8a0f0f;margin-right:10px;vertical-align:middle}
+.stat{border-top-color:#8a0f0f}
+.xp{border-top-color:#8a0f0f}
+.me blockquote{color:#8a0f0f}
+::selection{background:#8a0f0f;color:#fff}
+/* life page */
+figure{margin:0}
+.life{padding:clamp(36px,5vw,64px) 0 clamp(56px,7vw,96px)}
+.life h1{font-size:clamp(36px,4.6vw,58px);letter-spacing:-.045em}
+.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(36px,4vw,56px) clamp(28px,3.5vw,48px);margin-top:clamp(40px,5vw,64px);padding:0 clamp(0px,2vw,24px)}
+.pol{position:relative;background:#fff;border-radius:12px;padding:12px 12px 0;aspect-ratio:3/4;margin-bottom:0;box-shadow:0 10px 28px -14px rgba(15,26,56,.28);transition:transform .25s}
+.pol:hover{transform:rotate(0deg) scale(1.03)!important;z-index:2}
+.pol .pic{position:relative;height:calc(100% - 46px);border-radius:6px;overflow:hidden;background:#f3eee6}
+.pol .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.pol .pic span{position:absolute;inset:0;display:grid;place-items:center;font-size:13px;color:#9a9385}
+.pol figcaption{height:46px;display:flex;align-items:center;justify-content:center;font-family:Caveat,cursive;font-size:21px;color:#0f1a38}
+.tape{position:absolute;top:-9px;left:50%;width:62px;height:18px;transform:translateX(-50%) rotate(-4deg);opacity:.9;border-radius:2px}
+@media (max-width:900px){.wall{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px;padding:0}}
+/* about page */
+.abt{padding:clamp(36px,5vw,64px) 0 clamp(56px,7vw,96px)}
+.abt .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.photo{position:sticky;top:110px}
+.photo img{display:block;width:min(100%,520px);height:auto;margin:0 auto}
+.ring{position:relative;width:min(100%,460px);aspect-ratio:1;margin:0 auto}
+.ring svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ring svg text{font-family:"Courier Prime",monospace;font-size:15px;letter-spacing:.06em;fill:#0f1a38}
+.ring img{position:absolute;left:12%;top:12%;width:76%;height:76%;object-fit:contain}
+.abt h1{font-size:clamp(38px,4.8vw,60px);letter-spacing:-.045em;max-width:9ch}
+.abt .txt p{font-size:17px;line-height:1.75;color:var(--mute);margin-top:20px;max-width:60ch}
+.abt .txt p b,.abt .txt li b{color:var(--ink);font-weight:600}
+.abt .txt h2{margin-top:44px;font-size:clamp(28px,3vw,38px);letter-spacing:-.04em}
+.ybtn{display:inline-flex;align-items:center;min-height:50px;padding:0 22px;border-radius:999px;background:#ffcc33;color:#0f1a38;text-decoration:none;font-weight:500;margin-top:24px}
+.ybtn:hover{background:#ffc21a}
+.abt ul{margin:14px 0 0;padding-left:22px;color:var(--mute);font-size:17px;line-height:1.75}
+.abt li{margin:10px 0;padding-left:4px}
+.motto{font-weight:600;color:var(--ink)!important}
+.ul{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:#f4a7c8;text-decoration-thickness:2px;text-underline-offset:4px}
+@media (max-width:760px){.abt .wrap{grid-template-columns:minmax(0,1fr)}.ring{width:min(100%,360px)}.photo{position:static}.photo img{width:min(100%,400px)}}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.fl{animation:bob 6s ease-in-out infinite}.f2{animation-delay:-2s}.f3{animation-delay:-4s}
+@media (prefers-reduced-motion:reduce){.fl{animation:none}html{scroll-behavior:auto}.thumb,.btn{transition:none}}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}nav .wrap{grid-template-columns:auto auto;justify-content:space-between;padding-top:10px;padding-bottom:10px;min-height:0}.links{grid-column:1/-1;grid-row:2;justify-content:flex-start}.links a{font-size:15px;padding:8px 14px}}
+@media (max-width:760px){.hero .wrap,.about,.cbody{grid-template-columns:minmax(0,1fr)}.panel{min-height:380px}.cbody .thumb{position:relative;top:0;aspect-ratio:3/2}.more{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){.grid{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:minmax(0,1fr)}.links a{padding:10px 12px}nav .talk{min-height:46px;font-size:15px;gap:12px}.xp div{grid-template-columns:minmax(0,1fr);gap:2px}.fl{font-size:13px;padding:12px 14px}.f1{width:70%}.f2{width:62%}.f3{width:74%}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Himanshi, home"><img src="avatar128.png" alt="Himanshi"></a>
+    <div class="links">
+      <a href="#work" class="on">Work</a><a href="#beyond">Beyond product design</a><a href="#life">Life and all</a><a href="#about-me">About</a>
+    </div>
+    <a class="btn talk" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+  </div>
+</nav>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="face">
+      <rect x="4" y="4" width="92" height="92" rx="30" fill="#b0e0e6"/>
+      <circle cx="18" cy="18" r="6" fill="#f4b400"/><circle cx="84" cy="20" r="4" fill="#34a853"/><circle cx="86" cy="84" r="5" fill="#ea4335"/>
+      <path d="M24 92c0-22 12-32 26-32s26 10 26 32z" fill="#f9c9dc"/>
+      <path d="M26 56c-4-30 10-42 24-42s28 12 24 42c-4 6-8 8-10 8V40H36v24c-2 0-6-2-10-8z" fill="#1d1a22"/>
+      <ellipse cx="50" cy="46" rx="15" ry="17" fill="#e2a679"/>
+      <path d="M34 40c4-12 26-14 32 0-8-4-22-5-32 0z" fill="#1d1a22"/>
+      <circle cx="44" cy="46" r="2" fill="#1d1a22"/><circle cx="56" cy="46" r="2" fill="#1d1a22"/>
+      <path d="M45 54q5 4 10 0" stroke="#1d1a22" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="40" cy="52" r="3" fill="#ea4335" opacity=".35"/><circle cx="60" cy="52" r="3" fill="#ea4335" opacity=".35"/>
+    </g>
+  </defs>
+</svg>
+
+<main id="home">
+  <header class="hero dots" id="top">
+    <div class="wrap">
+      <h1 class="script"><img src="hello.png" alt="Hi, I am Himanshi, UI/UX Designer at Dancing Numbers" width="1492" height="159"></h1>
+      <div>
+        <h2 class="hl1">Making complex SaaS simple<span class="red">.</span><br>Designing UX that whispers<span class="red">.</span></h2>
+        <p class="lead">For the past 4+ years, I've been designing SaaS and D2C products used by 50,000+ people. At Dancing Numbers, I turn complex accounting workflows into screens that feel calm, clear and easy to trust.</p>
+        <div class="cta"><a class="btn go" href="#work">Explore my work</a></div>
+      </div>
+      <div class="buddy" id="buddy">
+        <img class="desk" src="desk.webp" alt="A pink laptop with a smiley sticker, a coffee mug, a plant and a stack of books" width="800" height="503">
+        <p class="say" id="say" aria-live="polite"></p>
+        <button class="wbtn" id="wbtn" type="button">Whisper to me</button>
+        <p class="cap">Good design shouldn't shout. It should whisper.</p>
+      </div>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head">
+        <h2>Selected work<span class="red">.</span></h2>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+
+  <section id="about">
+    <div class="wrap about">
+      <div class="me">
+        <img src="avatar480.png" alt="Illustrated portrait of Himanshi" style="width:min(260px,75%);height:auto">
+        <blockquote>"Good design shouldn't shout. It should whisper."</blockquote>
+      </div>
+      <div class="txt">
+        <h2 style="margin-bottom:20px">I speak both Figma and code<span class="red">.</span></h2>
+        <p>Five months in backend and APIs taught me what engineers need. So my designs ship the way they look in Figma, from the first research call to the final QA pass.</p>
+        <div class="xp">
+          <div><span>Mar 2024 – now</span><p><b>UI/UX Designer, Dancing Numbers</b></p></div>
+          <div><span>Sep 2022 – Mar 2024</span><p><b>UI/UX Designer, iRasus Technologies</b></p></div>
+          <div><span>Education</span><p><b>MCA, CGPA 9.4/10 · Google UX Certificate</b></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main id="beyond" class="bey dots" hidden>
+  <div class="wrap">
+    <p class="eyebrow">Beyond product design</p>
+    <h1>Where I play with ideas<span class="red">.</span></h1>
+    <p class="lead">When I step away from Figma, I pick up pens, pastels and markers. A few pages from my sketchbook.</p>
+    <div class="art" id="art"></div>
+  </div>
+</main>
+
+<main id="life" class="life dots" hidden>
+  <div class="wrap">
+    <h1>Weekends, sunsets<br>and everything between<span class="red">.</span></h1>
+    <div class="wall" id="wall"></div>
+  </div>
+</main>
+
+<main id="aboutme" class="abt dots" hidden>
+  <div class="wrap">
+    <div class="photo"><img src="me.webp" alt="Himanshi taking a mirror selfie, surrounded by playful mini versions of herself" width="863" height="1200"></div>
+    <div class="txt">
+      <p class="eyebrow" style="margin-top:0">About</p>
+      <h1>A little about me<span class="red">.</span></h1>
+      <p>I have a soft spot for messy, data-heavy workflows, and for turning them into screens people barely notice.</p>
+      <p>I'm Himanshi, a <b>UI/UX Designer at Dancing Numbers</b> in Gurugram. A five-month rotation in backend development and API integration taught me to design with the build in mind. I hold an <b>MCA (CGPA 9.4/10)</b> and the <b>Google UX Design Professional Certificate</b>.</p>
+      <p>For the past <b>4+ years</b>, I've designed SaaS and D2C products used by <b>50,000+ users</b>, from data-heavy dashboards at iRasus Technologies, where a redesign lifted daily active users by 15%, to a QuickBooks automation platform at Dancing Numbers.</p>
+      <a class="ybtn" href="https://himanshijain.in/assets/Himanshi_Jain_CV.pdf">Resume</a>
+      <p>I believe good design shouldn't shout. It should whisper. The best interfaces get out of the way, so people can simply get their work done.</p>
+      <h2>Off the clock<span class="red">.</span></h2>
+      <a class="pinkbtn" href="#life" style="margin-top:20px">Explore life and all <span aria-hidden="true">↗</span></a>
+      <p>When I'm not designing product screens, you might find me:</p>
+      <ul>
+        <li>Building brand identities and logos.</li>
+        <li>Designing social media posts and campaign creatives.</li>
+        <li>Drawing and making digital illustrations.</li>
+        <li>Chasing the occasional sunset.</li>
+        <li>Sharing behind-the-scenes of design and weekends on Instagram.</li>
+      </ul>
+      <p class="motto">Research. Design. Test. Repeat.</p>
+      <p>Find my professional work on <a class="ul" href="https://www.linkedin.com/in/himanshi-jain-a589691b5/">LinkedIn</a>, my design work on <a class="ul" href="https://www.behance.net/himanshiiijain">Behance</a>, or say hello at <a class="ul" href="mailto:himanshijain053@gmail.com">himanshijain053@gmail.com</a>.</p>
+    </div>
+  </div>
+</main>
+
+<main id="case" class="case" hidden></main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's design something that just works<span class="red">.</span></h2>
+    <div class="pills">
+      <a href="mailto:himanshijain053@gmail.com" style="background:#ff8f4a" title="himanshijain053@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</a>
+      <a href="https://www.linkedin.com/in/himanshi-jain-a589691b5/" style="background:#ffc72c"><svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M5 9h3v10H5zM6.5 4.5a1.8 1.8 0 110 3.6 1.8 1.8 0 010-3.6zM10 9h2.9v1.4c.4-.8 1.5-1.6 3-1.6 3.1 0 3.6 2 3.6 4.6V19h-3v-4.9c0-1.2 0-2.6-1.6-2.6s-1.9 1.2-1.9 2.5v5H10z"/></svg>LinkedIn</a>
+      <a href="https://www.behance.net/himanshiiijain" style="background:#b0e0e6"><svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M3 6h5.2c2 0 3.2 1 3.2 2.6 0 1.1-.6 1.8-1.4 2.1 1.1.3 1.9 1.2 1.9 2.5 0 1.9-1.4 2.9-3.6 2.9H3zm2.4 2v2.5h2.4c.9 0 1.3-.5 1.3-1.2S8.7 8 7.8 8zm0 4.4V15h2.7c1 0 1.5-.5 1.5-1.3s-.5-1.3-1.5-1.3zM15 7h5v1.3h-5zm2.6 2.3c2.3 0 3.6 1.6 3.4 4h-5c.1 1.2.8 1.8 1.8 1.8.7 0 1.2-.3 1.4-.8h1.7c-.4 1.5-1.7 2.3-3.2 2.3-2.2 0-3.6-1.4-3.6-3.6s1.4-3.7 3.5-3.7zm0 1.4c-.9 0-1.5.6-1.6 1.5h3.1c-.1-.9-.6-1.5-1.5-1.5z"/></svg>Behance</a>
+      <a href="https://www.instagram.com/thehimanshi.jain" style="background:#f6a8c9"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" class="dotf"/></svg>Instagram</a>
+    </div>
+  </div>
+</section>
+<footer class="foot"><div class="wrap"><span>Designed by Himanshi Jain · Gurugram, India</span><a href="#top">Back to top ↑</a></div></footer>
+
+<script>
+{
+const P=[
+{id:"dancing-numbers",img:"work-dancing-numbers.webp",c:"var(--blue)",title:"Dancing Numbers",short:"A SaaS website rebuilt around three audiences.",tags:"SaaS · Website redesign",line:"Rebuilding a QuickBooks automation site around the three kinds of people who buy it.",link:"https://www.dancingnumbers.com/",
+thumb:'<div class="ui"><div class="bar"><i></i><i></i><i></i></div><div class="tabs"><span>Accountants</span><span>Small business</span><span>E-commerce</span></div><div class="h">QuickBooks automation, done for you</div><span class="b">Start free trial</span> <span class="b o">Book a demo</span></div>',
+stats:[["50,000+","users of the product"],["10M+","transactions processed"],["5 → 3","navigation sections"]],
+role:"Primary UI/UX designer: audit, information architecture, homepage and page design.",
+problem:"The site had grown into five deeply nested menus. Accountants, small business owners and e-commerce sellers all landed on the same story and had to dig for the part meant for them, and the free trial and demo were easy to miss.",
+process:["Audited the key journeys and ran a heuristic evaluation of the existing site.","Rebuilt the information architecture around three audiences: accountants, small business owners and e-commerce businesses.","Redesigned the homepage so each audience finds its own path in the first screen.","Gave the free trial and demo calls to action a clear, repeated place on every key page."],
+outcome:"Navigation went from five deeply nested menus to three clear sections, with trial and demo always in reach."},
+{id:"sleepsia",img:"work-sleepsia.webp",c:"var(--yel)",title:"Sleepsia",short:"Shop by concern, not by product.",tags:"Shopify · Mobile-first",line:"Shop by what hurts, not by product type, for a sleep-wellness brand.",link:"https://www.sleepsia.in/",
+thumb:'<div class="ui ph"><div class="h">Shop by concern</div><div class="chips"><span>Neck pain</span><span>Back pain</span><span>Pregnancy</span></div><div style="color:#b98900">★★★★★</div><small class="mute">Doctor recommended</small></div>',
+stats:[["7 → 3","top-level menu items"],["5/5","task completion after redesign"],["14+","platforms the brand sells on"]],
+role:"UI/UX designer: UX audit, usability study, navigation and storefront design.",
+problem:"Sleepsia sells memory-foam pillows, bedsheets and sleep accessories. Shoppers usually arrive with a problem, like neck pain, but the store was organised by product type, and the proof that builds trust sat far down the page.",
+process:["Ran a UX audit and a usability study with five users.","Rebuilt navigation around health concerns: neck pain, back pain and pregnancy.","Cut the top level to three entries: Shop by Category, Shop by Concern and Deals.","Moved reviews, doctor recommendations and materials into the first mobile screen."],
+outcome:"Top-level navigation went from seven items to three, and all five test users completed their tasks after the redesign."},
+{id:"agile-ventures",img:"work-agile-ventures.webp",c:"var(--red)",title:"Agile Ventures",short:"Any key page in two clicks.",tags:"Website redesign · IA",line:"Making a diversified group's website easy to find your way around.",link:"https://agileventures.net/",
+thumb:'<div class="ui"><div class="h">Getting to any key page</div><div style="font:700 20px/1.2 \'Plus Jakarta Sans\',sans-serif"><s class="mute" style="font-weight:500">4+ clicks</s> → 2 clicks</div><div class="tabs"><span>Home</span><span>Businesses</span><span>About</span></div></div>',
+stats:[["4+ → 2","clicks to any key page"],["5","competitors audited"]],
+role:"UI/UX designer: audit, stakeholder interviews, information architecture and visual design.",
+problem:"Agile Ventures is a Gurugram-based group with businesses in several sectors. Its website buried key pages four or more clicks deep.",
+process:["Audited the existing site and five competitors.","Ran stakeholder interviews to understand what each business needed from the site.","Restructured the information architecture around how visitors look for the group's businesses."],
+outcome:"Any key page is now two clicks away, down from four or more."},
+{id:"accountspro-llc",img:"work-accountspro-llc.webp",c:"var(--lav)",title:"AccountsPro LLC",short:"Hiring IT talent, made simple for both sides.",tags:"IT staffing · Website design",line:"A staffing website with one clear path for employers and another for candidates.",link:"https://accountsprollc.com/",
+thumb:'<div class="ui"><div class="h" style="margin-top:0">Hire pre-vetted IT talent</div><span class="b">Find talent</span> <span class="b o">Find work</span><div class="tabs" style="margin-top:12px"><span>Contract</span><span>Direct hire</span><span>Dedicated team</span></div></div>',
+stats:[["2","journeys: employers and candidates"],["4","hiring models side by side"],["5,000+","professionals the firm has placed"]],
+role:"UI/UX designer: website design.",
+problem:"AccountsPro LLC, part of the Agile Ventures group, places IT and engineering talent across the US, India and offshore. Its website has to speak to two very different visitors at once: employers who want to hire, and candidates looking for their next role.",
+process:["Split the first screen into two clear paths: Find Talent and Find Work.","Laid out each hiring journey as four simple steps, one track for employers and one for candidates.","Presented the four hiring models side by side: contract, contract-to-hire, direct hire and dedicated team.","Put the firm's trust numbers up front: years placing talent, professionals placed, employers served and time to shortlist."],
+outcome:"A live site where employers and candidates each find their own path from the first screen."},
+{id:"homies",img:"work-homies.webp",c:"var(--grn)",title:"Homies",short:"Everyday home essentials, easy to browse and bundle.",tags:"D2C e-commerce · Home essentials",line:"A home-essentials store for households across India and businesses buying in bulk.",link:"https://dailyhomies.com/",
+thumb:'<div class="ui ph"><div class="h">Made for every part of home</div><div class="chips"><span>Cleaning</span><span>Kitchen</span><span>Comfort</span></div><span class="b">Shop combos</span></div>',
+stats:[["5","home categories"],["2","audiences: homes and businesses"]],
+role:"UI/UX designer: store design.",
+problem:"The Daily Homie, from the Sleepsia family, sells everyday home essentials across India, from cleaning cloths to kitchen tools and home fragrance. It sells to households and to businesses buying in bulk, so the store has to make lots of small, everyday products easy to browse and easy to buy together.",
+process:["Organised the catalogue by part of the home: cleaning, kitchen, comfort, wrapping and home fragrance.","Brought best sellers, new arrivals and what's popular right now onto the homepage.","Designed Smart Combos that bundle related products into one purchase.","Gave bulk buyers their own Homies for Business path."],
+outcome:"A live store where households and businesses each have a clear way to shop."},
+{id:"accountspro",img:"work-accountspro.webp",c:"var(--pink)",title:"AccountsPro",short:"QuickBooks and Sage help, sorted by your problem.",tags:"Accounting · Website redesign",line:"A services site for a New York accounting firm, organised around the problems people arrive with.",link:"https://accountspro.co/",
+thumb:'<div class="ui"><div class="h" style="margin-top:0">24/7 QuickBooks and Sage support</div><div class="tabs"><span>QuickBooks</span><span>Sage</span><span>Error fixes</span><span>Migration</span></div><div style="margin-top:10px"><span class="b">Talk to an expert</span></div></div>',
+stats:[["4","problem-first service groups"],["24/7","support offer on the homepage"]],
+role:"UI/UX designer: information architecture and website design.",
+problem:"AccountsPro is a New York firm that supports businesses on QuickBooks and Sage. People usually arrive with one specific problem, but they had to hunt through a list of services to find the right help.",
+process:["Restructured the services into problem-first groups: QuickBooks, Sage, Error Resolution and Migration.","Put the 24/7 support offer on the homepage, where worried visitors see it first.","Designed the site for a WordPress build."],
+outcome:"Visitors can go straight from the problem they have to the service that fixes it."}
+];
+const M=[
+["Havyn","Luxury PG discovery and trust-first booking","Concept","https://www.behance.net/himanshiiijain"],
+["Cinveo","Movie and event ticketing with simpler seat selection","Concept","https://www.behance.net/himanshiiijain"],
+["Apple website redesign","Type, layout and scroll pacing study","Self-initiated","https://www.behance.net/himanshiiijain"],
+["HandoffNote","Zero-to-one concept for design hand-off","Self-initiated","https://hjcasestudy.netlify.app"],
+["Quality Engineering CA","Trust-led B2B consulting site, Toronto","Website","https://quality-engineering.ca"],
+["AccountsPro","Problem-first services site for a New York firm","Website","https://accountspro.co"],
+["A1 Medicine","Medicine delivery app, wireframes to hi-fi","Mobile app","https://www.behance.net/himanshiiijain"],
+["Rajasthan Tourism","Itinerary and booking in terracotta, gold and indigo","Concept","https://www.behance.net/himanshiiijain"],
+["Wallet Z","Dark fintech wallet, everything in two taps","Mobile app","https://www.behance.net/himanshiiijain"],
+["Pawly","Pet care reminders, vet visits and community","Mobile app","https://www.behance.net/himanshiiijain"],
+["DreamTeam","Real estate matching through a preference quiz","Concept","https://www.behance.net/himanshiiijain"],
+["EV fleet dashboards","Data-heavy fleet management at iRasus","Dashboard","https://www.behance.net/himanshiiijain"]
+];
+const art=p=>p.img?`<img src="${p.img}" alt="${p.title} preview">`:p.thumb;
+const card=p=>`<a class="card" href="#${p.id}"><div class="thumb" style="background:${p.c}">${art(p)}<span class="arrow">↗</span></div><h3>${p.title}</h3><p>${p.short}</p></a>`;
+document.getElementById('grid').innerHTML=P.map(card).join('');
+const A=[["art1.jpg","Line drawing of a couple, You are my good days"],["art2.jpg","Line drawing of a hug on red paper, like the night hugs the moon"],["art3.jpg","Sketch titled POV he loves you in bindi"],["art4.jpg","Soft pastel sunset over a river"],["art5.jpg","Hand lettering, Life is art, live yours in color"],["art6.jpg","Sketch of a girl, talk a little nicer to yourself today"],["art7.jpg","Abstract face in bright markers"],["art8.jpg","Hand lettering, being creative isn't a hobby, it's a way of life"],["art9.jpg","Heart made of I love you in many languages"]];
+document.getElementById('art').innerHTML=A.map(a=>`<figure class="piece"><img src="${a[0]}" alt="${a[1]}" loading="lazy"></figure>`).join('');
+const bey=document.getElementById('beyond');
+const L=[["Dressed up",1],["Mood: monochrome",2],["Silly us",13],["Road trip",4],["Coffee and books",5],["Diwali glow",6],["Night out",14],["Us",8],["All smiles",9],["River rafting",10],["Chasing sunsets",11],["Birthday girl",12]];
+const rot=[-1.4,1,-0.8,1.2,-1,1.4,0.8,-1.2,1,-1.4,1.2,-0.8];
+document.getElementById('wall').innerHTML=L.map(([c,f],k)=>`<figure class="pol" style="transform:rotate(${rot[k%rot.length]}deg)">${k%3===0?`<i class="tape" style="background:${k%2?'#ffd46b':'#f6b3cf'}"></i>`:''}<div class="pic"><img src="life${f}.jpg" alt="${c}" loading="lazy"></div><figcaption>${c}</figcaption></figure>`).join('');
+const life=document.getElementById('life'),abm=document.getElementById('aboutme');
+
+const home=document.getElementById('home'),cs=document.getElementById('case');
+const caseHTML=(p,i)=>{const n=P[(i+1)%P.length];return `<div class="wrap">
+<a class="back" href="#work">← All work</a>
+<p class="kick">${p.tags}</p><h1>${p.title}</h1><p class="intro mute">${p.line}</p>
+<div class="cstats">${p.stats.map(s=>`<div class="stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div>
+<div class="cbody"><div class="thumb" style="background:${p.c}">${art(p)}</div><div>
+<div class="blk"><h3>My role</h3><p>${p.role}</p></div>
+<div class="blk"><h3>The problem</h3><p>${p.problem}</p></div>
+<div class="blk"><h3>What I did</h3><ul>${p.process.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+<div class="blk"><h3>What changed</h3><p>${p.outcome}</p></div>
+<div class="blk"><a class="btn ghost" href="${p.link}">See it live ↗</a></div>
+</div></div>
+<div class="next"><a class="back" href="#work">← All work</a><a class="btn" href="#${n.id}">Next: ${n.title} →</a></div></div>`};
+const links=[...document.querySelectorAll('.links a')];
+const show=()=>{const id=location.hash.slice(1);if(id==='contact'||id==='top'){const el=document.getElementById(id);if(id==='top'&&!home.hidden){el.scrollIntoView()}else if(id==='contact'){el.scrollIntoView()}else{window.scrollTo(0,0)}return}const i=P.findIndex(x=>x.id===id);
+  if(id==='beyond'||id==='life'||id==='about-me'){home.hidden=true;cs.hidden=true;bey.hidden=id!=='beyond';life.hidden=id!=='life';abm.hidden=id!=='about-me';window.scrollTo(0,0);links.forEach(a=>a.classList.toggle('on',a.hash==='#'+id));return}
+  bey.hidden=true;life.hidden=true;abm.hidden=true;
+  if(i>-1){cs.innerHTML=caseHTML(P[i],i);home.hidden=true;cs.hidden=false;window.scrollTo(0,0);links.forEach(a=>a.classList.toggle('on',a.hash==='#work'));}
+  else{const was=home.hidden;home.hidden=false;cs.hidden=true;links.forEach((a,k)=>a.classList.toggle('on',id?a.hash==='#'+id&&k===links.findIndex(l=>l.hash==='#'+id):k===0));
+    if(was){requestAnimationFrame(()=>{const el=id&&document.getElementById(id);el?el.scrollIntoView():window.scrollTo(0,0)})}}};
+window.addEventListener('hashchange',show);show();
+const W=["Fewer clicks, calmer minds.","Design with the build in mind.","Every state deserves a design.","If you notice the UI, I'm not done.","Data should read like a sentence."];
+let wi=0;const bud=document.getElementById('buddy'),say=document.getElementById('say');
+document.getElementById('wbtn').addEventListener('click',()=>{say.textContent=W[wi++%W.length];bud.classList.add('blink');setTimeout(()=>bud.classList.remove('blink'),160)});
+}
+</script>
+</body>
+</html>
