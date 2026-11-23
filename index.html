@@ -149,6 +149,38 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 .blk h3{font-size:22px;margin-bottom:10px}
 .blk ul{margin:0;padding-left:20px}.blk li{margin:6px 0}
 .next{margin-top:40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+/* detailed case study */
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin:32px 0 0;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.meta dt{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#8a0f0f;margin-bottom:6px}
+.meta dd{margin:0;font-size:15px;line-height:1.5}
+.hero-img{position:relative;margin:36px 0 0;border-radius:24px;overflow:hidden;aspect-ratio:3/2;background:var(--card)}
+.hero-img>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.case .cstats{margin:36px 0 12px}
+.cs{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(16px,4vw,64px);padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--line)}
+.cs h2,.decs h2{font-size:clamp(24px,2.6vw,32px);letter-spacing:-.03em}
+.cs p{font-size:17px;line-height:1.75;color:var(--mute);max-width:64ch}
+.ticks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px}
+.ticks li{position:relative;padding-left:24px;font-size:16px;color:var(--mute)}
+.ticks li::before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;border-radius:50%;background:#b0e0e6;box-shadow:0 0 0 3px #e3f4f6}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:14px;counter-reset:st}
+.steps li{counter-increment:st;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.steps li::before{content:counter(st);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#b0e0e6;color:#0f1a38;font-weight:700;font-size:14px;margin-bottom:12px}
+.steps b{display:block;font:700 17px/1.3 Sora,sans-serif;margin-bottom:6px}
+.steps span{font-size:15px;color:var(--mute);line-height:1.6}
+.decs{padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--line)}
+.dec{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center;margin-top:clamp(28px,4vw,48px)}
+.dec.flip .shot{order:2}
+.dec h3{font-size:clamp(20px,2vw,24px);letter-spacing:-.02em;margin-bottom:10px}
+.dec p{font-size:16px;line-height:1.75;color:var(--mute)}
+.shot{margin:0;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 16px 36px -24px rgba(15,26,56,.45)}
+.shot .frame{display:flex;gap:6px;padding:10px 12px;background:#f3eee6}
+.shot .frame i{width:9px;height:9px;border-radius:50%;background:#e1d8c8}
+.shot .frame i:first-child{background:#f08a7e}.shot .frame i:nth-child(2){background:#f5c860}.shot .frame i:nth-child(3){background:#8fd19e}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{font-size:13px;color:var(--mute);padding:10px 14px;border-top:1px solid var(--line)}
+.out{background:#eef8f9;border-radius:24px;border-top:0;padding:clamp(24px,4vw,44px);margin-top:12px}
+.out p{color:#0f1a38;font-size:18px;margin-bottom:22px}
+@media (max-width:760px){.meta{grid-template-columns:repeat(2,minmax(0,1fr))}.cs{grid-template-columns:minmax(0,1fr)}.dec,.dec.flip{grid-template-columns:minmax(0,1fr)}.dec.flip .shot{order:0}.ticks{grid-template-columns:minmax(0,1fr)}.hero-img{border-radius:16px}.steps{grid-template-columns:minmax(0,1fr)}}
 /* beyond page */
 .bey{padding:clamp(36px,5vw,64px) 0 clamp(56px,7vw,96px)}
 .eyebrow{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
@@ -202,6 +234,9 @@ nav .talk{box-shadow:0 8px 22px -12px rgba(80,150,160,.7)}
 @media (max-width:900px){.links{flex-wrap:nowrap;justify-content:space-between;gap:0;margin:0 -6px}.links a{flex:none;white-space:nowrap;font-size:clamp(11px,3.3vw,15px);padding:8px clamp(6px,1.7vw,14px);letter-spacing:-.01em}}
 @media (max-width:600px){.pills{gap:12px}.pills a{width:56px;height:56px;min-height:56px;padding:0;justify-content:center}.pills a .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.pills svg{width:24px;height:24px}}
 @media (max-width:600px){footer .wrap{font-size:12px;gap:8px;flex-wrap:nowrap;align-items:center}footer .wrap a{white-space:nowrap}}
+.links .short{display:none}
+@media (max-width:600px){.links .full{display:none}.links .short{display:inline}.links{justify-content:space-between;gap:4px;margin:0;width:100%}.links a{font-size:15px;padding:8px 16px}}
+@media (max-width:900px){nav .wrap{grid-template-columns:minmax(0,1fr) auto;justify-content:stretch}nav .logo{justify-self:start}.links{justify-self:stretch}}
 /* life page */
 figure{margin:0}
 .life{padding:clamp(36px,5vw,64px) 0 clamp(56px,7vw,96px)}
@@ -239,9 +274,9 @@ figure{margin:0}
 @keyframes bob{50%{transform:translateY(-8px)}}
 .fl{animation:bob 6s ease-in-out infinite}.f2{animation-delay:-2s}.f3{animation-delay:-4s}
 @media (prefers-reduced-motion:reduce){.fl{animation:none}html{scroll-behavior:auto}.thumb,.btn{transition:none}}
-@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}nav .wrap{grid-template-columns:auto auto;justify-content:space-between;padding-top:10px;padding-bottom:10px;min-height:0}.links{grid-column:1/-1;grid-row:2;justify-content:flex-start}.links a{font-size:15px;padding:8px 14px}}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}nav .wrap{grid-template-columns:minmax(0,1fr) auto;padding-top:10px;padding-bottom:10px;min-height:0}.links{grid-column:1/-1;grid-row:2;justify-content:space-between;width:100%}}
 @media (max-width:760px){.hero .wrap,.about,.cbody{grid-template-columns:minmax(0,1fr)}.panel{min-height:380px}.cbody .thumb{position:relative;top:0;aspect-ratio:3/2}.more{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:600px){.grid{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:minmax(0,1fr)}.links a{padding:10px 12px}nav .talk{min-height:46px;font-size:15px;gap:12px}.xp div{grid-template-columns:minmax(0,1fr);gap:2px}.fl{font-size:13px;padding:12px 14px}.f1{width:70%}.f2{width:62%}.f3{width:74%}}
+@media (max-width:600px){.grid{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:minmax(0,1fr)}nav .talk{min-height:46px;font-size:15px;gap:12px}.xp div{grid-template-columns:minmax(0,1fr);gap:2px}.fl{font-size:13px;padding:12px 14px}.f1{width:70%}.f2{width:62%}.f3{width:74%}}
 </style>
 </head>
 <body>
@@ -249,7 +284,7 @@ figure{margin:0}
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Himanshi, home"><img src="avatar128.png" alt="Himanshi"></a>
     <div class="links">
-      <a href="#work" class="on">Work</a><a href="#beyond">Beyond product design</a><a href="#life">Life and all</a><a href="#about-me">About</a>
+      <a href="#work" class="on">Work</a><a href="#beyond" aria-label="Beyond product design"><span class="full">Beyond product design</span><span class="short" aria-hidden="true">BOD</span></a><a href="#life" aria-label="Life and all"><span class="full">Life and all</span><span class="short" aria-hidden="true">L&amp;A</span></a><a href="#about-me">About</a>
     </div>
     <a class="btn talk" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
   </div>
@@ -436,6 +471,65 @@ const M=[
 ["DreamTeam","Real estate matching through a preference quiz","Concept","https://www.behance.net/himanshiiijain"],
 ["EV fleet dashboards","Data-heavy fleet management at iRasus","Dashboard","https://www.behance.net/himanshiiijain"]
 ];
+const D={
+"dancing-numbers":{platform:"Marketing website",audience:"Accountants, small businesses and e-commerce sellers in the US and Canada",
+overview:"Dancing Numbers is a QuickBooks automation product. It lets people import, export and delete data in bulk, and connects QuickBooks to other tools. More than 50,000 people use it, and it has processed over 10 million transactions. As the primary designer, I rebuilt the company website so each kind of customer could quickly see how the product helps them.",
+challenge:"The website had grown into five deeply nested menus. Accountants, small business owners and e-commerce sellers all landed on the same generic story and had to dig for the part meant for them. The free trial and demo, the two actions that matter most, were easy to miss.",
+roles:["Audit of key journeys and a heuristic evaluation","Information architecture and navigation","Homepage and key page design","Figma component library for consistent pages","Design QA with the development team"],
+steps:[["Audit","Walked through the key journeys and ran a heuristic evaluation to find where people got lost."],["Restructure","Rebuilt the information architecture around three audiences and cut five nested menus down to three sections."],["Design","Designed a homepage that says what the product does in one line, then proves it."],["Ship","Built pages from a shared component library and checked every page in design QA."]],
+decisions:[["Say what it does in one line","The hero names the job, a bulk importer, exporter and deleter for QuickBooks, and a diagram shows Excel, CSV and Google Sheets flowing into QuickBooks Online and Desktop. Free trial and demo sit side by side.","shots/dn-1.webp","Homepage hero"],
+["Lead with proof","Right after the hero, a band of numbers (50,000+ active users, 10 million+ transactions, 100,000+ hours saved) answers the question every new visitor has: can I trust this?","shots/dn-2.webp","Proof band"],
+["Three solutions, one clear grid","Bulk operations, custom integrations and conversions each get a card with three plain benefits and their own call to action, so nobody has to read a wall of text.","shots/dn-3.webp","Core solutions"],
+["Speak to each audience","Accountants, small business owners and e-commerce sellers each get their own column showing how they would use bulk import, export and delete.","shots/dn-4.webp","How businesses use Dancing Numbers"]],
+outcome:"Navigation went from five deeply nested menus to three clear sections. Every audience now sees itself on the homepage, and the trial and demo are always one click away."},
+"sleepsia":{platform:"Shopify store, mobile-first",audience:"Indian shoppers with sleep and pain concerns, mostly arriving on their phones",
+overview:"Sleepsia is a Gurgaon-based D2C brand selling memory foam pillows, bedsheets and sleep accessories. It sells on 14+ platforms, including Amazon, Flipkart and Blinkit, so its own store has to give people a reason to buy direct.",
+challenge:"Shoppers usually arrive with a problem, like neck pain or back pain, but the store was organised by product type. The proof that builds trust, reviews, doctor recommendations and materials, sat far down the page, out of sight on mobile.",
+roles:["UX audit of the existing store","Usability study with five shoppers","Navigation and information architecture","Homepage and product page design","Mobile-first layouts"],
+steps:[["Audit","Reviewed the store end to end against common e-commerce usability issues."],["Test","Ran a usability study with five users to see exactly where shoppers got stuck."],["Restructure","Rebuilt navigation around health concerns and cut the top level from seven items to three."],["Redesign","Moved trust signals into the first mobile screen and simplified product pages."]],
+decisions:[["Shop by concern","Next to the usual categories, a Shop by Concern tab lets people start from what hurts: back pain, neck and shoulder pain, or tailbone pain.","shots/sl-2.webp","Shop by concern"],
+["Categories people recognise","Categories use real-life photos, a pillow in a car or a pregnancy pillow in use, so people recognise the right product at a glance.","shots/sl-1.webp","Shop by categories"],
+["Product pages that answer questions","Each product leads with its rating, three plain benefits such as posture and pressure relief, the price and EMI options, before any long description.","shots/sl-3.webp","Featured product"],
+["Trust beyond the store","A clear brand promise and the marketplaces Sleepsia sells on reassure first-time visitors that this is an established brand.","shots/sl-4.webp","Brand promise and marketplaces"]],
+outcome:"Top-level navigation went from seven items to three: Shop by Category, Shop by Concern and Deals. After the redesign, all five test users completed their tasks."},
+"agile-ventures":{platform:"Corporate website",audience:"Enterprise teams looking for certified technology talent and services",
+overview:"Agile Ventures started as an accounting and consulting firm in 2013. Today it runs two businesses: SaaS products for QuickBooks and Salesforce users, and an enterprise professional services practice with six service lines, from AI and data engineering to IT staff augmentation.",
+challenge:"With so many service lines, the old website buried key pages four or more clicks deep. Visitors had to know where to look before they could find anything.",
+roles:["Audit of the site and five competitors","Stakeholder interviews","Information architecture","Visual design of key pages"],
+steps:[["Audit","Reviewed the existing site and five competitors to see how they present many services at once."],["Interview","Talked to stakeholders to understand what each service line needed from the site."],["Restructure","Reorganised the information architecture so every key page is two clicks away."],["Design","Designed scannable service pages with consistent cards, tags and calls to action."]],
+decisions:[["Every service line, one hover away","The Services menu lists all six service lines directly, and the hero repeats them as a list, so nobody has to guess where to click.","shots/ag-1.webp","Services menu and hero"],
+["Everything under one roof","An overview section explains the company in one paragraph, then gives each service line its own card with an explore link.","shots/ag-2.webp","Service lines overview"],
+["Proof in the tags","Cards end with short tags such as platforms, a 48-hour deployment promise or 99% migration accuracy, so the key facts are scannable.","shots/ag-3.webp","Service cards with tags"],
+["Room for specialisms","Deep areas like AI and ML staff augmentation get their own section, with the fields covered shown as simple tiles.","shots/ag-4.webp","AI and ML section"]],
+outcome:"Any key page is now two clicks away, down from four or more."},
+"accountspro-llc":{platform:"Corporate website",audience:"Employers hiring IT and engineering talent, and candidates looking for roles",
+overview:"AccountsPro LLC is an IT staffing firm and part of the Agile Ventures group. It places technology professionals across the US, India and offshore, on contract, contract-to-hire, direct hire or as dedicated teams.",
+challenge:"A staffing site serves two very different visitors at once. Employers want to hire quickly and with confidence, while candidates want to find a role and know what happens next. Mixing both on one page makes it confusing for everyone.",
+roles:["Website design","Homepage structure for two audiences","Hiring journey and solution sections"],
+steps:[["Map","Mapped the employer journey and the candidate journey side by side."],["Structure","Gave each audience its own path from the very first screen."],["Design","Designed the hiring models, industries and trust numbers as clear, scannable sections."]],
+decisions:[["Two audiences, two tracks","Find Talent and Find Work sit side by side, each with four simple steps, so both employers and candidates know exactly what happens next.","shots/llc-1.webp","How it works"],
+["Hiring models, side by side","Contract, contract-to-hire, direct hire and dedicated team are tabs, so employers can compare them without leaving the page.","shots/llc-2.webp","Solutions"],
+["Industries at a glance","Each industry gets a card with the roles placed in it, so a visitor can confirm in seconds that the firm covers their field.","shots/llc-3.webp","Industries"]],
+outcome:"A live site where employers and candidates each find their own path from the first screen."},
+"homies":{platform:"D2C store",audience:"Households across India, and businesses buying in bulk",
+overview:"The Daily Homie, from the Sleepsia family, sells everyday home essentials: cleaning cloths, kitchen tools, comfort products and home fragrance. It sells to households and to businesses such as offices and hotels.",
+challenge:"The store sells lots of small, everyday products. People need to find things fast, buy related items together, and businesses need a separate way to order in bulk.",
+roles:["Store design","Catalogue structure","Homepage, combos and bulk order sections"],
+steps:[["Organise","Grouped the catalogue by part of the home instead of by product type."],["Bundle","Designed combos that bring related products into one purchase."],["Separate","Gave bulk buyers their own clear path."]],
+decisions:[["Shop by part of the home","Cleaning and care, kitchen and dining, comfort, wrapping and home fragrance each get a large photo card, so people shop the way they think about their home.","shots/hm-1.webp","Made for every part of home"],
+["Smart combos","Kitchen and home comfort bundles bring related products together with one price and one button, making it easy to buy more in a single order.","shots/hm-2.webp","Smart combos"],
+["A path for businesses","Homies for Business has its own bold section and call to action, so offices and hotels can start a bulk order without searching.","shots/hm-3.webp","Bulk orders"]],
+outcome:"A live store where households and businesses each have a clear way to shop."},
+"accountspro":{platform:"Services website (WordPress)",audience:"Businesses and accounting professionals using QuickBooks or Sage",
+overview:"AccountsPro is a New York firm that supports businesses on QuickBooks and Sage, from setup and migration to fixing errors, with round-the-clock help.",
+challenge:"People usually arrive with one specific problem, like a QuickBooks error or a stuck migration, but they had to hunt through a long list of services to find the right help.",
+roles:["Information architecture","Website design","Homepage and service pages"],
+steps:[["Group","Restructured services into problem-first groups: QuickBooks, Sage, Error Resolution and Migration."],["Surface","Put the 24/7 support offer on the homepage, where worried visitors see it first."],["Design","Designed clear solution cards and service pages for a WordPress build."]],
+decisions:[["Solutions by software","QuickBooks Desktop, Premier and Enterprise each get a card with their key features, so people can find their version straight away.","shots/ap-1.webp","Solutions by software"],
+["Support up front","24/7 support and flexible service delivery are explained clearly, because people with a broken accounting system want to know help is close.","shots/ap-2.webp","Why choose AccountsPro"],
+["Start from the problem","Error resolution has its own section for QuickBooks and Sage, so visitors can go straight from the error they have to the help they need.","shots/ap-3.webp","Error resolution"]],
+outcome:"Visitors can go straight from the problem they have to the service that fixes it."}
+};
 const art=p=>p.img?`<img src="${p.img}" alt="${p.title} preview">`:p.thumb;
 const card=p=>`<a class="card" href="#${p.id}"><div class="thumb" style="background:${p.c}">${art(p)}<span class="arrow">↗</span></div><h3>${p.title}</h3><p>${p.short}</p></a>`;
 document.getElementById('grid').innerHTML=P.map(card).join('');
@@ -448,17 +542,19 @@ document.getElementById('wall').innerHTML=L.map(([c,f],k)=>`<figure class="pol" 
 const life=document.getElementById('life'),abm=document.getElementById('aboutme');
 
 const home=document.getElementById('home'),cs=document.getElementById('case');
-const caseHTML=(p,i)=>{const n=P[(i+1)%P.length];return `<div class="wrap">
+const shot=(src,cap)=>`<figure class="shot"><div class="frame"><i></i><i></i><i></i></div><img src="${src}" alt="${cap}"><figcaption>${cap}</figcaption></figure>`;
+const caseHTML=(p,i)=>{const n=P[(i+1)%P.length],d=D[p.id];return `<div class="wrap">
 <a class="back" href="#work">← All work</a>
-<p class="kick">${p.tags}</p><h1>${p.title}</h1><p class="intro mute">${p.line}</p>
+<p class="kick">${p.tags}</p><h1>${p.title}<span class="red">.</span></h1><p class="intro mute">${p.line}</p>
+<dl class="meta"><div><dt>Role</dt><dd>${p.role.replace(/\.$/,'')}</dd></div><div><dt>Platform</dt><dd>${d.platform}</dd></div><div><dt>Audience</dt><dd>${d.audience}</dd></div><div><dt>Live site</dt><dd><a class="ul" href="${p.link}">${p.link.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,'')} ↗</a></dd></div></dl>
+<div class="hero-img">${art(p)}</div>
 <div class="cstats">${p.stats.map(s=>`<div class="stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div>
-<div class="cbody"><div class="thumb" style="background:${p.c}">${art(p)}</div><div>
-<div class="blk"><h3>My role</h3><p>${p.role}</p></div>
-<div class="blk"><h3>The problem</h3><p>${p.problem}</p></div>
-<div class="blk"><h3>What I did</h3><ul>${p.process.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-<div class="blk"><h3>What changed</h3><p>${p.outcome}</p></div>
-<div class="blk"><a class="btn ghost" href="${p.link}">See it live ↗</a></div>
-</div></div>
+<section class="cs"><h2>Overview</h2><div><p>${d.overview}</p></div></section>
+<section class="cs"><h2>The challenge</h2><div><p>${d.challenge}</p></div></section>
+<section class="cs"><h2>My role</h2><div><ul class="ticks">${d.roles.map(r=>`<li>${r}</li>`).join('')}</ul></div></section>
+<section class="cs"><h2>How I approached it</h2><div><ol class="steps" style="--n:${d.steps.length===4?2:d.steps.length}">${d.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join('')}</ol></div></section>
+<section class="decs"><h2>Key design decisions</h2>${d.decisions.map((x,k)=>`<article class="dec${k%2?' flip':''}">${shot(x[2],x[3])}<div><h3>${x[0]}</h3><p>${x[1]}</p></div></article>`).join('')}</section>
+<section class="cs out"><h2>The outcome</h2><div><p>${d.outcome}</p><a class="btn" href="${p.link}">See it live ↗</a></div></section>
 <div class="next"><a class="back" href="#work">← All work</a><a class="btn" href="#${n.id}">Next: ${n.title} →</a></div></div>`};
 const links=[...document.querySelectorAll('.links a')];
 const show=()=>{const id=location.hash.slice(1);if(id==='contact'||id==='top'){const el=document.getElementById(id);if(id==='top'&&!home.hidden){el.scrollIntoView()}else if(id==='contact'){el.scrollIntoView()}else{window.scrollTo(0,0)}return}const i=P.findIndex(x=>x.id===id);
